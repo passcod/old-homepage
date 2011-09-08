@@ -1,0 +1,16 @@
+@mixin myserif {
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+@mixin myhead {
+  font-family: "Passero One", "Lucida Sans Unicode", "Lucida Grande", 
+sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+@mixin mysans {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-style: normal;
+}
