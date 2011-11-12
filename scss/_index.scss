@@ -78,3 +78,21 @@ aside#back {
     text-shadow: 1px -1px 0px #666;
   }
 }
+
+img.mozilla {
+  opacity: 0.5;
+  width: 70px;
+  
+  /* Using Ceaser: http://matthewlein.com/ceaser/ */
+  -webkit-transition: all 500ms cubic-bezier(0.395, 1, 0.455, 1);
+  -webkit-transition: all 500ms cubic-bezier(0.395, 1.560, 0.455, 1.560);
+  -moz-transition: all 500ms cubic-bezier(0.395, 1.560, 0.455, 1.560);
+  -ms-transition: all 500ms cubic-bezier(0.395, 1.560, 0.455, 1.560);
+  -o-transition: all 500ms cubic-bezier(0.395, 1.560, 0.455, 1.560);
+  transition: all 500ms cubic-bezier(0.395, 1.560, 0.455, 1.560);
+}
+
+img.mozilla:hover {
+  opacity: 1.0;
+  width: 100px;
+}
