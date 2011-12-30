@@ -65,7 +65,7 @@ section {
 aside#back {
   position: fixed;
   width: 2em;
-  bottom: 5%;
+  bottom: 0px;
   left: 0px;
   padding: 1em;
   
@@ -98,5 +98,5 @@ img.mozilla {
 
 img.mozilla:hover {
   opacity: 1.0;
-  width: 100px;
+  width: 150px;
 }
