@@ -1,10 +1,11 @@
 body {
-  background: #555;
+  background: #EAE5E0;
   @include myserif;
   min-width: 30em;
   width: 60%;
   max-width: 60em;
   margin: 0 auto;
+  color: #111;
 }
 
 a {
@@ -30,7 +31,7 @@ header {
   h1 {
     @include myhead;
     font-size: 3em;
-    text-shadow: 1px -1px 0px #666;
+    text-shadow: 1px -1px 1px #111;
   }
   
   p {
@@ -51,20 +52,20 @@ section {
   border-bottom: 1px solid gray;
   text-align: center;
   
-  p, div {
-    color: #aaa;
-    text-shadow: 1px -1px 0px black;
+  h1 {
+    font-size: 1.3em;
+    font-variant: small-caps;
   }
-  
+
   a {
-    text-decoration: underline;
+    border-bottom: 1px dotted #111;
   }
 }
 
 aside#back {
   position: fixed;
   width: 2em;
-  top: 90%;
+  bottom: 5%;
   left: 0px;
   padding: 1em;
   
@@ -78,14 +79,13 @@ aside#back {
     font-style: normal;
     font-size: 1.2em;
     
-    color: black;
-    text-shadow: 1px -1px 0px #666;
+    color: #111;
   }
 }
 
 img.mozilla {
   opacity: 0.5;
-  width: 70px;
+  width: 100px;
   
   /* Using Ceaser: http://matthewlein.com/ceaser/ */
   -webkit-transition: all 500ms cubic-bezier(0.395, 1, 0.455, 1);

@@ -1,6 +1,18 @@
+@font-face {
+  font-family: "Cassia";
+  src: url('/cassia.eot');
+  src: url('/cassia.eot?#iefix') format('embedded-opentype'),
+       url('/cassia.woff') format('woff'),
+       url('/cassia.otf') format('opentype'),
+       url('/cassia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+}
+
 @mixin myserif {
-  font-family: Georgia, serif;
-  font-style: italic;
+  font-family: Cassia, Georgia, serif;
+  font-weight: bold;
 }
 
 @mixin myhead {
@@ -8,9 +20,4 @@
 sans-serif;
   font-style: normal;
   font-weight: normal;
-}
-
-@mixin mysans {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-style: normal;
 }
