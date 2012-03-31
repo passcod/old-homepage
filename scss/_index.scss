@@ -46,7 +46,7 @@ header {
   }
 }
 
-section {
+section:not(.coderwall) {
   margin-top: 5em;
   padding-bottom: 3em;
   border-bottom: 1px solid gray;
@@ -60,6 +60,14 @@ section {
   a {
     border-bottom: 1px dotted #111;
   }
+}
+
+section.coderwall, .coderwall-root, .coderwall-badge {
+  float: none;
+}
+
+.coderwall-logo {
+  display: none;
 }
 
 aside#back {
