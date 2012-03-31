@@ -225,11 +225,12 @@ section:not(.coderwall) {
   section:not(.coderwall) a {
     border-bottom: 1px dotted #111; }
 
-section.coderwall, .coderwall-root, .coderwall-badge {
-  float: none; }
-
-.coderwall-logo {
-  display: none; }
+section.coderwall.coderwall-root, section.coderwall .coderwall-badge {
+  float: none !important; }
+section.coderwall .coderwall-logo {
+  display: none !important; }
+section.coderwall a {
+  border-bottom: none; }
 
 aside#back {
   position: fixed;

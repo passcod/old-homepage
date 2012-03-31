@@ -62,12 +62,18 @@ section:not(.coderwall) {
   }
 }
 
-section.coderwall, .coderwall-root, .coderwall-badge {
-  float: none;
-}
-
-.coderwall-logo {
-  display: none;
+section.coderwall {
+  &.coderwall-root, .coderwall-badge {
+    float: none !important;
+  }
+  
+  .coderwall-logo {
+    display: none !important;
+  }
+  
+  a {
+    border-bottom: none;
+  }
 }
 
 aside#back {
