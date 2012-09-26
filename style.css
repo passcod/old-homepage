@@ -213,6 +213,9 @@ header {
     left: 1em; }
     header p a {
       border-bottom: 1px solid grey; }
+      header p a[rel=gpgkey] {
+        border-top: 1px solid grey;
+        font-size: 0.75em; }
 
 section:not(.coderwall) {
   margin-top: 5em;

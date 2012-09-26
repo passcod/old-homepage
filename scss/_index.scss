@@ -42,6 +42,11 @@ header {
     
     a {
       border-bottom: 1px solid grey;
+      
+      &[rel=gpgkey] {
+        border-top: 1px solid grey;
+        font-size: 0.75em;
+      }
     }
   }
 }
