@@ -16,8 +16,24 @@
 }
 
 @mixin myhead {
-  font-family: "Passero One", "Lucida Sans Unicode", "Lucida Grande", 
-sans-serif;
+  font-family: "Passero One", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-style: normal;
   font-weight: normal;
+}
+
+html {
+  font-size: 3vw;
+}
+
+@media screen and (max-width: 500px) {
+  html { font-size: 15px; padding: 1em; }
+  body {
+   max-width: 100% !important;
+   min-width: 100% !important;
+  }
+  header {
+    text-align: center;
+    h1 { font-size: 1.5em !important; }
+    p { width: 225px; position: static !important; margin: 1em auto; }
+  }
 }
