@@ -413,21 +413,6 @@ aside#back {
     font-size: 1.2em;
     color: #111; }
 
-img.mozilla {
-  opacity: 0.5;
-  width: 100px;
-  /* Using Ceaser: http://matthewlein.com/ceaser/ */
-  -webkit-transition: all 500ms cubic-bezier(0.395, 1, 0.455, 1);
-  -webkit-transition: all 500ms cubic-bezier(0.395, 1.56, 0.455, 1.56);
-  -moz-transition: all 500ms cubic-bezier(0.395, 1.56, 0.455, 1.56);
-  -ms-transition: all 500ms cubic-bezier(0.395, 1.56, 0.455, 1.56);
-  -o-transition: all 500ms cubic-bezier(0.395, 1.56, 0.455, 1.56);
-  transition: all 500ms cubic-bezier(0.395, 1.56, 0.455, 1.56); }
-
-img.mozilla:hover {
-  opacity: 1.0;
-  width: 150px; }
-
 #flattrdonate {
   display: block;
   margin: 0.5em auto;
@@ -525,3 +510,5 @@ img.mozilla:hover {
 
   h2, h3 {
     page-break-after: avoid; } }
+pre {
+  text-align: left; }
