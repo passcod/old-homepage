@@ -16,10 +16,6 @@
     <link rel="stylesheet" href="style.css">
     
     <script src="script.js"></script>
-    
-    <!-- Coderwall -->
-    <link href="http://coderwall.com/stylesheets/jquery.coderwall.css" media="all" rel="stylesheet" type="text/css">
-    <script src="http://coderwall.com/javascripts/jquery.coderwall.js"></script>
   </head>
   <body>
     <header>
@@ -103,29 +99,28 @@
       </section>
     </article>
 
-    <script type="disabled">
-      var _gauges = _gauges || [];
-      (function() {
-        var t   = document.createElement('script');
-        t.type  = 'text/javascript';
-        t.async = true;
-        t.id    = 'gauges-tracker';
-        t.setAttribute('data-site-id', '4ff29adc613f5d67b8000030');
-        t.src = '//secure.gaug.es/track.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(t, s);
-      })();
+    <script>
+      var ascript = function(src, custom) {
+        var t = document.createElement('script');
+        t.type = 'text/javascript';
+        t.async =  true;
+        t.src = src;
+        t = custom(t);
+        document.getElementsByTagName('body')[0].appendChild(t);
+      };
+
+      var _gauges = _gauges || [],
+          _idl = {variant: 'banner'};
+
+      ascript('//secure.gaug.es/track.js', function (t) {
+        t.id = 'gauges-tracker';
+        t.setAttribute('data-side-id', '4ff29adc613f5d67b8000030');
+      });
+
+      ascript('//members.internetdefenseleague.org/include/?variant=banner');
+      ascript('//coderwall.com/javascripts/jquery.coderwall.js');
     </script>
-<script type="text/javascript">
-    window._idl = {};
-    _idl.variant = "banner";
-    (function() {
-        var idl = document.createElement('script');
-        idl.type = 'text/javascript';
-        idl.async = true;
-        idl.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'banner');
-        document.getElementsByTagName('body')[0].appendChild(idl);
-    })();
-</script>
+    
+    <link href="http://coderwall.com/stylesheets/jquery.coderwall.css" media="all" rel="stylesheet" type="text/css">
   </body>
 </html>
