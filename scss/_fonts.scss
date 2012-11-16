@@ -22,10 +22,10 @@
 }
 
 html {
-  font-size: 3vw;
+  font-size: 2vw;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   html { font-size: 15px; padding: 1em; }
   body {
    max-width: 100% !important;

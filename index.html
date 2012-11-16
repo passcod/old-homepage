@@ -26,9 +26,6 @@
       </a></h1>
       <p>Somewhat of a geek, but more of a techie.</p>
       <p><a href="/gpg/passcod03.asc" rel="gpgkey">FE31 5C83 9FC5 0618 A49B  AEE3 8487 3386 C2C1 5214</a></p>
-      <p><iframe    style="border: 0; margin: 0; padding: 0;"
-                    src="https://www.gittip.com/passcod/widget.html"
-                    width="48pt" height="20pt"></iframe></p>
     </header>
     <article>
       <section id="works">
@@ -37,8 +34,8 @@
           &#x2694; Front-end developer 2012Q1</p>
         <p><a href="http://adventureforest.co.nz" data-color="#F0AA31">Adventure Forest</a>
           &#x2694; Developer &amp; Maintainer 2008 &mdash; 2012</p>
-        <p><a href="/cv.html">Curriculum Vitae</a>
-          &#x2694; a.k.a. “CV” or “resumé.”</p>
+        <p>(<a href="/cv.html">Curriculum Vitae</a>
+          &#x2694; a.k.a. “CV” or “resumé.”)</p>
       </section>
       <section id="repos">
         <h1>Repos</h1>
@@ -106,8 +103,8 @@
         t.type = 'text/javascript';
         t.async =  true;
         t.src = src;
-        t = custom(t);
-        document.getElementsByTagName('body')[0].appendChild(t);
+        if (typeof t === "function") t = custom(t);
+        document.write(t.outerHTML);
       };
 
       var _gauges = _gauges || [],
