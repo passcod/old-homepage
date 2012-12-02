@@ -7,13 +7,14 @@
     
     <title>passcod &#x2694; Somewhat of a geek, but more of a techie.</title>
     <meta name="author" content="Félix Saparelli">
+    <link rel="license" href="//unlicense.org">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Passero+One">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Passero+One">
+    <link rel="stylesheet" href="/style.css">
     
     <script src="script.js"></script>
   </head>
@@ -108,24 +109,22 @@
       var ascript = function(src, custom) {
         var t = document.createElement('script');
         t.type = 'text/javascript';
-        t.async =  true;
+        t.async = true;
         t.src = src;
         if (typeof t === "function") t = custom(t);
-        document.write(t.outerHTML);
+        ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( t );
+        //document.write(t.outerHTML);
       };
-
-      var _gauges = _gauges || [],
-          _idl = {variant: 'banner'};
-
-      ascript('//secure.gaug.es/track.js', function (t) {
-        t.id = 'gauges-tracker';
-        t.setAttribute('data-side-id', '4ff29adc613f5d67b8000030');
-      });
-
+      
+      var clicky_site_ids = clicky_site_ids || [];
+      clicky_site_ids.push(100554624);
+      
       ascript('//members.internetdefenseleague.org/include/?variant=banner');
       ascript('//coderwall.com/javascripts/jquery.coderwall.js');
+      ascript('//static.getclicky.com/js');
     </script>
+    <noscript><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100554624ns.gif" /></noscript>
     
-    <link href="http://coderwall.com/stylesheets/jquery.coderwall.css" media="all" rel="stylesheet" type="text/css">
+    <link href="//coderwall.com/stylesheets/jquery.coderwall.css" media="all" rel="stylesheet" type="text/css">
   </body>
 </html>
