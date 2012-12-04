@@ -1,0 +1,45 @@
+---
+layout: post
+title: "Introducing Plong: A pseudo-peer-to-peer WebSocket solution"
+date: 2012-12-04 21:08
+comments: true
+categories: [plong, software, go, websocket]
+---
+
+My latest open source project is [Plong.me](//plong.me), a zero-setup
+file transfer app. I say file _transfer_ and not file _sharing_ because
+no data is ever stored in "the cloud" or on a computer other than the ones
+it is transfered between.
+
+I wanted this to be zero-setup and require no download, no installation, no
+sign up, no plugins, no nothing. Just a modern browser. I also wanted it to
+be secure (read: end-to-end encryption) yet easy enough for anyone to use.
+Daunting task.
+
+This called for a peer-to-peer protocol, but the other requirements meant it
+had to be a web p2p protocol available right now in browsers. This doesn't
+exist yet. [WebRTC](http://dev.w3.org/2011/webrtc/editor/webrtc.html#peer-to-peer-data-api)
+is getting there, but this part of it isn't implemented anywhere yet. I therefore
+had to make my own.
+
+Thus, _Plong_'s backend is a scalable web and websocket server written in Go,
+which provides the infrastructure required to have pseudo-peer-to-peer connections
+over WebSockets. The protocol is not too complex but certainly too long to describe
+here, so I'll point you to [its repository](https://github.com/passcod/plong-server).
+
+_Plong Server_ is actually generic enough to enable anyone to create a peer-to-peer
+application in the browser. After the initial negotiation with the server, all data
+passed over the connection passes through the server directly to the remote peer,
+with the usual caveats of a normal socket (if the peer ain't listening, the data
+will be lost – there's no queueing or anything).
+
+This is something that's already done by a lot of webgames out there… but these
+usually rely on a game-specific Node.js backend, which ensures communication on top
+of all other duties. With _Plong_, the server does nothing beyond data passthru,
+which means you can create fully client-side applications. To me, this means a much
+reduced load on the server. It can also mean simpler architecture, or less privacy
+headaches. Your pick.
+
+This isn't perfect. I consider the software stable as of version 1.0.1, but the
+protocol and implementation details were thought up mostly on the spot. It might
+have weird breakage and it might not be too efficient. Early stuff! :)
