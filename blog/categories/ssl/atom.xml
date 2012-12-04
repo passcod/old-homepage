@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ssl | ⚔ passcod ⚔]]></title>
+  <link href="http://passcod.net/blog/categories/ssl/atom.xml" rel="self"/>
+  <link href="http://passcod.net/"/>
+  <updated>2012-12-05T07:52:02+13:00</updated>
+  <id>http://passcod.net/</id>
+  <author>
+    <name><![CDATA[Félix Saparelli]]></name>
+    <email><![CDATA[me@passcod.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SSL-enabled passcod]]></title>
+    <link href="http://passcod.net/2012/12/05/ssl-enabled-passcod.html"/>
+    <updated>2012-12-05T07:44:00+13:00</updated>
+    <id>http://passcod.net/2012/12/05/ssl-enabled-passcod</id>
+    <content type="html"><![CDATA[<p>Yesterday was the dawn of a new, Octopress-powered website.
+Today we've got SSL on several websites, including:</p>
+
+<ul>
+<li><a href="https://passcod.net">https://passcod.net</a></li>
+<li><a href="https://words.passcod.net">https://words.passcod.net</a></li>
+<li><a href="https://dash.passcod.net">https://dash.passcod.net</a></li>
+<li><a href="https://roccoliphic.passcod.net">https://roccoliphic.passcod.net</a></li>
+<li><a href="https://stuff.passcod.net">https://stuff.passcod.net</a> (not 100% sure for this one)</li>
+<li><a href="https://fonts.passcod.net">https://fonts.passcod.net</a></li>
+</ul>
+
+
+<p>Even if these are all HTTPS for the first request,
+they're probably not fully-SSL, except for this
+website (I made sure of that), which now proudly
+sports a lil padlock:</p>
+
+<p><img src="/images/blog/2012-12-05-ssl.png" alt="SSL padlock" /></p>
+]]></content>
+  </entry>
+  
+</feed>
