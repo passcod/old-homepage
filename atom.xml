@@ -4,7 +4,7 @@
   <title><![CDATA[⚔ passcod ⚔]]></title>
   <link href="http://passcod.net/atom.xml" rel="self"/>
   <link href="http://passcod.net/"/>
-  <updated>2012-12-04T18:50:12+13:00</updated>
+  <updated>2012-12-04T21:29:57+13:00</updated>
   <id>http://passcod.net/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Introducing Plong: A pseudo-peer-to-peer WebSocket solution]]></title>
+    <link href="http://passcod.net/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution.html"/>
+    <updated>2012-12-04T21:08:00+13:00</updated>
+    <id>http://passcod.net/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution</id>
+    <content type="html"><![CDATA[<p>My latest open source project is <a href="http://passcod.net//plong.me">Plong.me</a>, a zero-setup
+file transfer app. I say file <em>transfer</em> and not file <em>sharing</em> because
+no data is ever stored in &#8220;the cloud&#8221; or on a computer other than the ones
+it is transfered between.</p>
+
+<p>I wanted this to be zero-setup and require no download, no installation, no
+sign up, no plugins, no nothing. Just a modern browser. I also wanted it to
+be secure (read: end-to-end encryption) yet easy enough for anyone to use.
+Daunting task.</p>
+
+<p>This called for a peer-to-peer protocol, but the other requirements meant it
+had to be a web p2p protocol available right now in browsers. This doesn&#8217;t
+exist yet. <a href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#peer-to-peer-data-api">WebRTC</a>
+is getting there, but this part of it isn&#8217;t implemented anywhere yet. I therefore
+had to make my own.</p>
+
+<p>Thus, <em>Plong</em>&#8217;s backend is a scalable web and websocket server written in Go,
+which provides the infrastructure required to have pseudo-peer-to-peer connections
+over WebSockets. The protocol is not too complex but certainly too long to describe
+here, so I&#8217;ll point you to <a href="https://github.com/passcod/plong-server">its repository</a>.</p>
+
+<p><em>Plong Server</em> is actually generic enough to enable anyone to create a peer-to-peer
+application in the browser. After the initial negotiation with the server, all data
+passed over the connection passes through the server directly to the remote peer,
+with the usual caveats of a normal socket (if the peer ain&#8217;t listening, the data
+will be lost – there&#8217;s no queueing or anything).</p>
+
+<p>This is something that&#8217;s already done by a lot of webgames out there… but these
+usually rely on a game-specific Node.js backend, which ensures communication on top
+of all other duties. With <em>Plong</em>, the server does nothing beyond data passthru,
+which means you can create fully client-side applications. To me, this means a much
+reduced load on the server. It can also mean simpler architecture, or less privacy
+headaches. Your pick.</p>
+
+<p>This isn&#8217;t perfect. I consider the software stable as of version 1.0.1, but the
+protocol and implementation details were thought up mostly on the spot. It might
+have weird breakage and it might not be too efficient. Early stuff! :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Unlicensing Everything]]></title>

@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: gist - ⚔ passcod ⚔</title>
+  <title>Introducing Plong: A pseudo-peer-to-peer WebSocket solution - ⚔ passcod ⚔</title>
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="Category: gist">
+  <meta name="description" content="My latest open source project is Plong.me, a zero-setup
+file transfer app. I say file transfer and not file sharing because
+no data is ever stored in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://passcod.netblog/categories/gist/index.html">
+  <link rel="canonical" href="http://passcod.net/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -63,36 +65,133 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Gist</h1>
+    
+      <h1 class="entry-title">Introducing Plong: A Pseudo-peer-to-peer WebSocket Solution</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2012-12-04T21:08:00+13:00" datetime="2012-12-04T21:08:00+13:00" pubdate data-updated="true">2012·49·2 ⚔ Tuesday</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>My latest open source project is <a href="//plong.me">Plong.me</a>, a zero-setup
+file transfer app. I say file <em>transfer</em> and not file <em>sharing</em> because
+no data is ever stored in &#8220;the cloud&#8221; or on a computer other than the ones
+it is transfered between.</p>
 
-  
-  <h2>2012</h2>
+<p>I wanted this to be zero-setup and require no download, no installation, no
+sign up, no plugins, no nothing. Just a modern browser. I also wanted it to
+be secure (read: end-to-end encryption) yet easy enough for anyone to use.
+Daunting task.</p>
 
-<article>
-  
-<h1><a href="/2012/07/25/the-80-slash-20-rule.html">The 80/20 Rule</a></h1>
-<time datetime="2012-07-25T07:14:00+12:00" pubdate><span class='month'>Jul</span> <span class='day'>25</span> <span class='year'>2012</span></time>
+<p>This called for a peer-to-peer protocol, but the other requirements meant it
+had to be a web p2p protocol available right now in browsers. This doesn&#8217;t
+exist yet. <a href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#peer-to-peer-data-api">WebRTC</a>
+is getting there, but this part of it isn&#8217;t implemented anywhere yet. I therefore
+had to make my own.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/gist/'>gist</a>, <a class='category' href='/blog/categories/software/'>software</a>, <a class='category' href='/blog/categories/unblog/'>unblog</a></span>
-</footer>
+<p>Thus, <em>Plong</em>&#8217;s backend is a scalable web and websocket server written in Go,
+which provides the infrastructure required to have pseudo-peer-to-peer connections
+over WebSockets. The protocol is not too complex but certainly too long to describe
+here, so I&#8217;ll point you to <a href="https://github.com/passcod/plong-server">its repository</a>.</p>
 
+<p><em>Plong Server</em> is actually generic enough to enable anyone to create a peer-to-peer
+application in the browser. After the initial negotiation with the server, all data
+passed over the connection passes through the server directly to the remote peer,
+with the usual caveats of a normal socket (if the peer ain&#8217;t listening, the data
+will be lost – there&#8217;s no queueing or anything).</p>
 
-</article>
+<p>This is something that&#8217;s already done by a lot of webgames out there… but these
+usually rely on a game-specific Node.js backend, which ensures communication on top
+of all other duties. With <em>Plong</em>, the server does nothing beyond data passthru,
+which means you can create fully client-side applications. To me, this means a much
+reduced load on the server. It can also mean simpler architecture, or less privacy
+headaches. Your pick.</p>
 
+<p>This isn&#8217;t perfect. I consider the software stable as of version 1.0.1, but the
+protocol and implementation details were thought up mostly on the spot. It might
+have weird breakage and it might not be too efficient. Early stuff! :)</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Félix Saparelli</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2012-12-04T21:08:00+13:00" datetime="2012-12-04T21:08:00+13:00" pubdate data-updated="true">2012·49·2 ⚔ Tuesday</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/go/'>go</a>, <a class='category' href='/blog/categories/plong/'>plong</a>, <a class='category' href='/blog/categories/software/'>software</a>, <a class='category' href='/blog/categories/websocket/'>websocket</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://passcod.net/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution.html" data-via="passcod" data-counturl="http://passcod.net/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/11/07/unlicensing-everything-because-mit-aint-enough.html" title="Previous Post: Unlicensing Everything">&laquo; Unlicensing Everything</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -219,7 +318,10 @@
       var disqus_shortname = 'passcod';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://passcod.net/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution.html';
+        var disqus_url = 'http://passcod.net/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution.html';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
