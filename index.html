@@ -71,7 +71,7 @@ under by default: All text and code and bytes and images &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/11/07/unlicensing-everything-because-mit-aint-enough.html">Unlicensing Everything: Because MIT Ain’t Enough</a></h1>
+      <h1 class="entry-title"><a href="/2012/11/07/unlicensing-everything-because-mit-aint-enough.html">Unlicensing Everything</a></h1>
     
     
       <p class="meta">
@@ -127,6 +127,823 @@ project uses.</p></li>
 So: no worries, boss! :)</p></li>
 </ul>
 
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/07/25/the-80-slash-20-rule.html">The 80/20 Rule</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2012-07-25T07:14:00+12:00" datetime="2012-07-25T07:14:00+12:00" pubdate data-updated="true">2012·30·3 ⚔ Wednesday</time>
+        
+         | <a href="/2012/07/25/the-80-slash-20-rule.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Original on <a href="http://gist.io/3170138">Gist.IO</a></em></p>
+
+<blockquote><p>I&#8217;ve been saying that to friends, family, and colleagues for a while now,
+and I think maybe I should just write it down and refer to it instead of
+rehashing it every time. In the last few dozen explanations, it hasn&#8217;t
+actually changed, so I think it&#8217;s pretty stable. Of course, the community
+will have something to say, and that&#8217;s expected!</p></blockquote>
+
+<p>There are more or less seven states to a new (software) project:</p>
+
+<ol>
+<li><strong>Figment</strong>. That&#8217;s when it&#8217;s just an idea, and maybe you&#8217;ve written
+something down on a paper napkin, or discussed it over coffee with a friend.</li>
+<li><strong>Planning</strong>. You&#8217;re actually putting more thought into it, doing the initial
+research, hopefully consolidating the idea into something manageable.</li>
+<li><strong>Prototype</strong>. Not necessarily code. Sometimes a prototype can just be rectangles
+of paper under magnets on a whiteboard, and a few arrows here and there to represent
+dynamics. Also known (in the case of code) as <strong>pre-alpha</strong>.</li>
+<li><strong>Alpha</strong>. Finally! Code. You&#8217;ve probably pulled a directory structure out of thin air
+and the code doesn&#8217;t actually do anything remotely productive yet.</li>
+<li><strong>Beta</strong>. The project has most of its original main features completed, even though
+there&#8217;s still a lot of bugs. You&#8217;ve taken features out of the codebase and told yourself
+you&#8217;ll implement them later.</li>
+<li><strong>Stable</strong>. The project has gotten enough XP and evolves into a product. There&#8217;s still
+bugs and quirks, but the main features are there and you can finally release it to the
+wider public (although if you&#8217;re open-source, this is more likely to happen on 4 or 5).</li>
+<li><strong>Future</strong>. This is rumored to be the hardest part of the journey. This has two parts:
+provide support for the now-released product, and continue development on new &amp; more
+advanced features.</li>
+</ol>
+
+
+<p>These are general states. You might find that 1-3 can be collapsed, or that there&#8217;s a bunch
+of extras in-between 6 and 7. You might also not agree on some of the descriptions I&#8217;ve given.
+That&#8217;s fine. What&#8217;s important is the actual rule:</p>
+
+<h3>When going from one state to the other, there is an 80% loss rate.</h3>
+
+<p>In other words, for every 1000 things I&#8217;ve thought of, 200 got to be planned, 40 were prototyped,
+8 made it to alpha, and 1.6 got to beta. I&#8217;ve had exactly one project reach state 7, and it&#8217;s discontinued.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/06/03/sprockets-on-sinatra-and-heroku.html">Sprockets on Sinatra (&amp; Heroku)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2012-06-03T00:00:00+12:00" datetime="2012-06-03T00:00:00+12:00" pubdate data-updated="true">2012·22·0 ⚔ Sunday</time>
+        
+         | <a href="/2012/06/03/sprockets-on-sinatra-and-heroku.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Original on <a href="http://checkthis.com/biye">Checkthis.com</a>.</em></p>
+
+<p>In the world of ruby, there exists this framework called Rails, which I&#8217;m
+sure you&#8217;ve heard about. I happen not to like it very much. One of the
+reasons is that I&#8217;ve read maybe 2% of Rails&#8217; code, whereas for most of the
+other gems I use this is more like 40%. With Rails, I rely on magic (and,
+yea, it&#8217;s nice) and with the other stuff, I rely on my own knowledge. I
+prefer the latter.</p>
+
+<p>There&#8217;s also that Rails is an MVC framework, which is best buds with
+ActiveRecord and is a pain to manage as soon as you separate them. If you
+don&#8217;t want or need the MVC pattern, or ActiveRecord, you&#8217;re in for trouble.
+If you are unfortunate enough to need a gem which is incompatible with a Rails
+component, even if said component is supposed to be optional, you have my sympathies.</p>
+
+<p>In the world of Ruby, there also exists a little wonder called Sinatra. Sinatra
+is just the dispatcher part of Rails, plus the templating, plus a few other nifty
+features, but done right. It&#8217;s small, sharp, lean, and mean. And it does exactly as
+advertised, no more, no less. When building an application with Sinatra, you get to
+pick and choose. DataMapper vs. ActiveRecord vs. Sequel? A single line in the Gemfile.
+Not MVC? No problem. Custom directory structure? We wouldn&#8217;t have it any other way.</p>
+
+<p>There&#8217;s <strong>no magic</strong> in Sinatra (or just plain Rack, if that&#8217;s your fancy). It&#8217;s all
+<strong>just code</strong>. And chances are you&#8217;ll have written or read a lot of it.
+<a href="http://wordpress.org/">Wordpress says code is poetry</a>, and I agree, but given that
+Wordpress is written in PHP, I feel that with ruby&#8230; <em>code is art</em>.</p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/checkthis.com/asset/4fca9c0855a70a00030025d7/4fca9c0855a70a00030025d7-medium.png" alt="Code is art" /></p>
+
+<p>In the world of ruby, there happens to be another wonder called Sprockets. Sprockets
+is what powers Rails&#8217; 3.1+ asset pipeline. And therein lies the problem.</p>
+
+<p>Sprockets is an awesome tool, and adding it to a Rack application makes things even
+sparklier than pink unicorns. But it&#8217;s relatively under-documented and Googling for
+solutions returns Rails-related stuff 99% of the time. Annoying. That&#8217;s due to a little
+something called sprockets-rails, which takes sprockets, adds magic, and transforms it
+into the asset pipeline. Trying to use asset pipeline know-how with standalone Sprockets
+is frustrating.</p>
+
+<p>So how do you do it?</p>
+
+<figure class='code'><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="ss">:rubygems</span>
+</span><span class='line'><span class="n">ruby</span> <span class="s2">&quot;1.9.3&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;sinatra&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:app</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;haml&quot;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;json&quot;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;sprockets-helpers&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:rackup</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;rack&quot;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;unicorn&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:assets</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;sprockets&quot;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;sprockets-helpers&quot;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;stylus&quot;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;coffee-script&quot;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;yui-compressor&quot;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;uglifier&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;heroku&quot;</span><span class="p">,</span> <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;foreman&quot;</span><span class="p">,</span> <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;shotgun&quot;</span><span class="p">,</span> <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;thin&quot;</span><span class="p">,</span> <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;rake&quot;</span><span class="p">,</span> <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>First, you&#8217;ll need most of these. You don&#8217;t need <a href="http://unicorn.bogomips.org/">Unicorn</a>
+nor <a href="https://github.com/rtomayko/shotgun">Shotgun</a> nor <a href="http://learnboost.github.com/stylus/">Stylus</a>
+nor <a href="http://coffeescript.org/">CoffeeScript</a>, pick and choose these.</p>
+
+<p>Some gems are duplicated in groups. That&#8217;s normal. I make use of Bundler&#8217;s auto-require
+facility to keep code simple, and that happens.</p>
+
+<p>Finally, the ruby &#8220;1.9.3&#8221; declaration is a new feature in Bundler 1.2, so you might need
+to install the <code>--pre</code> version of the gem. I use 1.9.3, and I think some stuff breaks in
+1.9.2, so beware. If you really need 1.9.2, you&#8217;ll need to fix these yourself. <em>(Note:
+no longer relevant.)</em></p>
+
+<figure class='code'><figcaption><span>start.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;bundler&#39;</span>
+</span><span class='line'><span class="no">Bundler</span><span class="o">.</span><span class="n">require</span> <span class="ss">:default</span><span class="p">,</span> <span class="ss">:app</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;./config/sprockets&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">configure</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">set</span> <span class="ss">:production</span><span class="p">,</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;RACK_ENV&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;production&#39;</span>
+</span><span class='line'>  <span class="n">set</span> <span class="ss">:app_root</span><span class="p">,</span> <span class="no">File</span><span class="o">.</span><span class="n">realdirpath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">set</span> <span class="ss">:assets</span><span class="p">,</span> <span class="no">YourApp</span><span class="o">::</span><span class="no">Assets</span><span class="o">::</span><span class="no">Environment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">app_root</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">production</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">Sprockets</span><span class="o">::</span><span class="no">Helpers</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">environment</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">assets</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">prefix</span>      <span class="o">=</span> <span class="s1">&#39;/assets&#39;</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">digest</span>      <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">public_path</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">public_folder</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># ...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is the Sinatra main app file. Some like to call it app.rb, I <del>don&#8217;t</del> didn&#8217;t
+like that because the app is much more than just this file.</p>
+
+<p>The top 2 first lines load everything in the <code>:app</code> and <code>:default</code>
+Gemfile groups. That includes Sinatra and sprocket-helpers. This file is mostly
+bootstrapping the live side of things, and I&#8217;ll come back to it later.</p>
+
+<p>Most of the meat of the problem is contained in the &#8220;./config/sprockets&#8221; file
+we require at the top, which looks like this:</p>
+
+<figure class='code'><figcaption><span>config/sprockets.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;bundler&#39;</span>
+</span><span class='line'><span class="no">Bundler</span><span class="o">.</span><span class="n">require</span> <span class="ss">:default</span><span class="p">,</span> <span class="ss">:assets</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">module</span> <span class="nn">YourApp</span>
+</span><span class='line'>  <span class="k">module</span> <span class="nn">Assets</span>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Environment</span>
+</span><span class='line'>      <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">get</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">assets</span> <span class="o">=</span> <span class="no">Sprockets</span><span class="o">::</span><span class="no">Environment</span><span class="o">.</span><span class="n">new</span> <span class="n">root_path</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1"># Application assets</span>
+</span><span class='line'>        <span class="n">assets</span><span class="o">.</span><span class="n">append_path</span> <span class="s1">&#39;assets/stylesheets&#39;</span>
+</span><span class='line'>        <span class="n">assets</span><span class="o">.</span><span class="n">append_path</span> <span class="s1">&#39;assets/javascripts&#39;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1"># Vendor assets</span>
+</span><span class='line'>        <span class="n">assets</span><span class="o">.</span><span class="n">append_path</span> <span class="s1">&#39;vendor/assets/stylesheets&#39;</span>
+</span><span class='line'>        <span class="n">assets</span><span class="o">.</span><span class="n">append_path</span> <span class="s1">&#39;vendor/assets/javascripts&#39;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="no">Stylus</span><span class="o">.</span><span class="n">setup</span> <span class="n">assets</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="n">preprocess</span>
+</span><span class='line'>          <span class="n">assets</span><span class="o">.</span><span class="n">css_compressor</span> <span class="o">=</span> <span class="no">YUI</span><span class="o">.</span><span class="n">CssCompressor</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>          <span class="n">assets</span><span class="o">.</span><span class="n">js_compressor</span> <span class="o">=</span> <span class="no">Uglifier</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="n">assets</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Meat indeed, but pretty straightforward. That could actually just be a function,
+but I was too lazy to refactor it again after battling with it for hours. Or, it
+could be duck-typed. That could work too.</p>
+
+<p>There&#8217;s a call to Stylus, there, if you want don&#8217;t want Stylus and prefer Sass or
+Less, just remove that and modify the Gemfile appropriately.</p>
+
+<p>There&#8217;s no lib/assets paths because I don&#8217;t feel the need for them.</p>
+
+<p>The compressors have to be passed as instances. That&#8217;s one of the differences with
+the Rails magic way, but it&#8217;s no hassle.</p>
+
+<p>Going back to start.rb above, you&#8217;ll see that we get the Sprockets environment,
+and set up the helpers, but never actually set up the serving of said assets.
+That&#8217;s done in two ways:</p>
+
+<figure class='code'><figcaption><span>config.ru</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;bundler&#39;</span>
+</span><span class='line'><span class="no">Bundler</span><span class="o">.</span><span class="n">require</span> <span class="ss">:default</span><span class="p">,</span> <span class="ss">:rackup</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;RACK_ENV&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;production&#39;</span>
+</span><span class='line'>  <span class="nb">require</span> <span class="s1">&#39;./config/sprockets&#39;</span>
+</span><span class='line'>  <span class="n">assets</span> <span class="o">=</span> <span class="no">YourApp</span><span class="o">::</span><span class="no">Assets</span><span class="o">::</span><span class="no">Environment</span><span class="o">.</span><span class="n">get</span> <span class="no">File</span><span class="o">.</span><span class="n">realdirpath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">map</span><span class="p">(</span><span class="s1">&#39;/assets&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="n">run</span> <span class="n">assets</span><span class="o">.</span><span class="n">index</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;./start&#39;</span>
+</span><span class='line'><span class="n">map</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="n">run</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here we go. If we&#8217;re in development (use <a href="http://ddollar.github.com/foreman/#RUNNING">the .env and Foreman</a>),
+run the live Sprockets server. Otherwise, don&#8217;t. For production, we do this:</p>
+
+<figure class='code'><figcaption><span>Rakefile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;./config/sprockets&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;./config/precompiler&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;fileutils&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;yaml&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">namespace</span> <span class="ss">:assets</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">root</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">realdirpath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">desc</span> <span class="s1">&#39;Precompile assets for production&#39;</span>
+</span><span class='line'>  <span class="n">task</span> <span class="ss">:precompile</span> <span class="o">=&gt;</span> <span class="ss">:clean</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">assets</span> <span class="o">=</span> <span class="no">YourApp</span><span class="o">::</span><span class="no">Assets</span><span class="o">::</span><span class="no">Environment</span><span class="o">.</span><span class="n">get</span> <span class="n">root</span><span class="p">,</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;RACK_ENV&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;production&#39;</span>
+</span><span class='line'>    <span class="n">precompiler</span> <span class="o">=</span> <span class="no">YourApp</span><span class="o">::</span><span class="no">Assets</span><span class="o">::</span><span class="no">Compiler</span><span class="o">.</span><span class="n">new</span> <span class="n">sprockets</span><span class="p">:</span> <span class="n">assets</span><span class="p">,</span> <span class="n">precompile</span><span class="p">:</span> <span class="o">[</span> <span class="sr">/\./</span> <span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nb">print</span> <span class="s1">&#39;Precompiling assets... &#39;</span>
+</span><span class='line'>    <span class="n">precompiler</span><span class="o">.</span><span class="n">compile</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s1">&#39;DONE&#39;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nb">print</span> <span class="s1">&#39;Generating asset manifests... &#39;</span>
+</span><span class='line'>    <span class="n">asset_list</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class='line'>    <span class="n">assets</span><span class="o">.</span><span class="n">each_logical_path</span> <span class="k">do</span> <span class="o">|</span><span class="n">logical_path</span><span class="o">|</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">asset</span> <span class="o">=</span> <span class="n">assets</span><span class="o">.</span><span class="n">find_asset</span><span class="p">(</span><span class="n">logical_path</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">asset_list</span><span class="o">[</span><span class="n">logical_path</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;/assets/&#39;</span> <span class="o">+</span> <span class="n">asset</span><span class="o">.</span><span class="n">digest_path</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="no">IO</span><span class="o">.</span><span class="n">write</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;/public/asset_manifest.json&#39;</span><span class="p">),</span> <span class="no">JSON</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">asset_list</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">IO</span><span class="o">.</span><span class="n">write</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;/public/asset_manifest.js&#39;</span><span class="p">),</span> <span class="s1">&#39;ASSETS=&#39;</span><span class="o">+</span><span class="no">JSON</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">asset_list</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">IO</span><span class="o">.</span><span class="n">write</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;/public/asset_manifest.yml&#39;</span><span class="p">),</span> <span class="n">asset_list</span><span class="o">.</span><span class="n">to_yaml</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s1">&#39;DONE&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">desc</span> <span class="s1">&#39;Clean assets folder&#39;</span>
+</span><span class='line'>  <span class="n">task</span> <span class="ss">:clean</span> <span class="k">do</span>
+</span><span class='line'>    <span class="nb">print</span> <span class="s1">&#39;Destroying public/assets... &#39;</span>
+</span><span class='line'>    <span class="no">FileUtils</span><span class="o">.</span><span class="n">rm_rf</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;/public/assets&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s1">&#39;DONE&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The Rakefile takes care of the precompilation. This works with Heroku so long as the
+task is named <code>assets:precompile</code>, so we&#8217;re covered there.</p>
+
+<p>I precompile everything, which might be too much, but adjust the Regexp as you want.
+And then we write the asset manifests. These are to do with a pretty bad caveat which
+I&#8217;ll detail later. For now, we need to have a look the meat of the compiler,
+in &#8220;./config/precompiler&#8221;:</p>
+
+<figure class='code'><figcaption><span>config/precompiler.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">YourApp</span>
+</span><span class='line'>  <span class="k">module</span> <span class="nn">Assets</span>
+</span><span class='line'>    <span class="c1"># Adapted from: https://github.com/stevehodgkiss/guard-sprockets2</span>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Compiler</span>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class='line'>        <span class="n">configure</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@target</span> <span class="o">=</span> <span class="no">Pathname</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@assets_path</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">clean</span>
+</span><span class='line'>        <span class="no">FileUtils</span><span class="o">.</span><span class="n">rm_rf</span> <span class="vi">@assets_path</span><span class="p">,</span> <span class="ss">:secure</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">compile</span>
+</span><span class='line'>        <span class="vi">@sprockets</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:expire_index!</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">success</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>        <span class="vi">@precompile</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span>
+</span><span class='line'>          <span class="vi">@sprockets</span><span class="o">.</span><span class="n">each_logical_path</span> <span class="k">do</span> <span class="o">|</span><span class="n">logical_path</span><span class="o">|</span>
+</span><span class='line'>            <span class="k">next</span> <span class="k">unless</span> <span class="n">path_matches?</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">logical_path</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">if</span> <span class="n">asset</span> <span class="o">=</span> <span class="vi">@sprockets</span><span class="o">.</span><span class="n">find_asset</span><span class="p">(</span><span class="n">logical_path</span><span class="p">)</span>
+</span><span class='line'>              <span class="n">success</span> <span class="o">=</span> <span class="n">compile_asset</span><span class="p">(</span><span class="n">asset</span><span class="p">)</span>
+</span><span class='line'>              <span class="k">break</span> <span class="k">unless</span> <span class="n">success</span>
+</span><span class='line'>            <span class="k">end</span>
+</span><span class='line'>          <span class="k">end</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>        <span class="n">success</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kp">protected</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">compile_asset</span><span class="p">(</span><span class="n">asset</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">filename</span> <span class="o">=</span> <span class="vi">@digest</span> <span class="p">?</span> <span class="vi">@target</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">asset</span><span class="o">.</span><span class="n">digest_path</span><span class="p">)</span> <span class="p">:</span> <span class="vi">@target</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">asset</span><span class="o">.</span><span class="n">logical_path</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="no">FileUtils</span><span class="o">.</span><span class="n">mkdir_p</span> <span class="n">filename</span><span class="o">.</span><span class="n">dirname</span>
+</span><span class='line'>        <span class="n">asset</span><span class="o">.</span><span class="n">write_to</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">asset</span><span class="o">.</span><span class="n">write_to</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="vi">@gz</span> <span class="o">&amp;&amp;</span> <span class="n">filename</span><span class="o">.</span><span class="n">to_s</span> <span class="o">=~</span> <span class="sr">/\.(css|js)$/</span>
+</span><span class='line'>        <span class="kp">true</span>
+</span><span class='line'>      <span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="k">unless</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;GUARD_ENV&quot;</span><span class="o">]</span> <span class="o">==</span> <span class="s2">&quot;test&quot;</span>
+</span><span class='line'>        <span class="no">UI</span><span class="o">.</span><span class="n">error</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/^Error: /</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>        <span class="kp">false</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">path_matches?</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">logical_path</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_a?</span><span class="p">(</span><span class="no">Regexp</span><span class="p">)</span>
+</span><span class='line'>          <span class="n">path</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">logical_path</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">else</span>
+</span><span class='line'>          <span class="no">File</span><span class="o">.</span><span class="n">fnmatch</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">to_s</span><span class="p">,</span> <span class="n">logical_path</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">configure</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@sprockets</span> <span class="o">=</span> <span class="n">options</span><span class="o">[</span><span class="ss">:sprockets</span><span class="o">]</span>
+</span><span class='line'>        <span class="vi">@assets_path</span> <span class="o">=</span> <span class="n">options</span><span class="o">[</span><span class="ss">:assets_path</span><span class="o">]</span>
+</span><span class='line'>        <span class="vi">@precompile</span> <span class="o">=</span> <span class="n">options</span><span class="o">[</span><span class="ss">:precompile</span><span class="o">]</span>
+</span><span class='line'>        <span class="vi">@digest</span> <span class="o">=</span> <span class="n">options</span><span class="o">[</span><span class="ss">:digest</span><span class="o">]</span>
+</span><span class='line'>        <span class="vi">@gz</span> <span class="o">=</span> <span class="n">options</span><span class="o">[</span><span class="ss">:gz</span><span class="o">]</span>
+</span><span class='line'>        <span class="n">set_defaults</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">set_defaults</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">defined?</span><span class="p">(</span><span class="no">Rails</span><span class="p">)</span>
+</span><span class='line'>          <span class="vi">@sprockets</span> <span class="o">||=</span> <span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">assets</span>
+</span><span class='line'>          <span class="vi">@assets_path</span> <span class="o">||=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">Rails</span><span class="o">.</span><span class="n">public_path</span><span class="p">,</span> <span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span>
+</span><span class='line'>          <span class="vi">@precompile</span> <span class="o">||=</span> <span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">precompile</span>
+</span><span class='line'>        <span class="k">else</span>
+</span><span class='line'>          <span class="vi">@assets_path</span> <span class="o">||=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">Dir</span><span class="o">.</span><span class="n">pwd</span><span class="si">}</span><span class="s2">/public/assets&quot;</span>
+</span><span class='line'>          <span class="vi">@precompile</span> <span class="o">||=</span> <span class="o">[</span> <span class="sr">/\w+\.(?!js|css).+/</span><span class="p">,</span> <span class="sr">/application.(css|js)$/</span> <span class="o">]</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>        <span class="vi">@digest</span> <span class="o">=</span> <span class="kp">true</span> <span class="k">if</span> <span class="vi">@digest</span><span class="o">.</span><span class="n">nil?</span>
+</span><span class='line'>        <span class="vi">@gz</span> <span class="o">=</span> <span class="kp">true</span> <span class="k">if</span> <span class="vi">@gz</span><span class="o">.</span><span class="n">nil?</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It&#8217;s really just a straight copy-paste from the <a href="https://github.com/stevehodgkiss/guard-sprockets2">guard-sprockets2</a>
+code. See that compile function? That&#8217;s where the code to make the asset manifests comes from.</p>
+
+<p>Speaking of which, when we&#8217;re in development, we also need those manifests, so add this to your routes:</p>
+
+<figure class='code'><figcaption><span>routes.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># ...</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="o">!</span><span class="n">settings</span><span class="o">.</span><span class="n">production</span>
+</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;/asset_manifest.:format&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">asset_list</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class='line'>    <span class="n">settings</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">each_logical_path</span> <span class="k">do</span> <span class="o">|</span><span class="n">logical_path</span><span class="o">|</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">asset</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">find_asset</span><span class="p">(</span><span class="n">logical_path</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">asset_list</span><span class="o">[</span><span class="n">logical_path</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;/assets/ + asset.disgest_path</span>
+</span><span class='line'><span class="s1">    end</span>
+</span><span class='line'><span class="s1">  end</span>
+</span><span class='line'><span class="s1">  </span>
+</span><span class='line'><span class="s1">  if params[:format] == &#39;</span><span class="n">json</span><span class="s1">&#39;</span>
+</span><span class='line'><span class="s1">    JSON.generate asset_list</span>
+</span><span class='line'><span class="s1">  elsif params[:format] == &#39;</span><span class="n">yml</span><span class="s1">&#39;</span>
+</span><span class='line'><span class="s1">    asset_list.to_yaml</span>
+</span><span class='line'><span class="s1">  else</span>
+</span><span class='line'><span class="s1">    &#39;</span><span class="no">ASSETS</span><span class="o">=</span><span class="err">&#39;</span><span class="o">+</span><span class="no">JSON</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">asset_list</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># ...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And you should also set up your helpers:</p>
+
+<figure class='code'><figcaption><span>helpers.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">helpers</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">meta_charset</span>
+</span><span class='line'>    <span class="s1">&#39;&lt;meta charset=&quot;UTF-8&quot;&gt;&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">stylesheet</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">s</span> <span class="o">=</span> <span class="n">asset_path</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;.css&#39;</span><span class="p">)</span> <span class="k">unless</span> <span class="n">s</span> <span class="o">=~</span> <span class="sr">/^(https?:\/)?\//</span>
+</span><span class='line'>    <span class="s2">&quot;&lt;link rel=</span><span class="se">\&quot;</span><span class="s2">stylesheet</span><span class="se">\&quot;</span><span class="s2"> href=</span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">s</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&gt;&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">javascript</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">s</span> <span class="o">=</span> <span class="n">asset_path</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;.js&#39;</span><span class="p">)</span> <span class="k">unless</span> <span class="n">s</span> <span class="o">=~</span> <span class="sr">/^(https?:\/)?\//</span>
+</span><span class='line'>    <span class="s2">&quot;&lt;script src=</span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">s</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&gt;&lt;/script&gt;&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Sprockets</span><span class="o">::</span><span class="no">Helpers</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Caveats</h2>
+
+<p>There&#8217;s two biggies here:</p>
+
+<ol>
+<li><p><strong>No image assets.</strong>
+I don&#8217;t think that&#8217;s too much bad, because unless you want to use automated
+sprite generation, you can safely relocate your images to public/ and fix your
+paths. Apart from that, you&#8217;ll also have to say goodbye to Sprockets&#8217; cache-busting,
+but I&#8217;m sure you&#8217;ll survive. Or find an alternative.</p></li>
+<li><p><strong>No asset_path helpers in assets</strong>
+Slightly more annoying, and the reason for the manifests. You can&#8217;t use erb nor eco
+nor ejs, and therefore, you can&#8217;t use asset_path helpers in assets. You still have
+them in your views, though.</p></li>
+</ol>
+
+
+<h2>The Code</h2>
+
+<p>The <em>original</em> code samples above were all images, and that was mostly intentional. It was
+so you couldn&#8217;t copy-paste stuff. Learn, sheeple!</p>
+
+<p>More seriously, checkthis.com doesn&#8217;t support code listings, so that was all I could do at
+the time. I had also provided a link to the original project of mine that implemented this,
+but I destroyed this a while back.</p>
+
+<p>For this reason, when I did the migration over to Octopress, I <em>manually copied and typed</em>
+all the code samples. Thus there might be typos, so if it doesn&#8217;t work, look around. And don&#8217;t
+forget to comment back so I can fix it here, too!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/03/17/the-minimalist-date-format.html">The Minimalist Date Format</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2012-03-17T17:17:00+13:00" datetime="2012-03-17T17:17:00+13:00" pubdate data-updated="true">2012·11·6 ⚔ Saturday</time>
+        
+         | <a href="/2012/03/17/the-minimalist-date-format.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Original on <a href="http://checkthis.com/7qf4">Checkthis.com</a></em></p>
+
+<p>The Minimalist date format is a 5- or 7- digits number which represents a date (no time).
+It increases mathematically (i.e. you can compare whether a date precedes another by
+comparing if one number is smaller than the other), and it looks cryptic to the ignorant.</p>
+
+<p>It is made of (in that order):</p>
+
+<ol>
+<li>the 2- or 4- digit year,</li>
+<li>the 2-digit ISO week number, and</li>
+<li>the 1-digit ISO week day number.</li>
+</ol>
+
+
+<p>All these are zero padded, thus the resulting number is always 5 or 7 digits long.</p>
+
+<p>I use it in various places, including:</p>
+
+<ul>
+<li>Some version numbers</li>
+<li>Artwork</li>
+<li>Weechat</li>
+<li>Here</li>
+</ul>
+
+
+<p><img src="http://i.imgur.com/h3Ml1.png" alt="Weechat date/time" /></p>
 </div>
   
   
@@ -248,7 +1065,19 @@ then branch off and &#8216;_&#8217;, &#8216;w&#8217;, &#8216;a&#8217;, &#8216;s&
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2012/11/07/unlicensing-everything-because-mit-aint-enough.html">Unlicensing Everything: Because MIT ain’t enough</a>
+        <a href="/2012/11/07/unlicensing-everything-because-mit-aint-enough.html">Unlicensing Everything</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/07/25/the-80-slash-20-rule.html">The 80/20 Rule</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/06/03/sprockets-on-sinatra-and-heroku.html">Sprockets on Sinatra (&amp; Heroku)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/03/17/the-minimalist-date-format.html">The Minimalist Date Format</a>
       </li>
     
       <li class="post">

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: concept | ⚔ passcod ⚔]]></title>
+  <link href="http://passcod.net/blog/categories/concept/atom.xml" rel="self"/>
+  <link href="http://passcod.net/"/>
+  <updated>2012-12-04T18:47:35+13:00</updated>
+  <id>http://passcod.net/</id>
+  <author>
+    <name><![CDATA[Félix Saparelli]]></name>
+    <email><![CDATA[me@passcod.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Undo-Version-Control]]></title>
+    <link href="http://passcod.net/2012/03/12/undo-version-control.html"/>
+    <updated>2012-03-12T00:00:00+13:00</updated>
+    <id>http://passcod.net/2012/03/12/undo-version-control</id>
+    <content type="html"><![CDATA[<p><em>Original on <a href="http://checkthis.com/l7p8">Checkthis.com</a></em></p>
+
+<p>The littlest things tend to get very interesting if you look closely
+enough. Take the world, for example: an altogether boring place to be,
+for sure, but the little things that make it work are altogether fascinating. Ask Higgs.</p>
+
+<p>I was happily cogitating when my mind came to wonder about the inner
+workings of two very different but very similar things: Git and Undo.
+If you don't know what I'm talking about, <a href="https://www.google.com/search?q=git">google “git”</a>
+or <a href="https://en.wikipedia.org/wiki/Git_%28software%29">look on Wikipedia</a> or
+<a href="http://www-cs-students.stanford.edu/%7Eblynn/gitmagic/">read this book</a>.
+I assume everybody is familiar with the Undo button in <del>all</del> many applications.</p>
+
+<p>Now, the way I see it, Undo works by pushing past actions onto a stack. Imagine you're
+typing an #unblog entry in a very primitive text editor. You start a paragraph (0), type
+'It' (1), decide against it, press Ctrl-Z twice (2), type 'The' (3), pause for a second,
+press Ctrl-Z thrice (4), and type 'I was' (5) then go on writing. In a "classical" undo
+mechanism, here's what happens:</p>
+
+<ol>
+<li>'I', 't' get pushed to the stack</li>
+<li>'t', 'I' get popped off</li>
+<li>'T', 'h', 'e' get pushed on</li>
+<li>'e', 'h', 'T' get popped off</li>
+<li>'I', '_', 'w', 'a', 's' and the rest of your entry get pushed on</li>
+</ol>
+
+
+<p>This is cool, but it's awfully linear. What if you write a paragraph, Ctrl-Z it out,
+write another one, then realise the first one was miles better? With this linear stack,
+there's nothing you can do other than try to piece back things from your (poor) memory.</p>
+
+<p>I think it would be cool to have git-style version control for your undo history. Actually,
+it would be completely mind-blowing and friggin' wonder-inducing, but I'm trying to keep
+myself controlled so I can type this up instead of jumping around gleefully.</p>
+
+<p>With undo-version-control, the little scenario above would look like:</p>
+
+<ol>
+<li>'I', 't' get pushed to history</li>
+<li>The current state (<em>HEAD</em> in git-speak) gets rolled back to 't', then 'I'</li>
+<li>'T', 'h', 'e' get pushed to a new history branch</li>
+<li><em>HEAD</em> is rolled back to 'e', 'h', 'T'</li>
+<li>We are now on the original branch, and go downstream by one step (to 'I'),
+then branch off and '_', 'w', 'a', 's' and the rest of it get pushed to that new branch.</li>
+</ol>
+
+
+<p>A bit more complex, for sure. To give you an idea, here's how it would look, tree wise:</p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/checkthis.com/asset/4f5f4550dd5de200010013aa/4f5f4550dd5de200010013aa-medium.png" alt="tree-like-structure" /></p>
+
+<p>Now imagine you write a paragraph, Ctrl-Z it, write another worse one, and want to go back. Well: you can. And also...</p>
+
+<ul>
+<li>Realise that the second one was <em>actually</em> better, and go back again</li>
+<li>Merge branches together</li>
+<li>Tag particular points in the history</li>
+<li><strong>Rebase</strong> the fuck out of it all</li>
+<li>Melt your brains</li>
+</ul>
+
+
+<p>Way!</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Undo-Version-Control - ⚔ passcod ⚔</title>
+  <title>Category: checkthis - ⚔ passcod ⚔</title>
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="Original on Checkthis.com The littlest things tend to get very interesting if you look closely
-enough. Take the world, for example: an altogether &hellip;">
+  <meta name="description" content="Category: checkthis">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ enough. Take the world, for example: an altogether &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://passcod.net/2012/03/12/undo-version-control.html">
+  <link rel="canonical" href="http://passcod.netblog/categories/checkthis/index.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -64,160 +63,64 @@ enough. Take the world, for example: an altogether &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">Undo-Version-Control</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2012-03-12T00:00:00+13:00" datetime="2012-03-12T00:00:00+13:00" pubdate data-updated="true">2012·11·1 ⚔ Monday</time>
-        
-         | <a href="#disqus_thread">Comments</a>
-        
-      </p>
+    <h1 class="entry-title">Category: Checkthis</h1>
     
   </header>
-
-
-<div class="entry-content"><p><em>Original on <a href="http://checkthis.com/l7p8">Checkthis.com</a></em></p>
-
-<p>The littlest things tend to get very interesting if you look closely
-enough. Take the world, for example: an altogether boring place to be,
-for sure, but the little things that make it work are altogether fascinating. Ask Higgs.</p>
-
-<p>I was happily cogitating when my mind came to wonder about the inner
-workings of two very different but very similar things: Git and Undo.
-If you don&#8217;t know what I&#8217;m talking about, <a href="https://www.google.com/search?q=git">google “git”</a>
-or <a href="https://en.wikipedia.org/wiki/Git_%28software%29">look on Wikipedia</a> or
-<a href="http://www-cs-students.stanford.edu/%7Eblynn/gitmagic/">read this book</a>.
-I assume everybody is familiar with the Undo button in <del>all</del> many applications.</p>
-
-<p>Now, the way I see it, Undo works by pushing past actions onto a stack. Imagine you&#8217;re
-typing an #unblog entry in a very primitive text editor. You start a paragraph (0), type
-&#8216;It&#8217; (1), decide against it, press Ctrl-Z twice (2), type &#8216;The&#8217; (3), pause for a second,
-press Ctrl-Z thrice (4), and type &#8216;I was&#8217; (5) then go on writing. In a &#8220;classical&#8221; undo
-mechanism, here&#8217;s what happens:</p>
-
-<ol>
-<li>&#8216;I&#8217;, &#8216;t&#8217; get pushed to the stack</li>
-<li>&#8216;t&#8217;, &#8216;I&#8217; get popped off</li>
-<li>&#8216;T&#8217;, &#8216;h&#8217;, &#8216;e&#8217; get pushed on</li>
-<li>&#8216;e&#8217;, &#8216;h&#8217;, &#8216;T&#8217; get popped off</li>
-<li>&#8216;I&#8217;, &#8216;_&#8217;, &#8216;w&#8217;, &#8216;a&#8217;, &#8216;s&#8217; and the rest of your entry get pushed on</li>
-</ol>
-
-
-<p>This is cool, but it&#8217;s awfully linear. What if you write a paragraph, Ctrl-Z it out,
-write another one, then realise the first one was miles better? With this linear stack,
-there&#8217;s nothing you can do other than try to piece back things from your (poor) memory.</p>
-
-<p>I think it would be cool to have git-style version control for your undo history. Actually,
-it would be completely mind-blowing and friggin&#8217; wonder-inducing, but I&#8217;m trying to keep
-myself controlled so I can type this up instead of jumping around gleefully.</p>
-
-<p>With undo-version-control, the little scenario above would look like:</p>
-
-<ol>
-<li>&#8216;I&#8217;, &#8216;t&#8217; get pushed to history</li>
-<li>The current state (<em>HEAD</em> in git-speak) gets rolled back to &#8216;t&#8217;, then &#8216;I&#8217;</li>
-<li>&#8216;T&#8217;, &#8216;h&#8217;, &#8216;e&#8217; get pushed to a new history branch</li>
-<li><em>HEAD</em> is rolled back to &#8216;e&#8217;, &#8216;h&#8217;, &#8216;T&#8217;</li>
-<li>We are now on the original branch, and go downstream by one step (to &#8216;I&#8217;),
-then branch off and &#8216;_&#8217;, &#8216;w&#8217;, &#8216;a&#8217;, &#8216;s&#8217; and the rest of it get pushed to that new branch.</li>
-</ol>
-
-
-<p>A bit more complex, for sure. To give you an idea, here&#8217;s how it would look, tree wise:</p>
-
-<p><img src="https://s3-eu-west-1.amazonaws.com/checkthis.com/asset/4f5f4550dd5de200010013aa/4f5f4550dd5de200010013aa-medium.png" alt="tree-like-structure" /></p>
-
-<p>Now imagine you write a paragraph, Ctrl-Z it, write another worse one, and want to go back. Well: you can. And also&#8230;</p>
-
-<ul>
-<li>Realise that the second one was <em>actually</em> better, and go back again</li>
-<li>Merge branches together</li>
-<li>Tag particular points in the history</li>
-<li><strong>Rebase</strong> the fuck out of it all</li>
-<li>Melt your brains</li>
-</ul>
-
-
-<p>Way!</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">Félix Saparelli</span></span>
-
-      
-
-
-
-
-
+  <div id="blog-archives" class="category">
 
 
 
   
+  <h2>2012</h2>
+
+<article>
+  
+<h1><a href="/2012/06/03/sprockets-on-sinatra-and-heroku.html">Sprockets on Sinatra (&amp; Heroku)</a></h1>
+<time datetime="2012-06-03T00:00:00+12:00" pubdate><span class='month'>Jun</span> <span class='day'>03</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/checkthis/'>checkthis</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/software/'>software</a>, <a class='category' href='/blog/categories/unblog/'>unblog</a></span>
+</footer>
 
 
-<time title="2012-03-12T00:00:00+13:00" datetime="2012-03-12T00:00:00+13:00" pubdate data-updated="true">2012·11·1 ⚔ Monday</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/checkthis/'>checkthis</a>, <a class='category' href='/blog/categories/concept/'>concept</a>, <a class='category' href='/blog/categories/unblog/'>unblog</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://passcod.net/2012/03/12/undo-version-control.html" data-via="passcod" data-counturl="http://passcod.net/2012/03/12/undo-version-control.html" >Tweet</a>
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
-
-    
-    <p class="meta">
-      
-      
-        <a class="basic-alignment right" href="/2012/03/17/the-minimalist-date-format.html" title="Next Post: The Minimalist Date Format">The Minimalist Date Format &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<article>
+  
+<h1><a href="/2012/03/17/the-minimalist-date-format.html">The Minimalist Date Format</a></h1>
+<time datetime="2012-03-17T17:17:00+13:00" pubdate><span class='month'>Mar</span> <span class='day'>17</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/checkthis/'>checkthis</a>, <a class='category' href='/blog/categories/unblog/'>unblog</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/2012/03/12/undo-version-control.html">Undo-Version-Control</a></h1>
+<time datetime="2012-03-12T00:00:00+13:00" pubdate><span class='month'>Mar</span> <span class='day'>12</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/checkthis/'>checkthis</a>, <a class='category' href='/blog/categories/concept/'>concept</a>, <a class='category' href='/blog/categories/unblog/'>unblog</a></span>
+</footer>
+
+
+</article>
+
 </div>
-  </section>
+
+  
+</article>
 
 </div>
 
@@ -344,10 +247,7 @@ then branch off and &#8216;_&#8217;, &#8216;w&#8217;, &#8216;a&#8217;, &#8216;s&
       var disqus_shortname = 'passcod';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://passcod.net/2012/03/12/undo-version-control.html';
-        var disqus_url = 'http://passcod.net/2012/03/12/undo-version-control.html';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

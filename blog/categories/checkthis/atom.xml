@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: checkthis | ⚔ passcod ⚔]]></title>
+  <link href="http://passcod.net/blog/categories/checkthis/atom.xml" rel="self"/>
+  <link href="http://passcod.net/"/>
+  <updated>2012-12-04T18:47:35+13:00</updated>
+  <id>http://passcod.net/</id>
+  <author>
+    <name><![CDATA[Félix Saparelli]]></name>
+    <email><![CDATA[me@passcod.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Sprockets on Sinatra (&amp; Heroku)]]></title>
+    <link href="http://passcod.net/2012/06/03/sprockets-on-sinatra-and-heroku.html"/>
+    <updated>2012-06-03T00:00:00+12:00</updated>
+    <id>http://passcod.net/2012/06/03/sprockets-on-sinatra-and-heroku</id>
+    <content type="html"><![CDATA[<p><em>Original on <a href="http://checkthis.com/biye">Checkthis.com</a>.</em></p>
+
+<p>In the world of ruby, there exists this framework called Rails, which I'm
+sure you've heard about. I happen not to like it very much. One of the
+reasons is that I've read maybe 2% of Rails' code, whereas for most of the
+other gems I use this is more like 40%. With Rails, I rely on magic (and,
+yea, it's nice) and with the other stuff, I rely on my own knowledge. I
+prefer the latter.</p>
+
+<p>There's also that Rails is an MVC framework, which is best buds with
+ActiveRecord and is a pain to manage as soon as you separate them. If you
+don't want or need the MVC pattern, or ActiveRecord, you're in for trouble.
+If you are unfortunate enough to need a gem which is incompatible with a Rails
+component, even if said component is supposed to be optional, you have my sympathies.</p>
+
+<p>In the world of Ruby, there also exists a little wonder called Sinatra. Sinatra
+is just the dispatcher part of Rails, plus the templating, plus a few other nifty
+features, but done right. It's small, sharp, lean, and mean. And it does exactly as
+advertised, no more, no less. When building an application with Sinatra, you get to
+pick and choose. DataMapper vs. ActiveRecord vs. Sequel? A single line in the Gemfile.
+Not MVC? No problem. Custom directory structure? We wouldn't have it any other way.</p>
+
+<p>There's <strong>no magic</strong> in Sinatra (or just plain Rack, if that's your fancy). It's all
+<strong>just code</strong>. And chances are you'll have written or read a lot of it.
+<a href="http://wordpress.org/">Wordpress says code is poetry</a>, and I agree, but given that
+Wordpress is written in PHP, I feel that with ruby... <em>code is art</em>.</p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/checkthis.com/asset/4fca9c0855a70a00030025d7/4fca9c0855a70a00030025d7-medium.png" alt="Code is art" /></p>
+
+<p>In the world of ruby, there happens to be another wonder called Sprockets. Sprockets
+is what powers Rails' 3.1+ asset pipeline. And therein lies the problem.</p>
+
+<p>Sprockets is an awesome tool, and adding it to a Rack application makes things even
+sparklier than pink unicorns. But it's relatively under-documented and Googling for
+solutions returns Rails-related stuff 99% of the time. Annoying. That's due to a little
+something called sprockets-rails, which takes sprockets, adds magic, and transforms it
+into the asset pipeline. Trying to use asset pipeline know-how with standalone Sprockets
+is frustrating.</p>
+
+<p>So how do you do it?</p>
+
+<p>``` ruby Gemfile
+source :rubygems
+ruby "1.9.3"</p>
+
+<p>gem "sinatra"</p>
+
+<p>group :app do
+  gem "haml"
+  gem "json"
+  gem "sprockets-helpers"
+end</p>
+
+<p>group :rackup do
+  gem "rack"
+  gem "unicorn"
+end</p>
+
+<p>group :assets do
+  gem "sprockets"
+  gem "sprockets-helpers"
+  gem "stylus"
+  gem "coffee-script"
+  gem "yui-compressor"
+  gem "uglifier"
+end</p>
+
+<p>group :development do
+  gem "heroku", require: false
+  gem "foreman", require: false
+  gem "shotgun", require: false
+  gem "thin", require: false
+  gem "rake", require: false
+end
+```</p>
+
+<p>First, you'll need most of these. You don't need <a href="http://unicorn.bogomips.org/">Unicorn</a>
+nor <a href="https://github.com/rtomayko/shotgun">Shotgun</a> nor <a href="http://learnboost.github.com/stylus/">Stylus</a>
+nor <a href="http://coffeescript.org/">CoffeeScript</a>, pick and choose these.</p>
+
+<p>Some gems are duplicated in groups. That's normal. I make use of Bundler's auto-require
+facility to keep code simple, and that happens.</p>
+
+<p>Finally, the ruby "1.9.3" declaration is a new feature in Bundler 1.2, so you might need
+to install the <code>--pre</code> version of the gem. I use 1.9.3, and I think some stuff breaks in
+1.9.2, so beware. If you really need 1.9.2, you'll need to fix these yourself. <em>(Note:
+no longer relevant.)</em></p>
+
+<p>``` ruby start.rb
+require 'bundler'
+Bundler.require :default, :app
+require './config/sprockets'</p>
+
+<p>configure do
+  set :production, ENV['RACK_ENV'] == 'production'
+  set :app_root, File.realdirpath('.')
+  set :assets, YourApp::Assets::Environment.get(settings.app_root, settings.production)</p>
+
+<p>  Sprockets::Helpers.configure do |config|</p>
+
+<pre><code>config.environment = settings.assets
+config.prefix      = '/assets'
+config.digest      = true
+config.public_path = settings.public_folder
+</code></pre>
+
+<p>  end
+end</p>
+
+<h1>...</h1>
+
+<p>```</p>
+
+<p>This is the Sinatra main app file. Some like to call it app.rb, I <del>don't</del> didn't
+like that because the app is much more than just this file.</p>
+
+<p>The top 2 first lines load everything in the <code>:app</code> and <code>:default</code>
+Gemfile groups. That includes Sinatra and sprocket-helpers. This file is mostly
+bootstrapping the live side of things, and I'll come back to it later.</p>
+
+<p>Most of the meat of the problem is contained in the "./config/sprockets" file
+we require at the top, which looks like this:</p>
+
+<p>``` ruby config/sprockets.rb
+require 'bundler'
+Bundler.require :default, :assets</p>
+
+<p>module YourApp
+  module Assets</p>
+
+<pre><code>class Environment
+  def self.get(root_path, preprocess = false)
+    assets = Sprockets::Environment.new root_path
+
+    # Application assets
+    assets.append_path 'assets/stylesheets'
+    assets.append_path 'assets/javascripts'
+
+    # Vendor assets
+    assets.append_path 'vendor/assets/stylesheets'
+    assets.append_path 'vendor/assets/javascripts'
+
+    Stylus.setup assets
+
+    if preprocess
+      assets.css_compressor = YUI.CssCompressor.new
+      assets.js_compressor = Uglifier.new
+    end
+
+    return assets
+  end
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Meat indeed, but pretty straightforward. That could actually just be a function,
+but I was too lazy to refactor it again after battling with it for hours. Or, it
+could be duck-typed. That could work too.</p>
+
+<p>There's a call to Stylus, there, if you want don't want Stylus and prefer Sass or
+Less, just remove that and modify the Gemfile appropriately.</p>
+
+<p>There's no lib/assets paths because I don't feel the need for them.</p>
+
+<p>The compressors have to be passed as instances. That's one of the differences with
+the Rails magic way, but it's no hassle.</p>
+
+<p>Going back to start.rb above, you'll see that we get the Sprockets environment,
+and set up the helpers, but never actually set up the serving of said assets.
+That's done in two ways:</p>
+
+<p>``` ruby config.ru
+require 'bundler'
+Bundler.require :default, :rackup</p>
+
+<p>if ENV['RACK_ENV'] == 'production'
+  require './config/sprockets'
+  assets = YourApp::Assets::Environment.get File.realdirpath('.')
+  map('/assets') { run assets.index }
+end</p>
+
+<p>require './start'
+map('/') { run Sinatra::Application }
+```</p>
+
+<p>Here we go. If we're in development (use <a href="http://ddollar.github.com/foreman/#RUNNING">the .env and Foreman</a>),
+run the live Sprockets server. Otherwise, don't. For production, we do this:</p>
+
+<p>``` ruby Rakefile
+require './config/sprockets'
+require './config/precompiler'
+require 'fileutils'
+require 'json'
+require 'yaml'</p>
+
+<p>namespace :assets do
+  root = File.realdirpath('.')</p>
+
+<p>  desc 'Precompile assets for production'
+  task :precompile => :clean do</p>
+
+<pre><code>assets = YourApp::Assets::Environment.get root, ENV['RACK_ENV'] == 'production'
+precompiler = YourApp::Assets::Compiler.new sprockets: assets, precompile: [ /\./ ]
+
+print 'Precompiling assets... '
+precompiler.compile
+puts 'DONE'
+
+print 'Generating asset manifests... '
+asset_list = {}
+assets.each_logical_path do |logical_path|
+  if asset = assets.find_asset(logical_path)
+    asset_list[logical_path] = '/assets/' + asset.digest_path
+  end
+end
+IO.write File.join(root, '/public/asset_manifest.json'), JSON.generate(asset_list)
+IO.write File.join(root, '/public/asset_manifest.js'), 'ASSETS='+JSON.generate(asset_list)
+IO.write File.join(root, '/public/asset_manifest.yml'), asset_list.to_yaml
+puts 'DONE'
+</code></pre>
+
+<p>  end</p>
+
+<p>  desc 'Clean assets folder'
+  task :clean do</p>
+
+<pre><code>print 'Destroying public/assets... '
+FileUtils.rm_rf File.join(root, '/public/assets')
+puts 'DONE'
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>The Rakefile takes care of the precompilation. This works with Heroku so long as the
+task is named <code>assets:precompile</code>, so we're covered there.</p>
+
+<p>I precompile everything, which might be too much, but adjust the Regexp as you want.
+And then we write the asset manifests. These are to do with a pretty bad caveat which
+I'll detail later. For now, we need to have a look the meat of the compiler,
+in "./config/precompiler":</p>
+
+<p>``` ruby config/precompiler.rb
+module YourApp
+  module Assets</p>
+
+<pre><code># Adapted from: https://github.com/stevehodgkiss/guard-sprockets2
+class Compiler
+  def initialize(options = {})
+    configure(options)
+    @target = Pathname.new(@assets_path)
+  end
+
+  def clean
+    FileUtils.rm_rf @assets_path, :secure =&gt; true
+  end
+
+  def compile
+    @sprockets.send(:expire_index!)
+    success = true
+    @precompile.each do |path|
+      @sprockets.each_logical_path do |logical_path|
+        next unless path_matches?(path, logical_path)
+
+        if asset = @sprockets.find_asset(logical_path)
+          success = compile_asset(asset)
+          break unless success
+        end
+      end
+    end
+    success
+  end
+
+  protected
+
+  def compile_asset(asset)
+    filename = @digest ? @target.join(asset.digest_path) : @target.join(asset.logical_path)
+
+    FileUtils.mkdir_p filename.dirname
+    asset.write_to(filename)
+    asset.write_to("#{filename}.gz") if @gz &amp;&amp; filename.to_s =~ /\.(css|js)$/
+    true
+  rescue =&gt; e
+    puts unless ENV["GUARD_ENV"] == "test"
+    UI.error e.message.gsub(/^Error: /, '')
+    false
+  end
+
+  def path_matches?(path, logical_path)
+    if path.is_a?(Regexp)
+      path.match(logical_path)
+    else
+      File.fnmatch(path.to_s, logical_path)
+    end
+  end
+
+  def configure(options)
+    @sprockets = options[:sprockets]
+    @assets_path = options[:assets_path]
+    @precompile = options[:precompile]
+    @digest = options[:digest]
+    @gz = options[:gz]
+    set_defaults
+  end
+
+  def set_defaults
+    if defined?(Rails)
+      @sprockets ||= Rails.application.assets
+      @assets_path ||= File.join(Rails.public_path, Rails.application.config.assets.prefix)
+      @precompile ||= Rails.application.config.assets.precompile
+    else
+      @assets_path ||= "#{Dir.pwd}/public/assets"
+      @precompile ||= [ /\w+\.(?!js|css).+/, /application.(css|js)$/ ]
+    end
+    @digest = true if @digest.nil?
+    @gz = true if @gz.nil?
+  end
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>It's really just a straight copy-paste from the <a href="https://github.com/stevehodgkiss/guard-sprockets2">guard-sprockets2</a>
+code. See that compile function? That's where the code to make the asset manifests comes from.</p>
+
+<p>Speaking of which, when we're in development, we also need those manifests, so add this to your routes:</p>
+
+<p>``` ruby routes.rb</p>
+
+<h1>...</h1>
+
+<p>if !settings.production
+  get '/asset_manifest.:format' do</p>
+
+<pre><code>asset_list = {}
+settings.assets.each_logical_path do |logical_path|
+  if asset = settings.assets.find_asset(logical_path)
+    asset_list[logical_path] = '/assets/ + asset.disgest_path
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  if params[:format] == 'json'</p>
+
+<pre><code>JSON.generate asset_list
+</code></pre>
+
+<p>  elsif params[:format] == 'yml'</p>
+
+<pre><code>asset_list.to_yaml
+</code></pre>
+
+<p>  else</p>
+
+<pre><code>'ASSETS='+JSON.generate(asset_list)
+</code></pre>
+
+<p>  end
+end</p>
+
+<h1>...</h1>
+
+<p>```</p>
+
+<p>And you should also set up your helpers:</p>
+
+<p>``` ruby helpers.rb
+helpers do
+  # ...</p>
+
+<p>  def meta_charset</p>
+
+<pre><code>'&lt;meta charset="UTF-8"&gt;'
+</code></pre>
+
+<p>  end</p>
+
+<p>  def stylesheet(s)</p>
+
+<pre><code>s = asset_path(s+'.css') unless s =~ /^(https?:\/)?\//
+"&lt;link rel=\"stylesheet\" href=\"#{s}\"&gt;"
+</code></pre>
+
+<p>  end</p>
+
+<p>  def javascript(s)</p>
+
+<pre><code>s = asset_path(s+'.js') unless s =~ /^(https?:\/)?\//
+"&lt;script src=\"#{s}\"&gt;&lt;/script&gt;"
+</code></pre>
+
+<p>  end</p>
+
+<p>  include Sprockets::Helpers
+end
+```</p>
+
+<h2>Caveats</h2>
+
+<p>There's two biggies here:</p>
+
+<ol>
+<li><p><strong>No image assets.</strong>
+I don't think that's too much bad, because unless you want to use automated
+sprite generation, you can safely relocate your images to public/ and fix your
+paths. Apart from that, you'll also have to say goodbye to Sprockets' cache-busting,
+but I'm sure you'll survive. Or find an alternative.</p></li>
+<li><p><strong>No asset_path helpers in assets</strong>
+Slightly more annoying, and the reason for the manifests. You can't use erb nor eco
+nor ejs, and therefore, you can't use asset_path helpers in assets. You still have
+them in your views, though.</p></li>
+</ol>
+
+
+<h2>The Code</h2>
+
+<p>The <em>original</em> code samples above were all images, and that was mostly intentional. It was
+so you couldn't copy-paste stuff. Learn, sheeple!</p>
+
+<p>More seriously, checkthis.com doesn't support code listings, so that was all I could do at
+the time. I had also provided a link to the original project of mine that implemented this,
+but I destroyed this a while back.</p>
+
+<p>For this reason, when I did the migration over to Octopress, I <em>manually copied and typed</em>
+all the code samples. Thus there might be typos, so if it doesn't work, look around. And don't
+forget to comment back so I can fix it here, too!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Minimalist Date Format]]></title>
+    <link href="http://passcod.net/2012/03/17/the-minimalist-date-format.html"/>
+    <updated>2012-03-17T17:17:00+13:00</updated>
+    <id>http://passcod.net/2012/03/17/the-minimalist-date-format</id>
+    <content type="html"><![CDATA[<p><em>Original on <a href="http://checkthis.com/7qf4">Checkthis.com</a></em></p>
+
+<p>The Minimalist date format is a 5- or 7- digits number which represents a date (no time).
+It increases mathematically (i.e. you can compare whether a date precedes another by
+comparing if one number is smaller than the other), and it looks cryptic to the ignorant.</p>
+
+<p>It is made of (in that order):</p>
+
+<ol>
+<li>the 2- or 4- digit year,</li>
+<li>the 2-digit ISO week number, and</li>
+<li>the 1-digit ISO week day number.</li>
+</ol>
+
+
+<p>All these are zero padded, thus the resulting number is always 5 or 7 digits long.</p>
+
+<p>I use it in various places, including:</p>
+
+<ul>
+<li>Some version numbers</li>
+<li>Artwork</li>
+<li>Weechat</li>
+<li>Here</li>
+</ul>
+
+
+<p><img src="http://i.imgur.com/h3Ml1.png" alt="Weechat date/time" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Undo-Version-Control]]></title>
+    <link href="http://passcod.net/2012/03/12/undo-version-control.html"/>
+    <updated>2012-03-12T00:00:00+13:00</updated>
+    <id>http://passcod.net/2012/03/12/undo-version-control</id>
+    <content type="html"><![CDATA[<p><em>Original on <a href="http://checkthis.com/l7p8">Checkthis.com</a></em></p>
+
+<p>The littlest things tend to get very interesting if you look closely
+enough. Take the world, for example: an altogether boring place to be,
+for sure, but the little things that make it work are altogether fascinating. Ask Higgs.</p>
+
+<p>I was happily cogitating when my mind came to wonder about the inner
+workings of two very different but very similar things: Git and Undo.
+If you don't know what I'm talking about, <a href="https://www.google.com/search?q=git">google “git”</a>
+or <a href="https://en.wikipedia.org/wiki/Git_%28software%29">look on Wikipedia</a> or
+<a href="http://www-cs-students.stanford.edu/%7Eblynn/gitmagic/">read this book</a>.
+I assume everybody is familiar with the Undo button in <del>all</del> many applications.</p>
+
+<p>Now, the way I see it, Undo works by pushing past actions onto a stack. Imagine you're
+typing an #unblog entry in a very primitive text editor. You start a paragraph (0), type
+'It' (1), decide against it, press Ctrl-Z twice (2), type 'The' (3), pause for a second,
+press Ctrl-Z thrice (4), and type 'I was' (5) then go on writing. In a "classical" undo
+mechanism, here's what happens:</p>
+
+<ol>
+<li>'I', 't' get pushed to the stack</li>
+<li>'t', 'I' get popped off</li>
+<li>'T', 'h', 'e' get pushed on</li>
+<li>'e', 'h', 'T' get popped off</li>
+<li>'I', '_', 'w', 'a', 's' and the rest of your entry get pushed on</li>
+</ol>
+
+
+<p>This is cool, but it's awfully linear. What if you write a paragraph, Ctrl-Z it out,
+write another one, then realise the first one was miles better? With this linear stack,
+there's nothing you can do other than try to piece back things from your (poor) memory.</p>
+
+<p>I think it would be cool to have git-style version control for your undo history. Actually,
+it would be completely mind-blowing and friggin' wonder-inducing, but I'm trying to keep
+myself controlled so I can type this up instead of jumping around gleefully.</p>
+
+<p>With undo-version-control, the little scenario above would look like:</p>
+
+<ol>
+<li>'I', 't' get pushed to history</li>
+<li>The current state (<em>HEAD</em> in git-speak) gets rolled back to 't', then 'I'</li>
+<li>'T', 'h', 'e' get pushed to a new history branch</li>
+<li><em>HEAD</em> is rolled back to 'e', 'h', 'T'</li>
+<li>We are now on the original branch, and go downstream by one step (to 'I'),
+then branch off and '_', 'w', 'a', 's' and the rest of it get pushed to that new branch.</li>
+</ol>
+
+
+<p>A bit more complex, for sure. To give you an idea, here's how it would look, tree wise:</p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/checkthis.com/asset/4f5f4550dd5de200010013aa/4f5f4550dd5de200010013aa-medium.png" alt="tree-like-structure" /></p>
+
+<p>Now imagine you write a paragraph, Ctrl-Z it, write another worse one, and want to go back. Well: you can. And also...</p>
+
+<ul>
+<li>Realise that the second one was <em>actually</em> better, and go back again</li>
+<li>Merge branches together</li>
+<li>Tag particular points in the history</li>
+<li><strong>Rebase</strong> the fuck out of it all</li>
+<li>Melt your brains</li>
+</ul>
+
+
+<p>Way!</p>
+]]></content>
+  </entry>
+  
+</feed>
