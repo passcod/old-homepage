@@ -27,4 +27,4 @@ I use it in various places, including:
  - Weechat
  - Here
 
-![Weechat date/time](http://i.imgur.com/h3Ml1.png)
+![Weechat date/time](/images/blog/h3Ml1.png)
