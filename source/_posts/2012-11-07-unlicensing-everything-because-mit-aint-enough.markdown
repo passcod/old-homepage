@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Unlicensing Everything: Because MIT ain’t enough"
+title: "Unlicensing Everything"
 date: 2012-11-07 21:00
 comments: true
-categories:
+categories: [license, public-domain]
 alias: /license.html
 ---
 

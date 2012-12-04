@@ -3,7 +3,7 @@ layout: post
 title: "Undo-Version-Control"
 date: 2012-03-12 00:00
 comments: true
-categories:
+categories: [unblog, checkthis, concept]
 ---
 
 _Original on [Checkthis.com](http://checkthis.com/l7p8)_
