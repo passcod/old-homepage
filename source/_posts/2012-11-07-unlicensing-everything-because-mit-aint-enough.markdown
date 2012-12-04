@@ -10,7 +10,7 @@ alias: /license.html
 This is the license under which my code and content, here and everywhere else, is published
 under by default:
 
-> All text and code and bytes and images that I have and will author, baring any contrary notice on
+> All text and code and bytes and images that I have and will author, barring any contrary notice on
 > or joined to the work in question, or a global notice published here on __passcod.net__
 > (which would apply to all future works &mdash; one cannot, after all, un-release something), is hereby
 > released in the Public Domain, or licensed under [CC0](http://creativecommons.org/publicdomain/zero/1.0/)
