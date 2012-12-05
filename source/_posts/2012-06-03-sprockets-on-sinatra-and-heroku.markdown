@@ -331,7 +331,7 @@ if !settings.production
     asset_list = {}
     settings.assets.each_logical_path do |logical_path|
       if asset = settings.assets.find_asset(logical_path)
-        asset_list[logical_path] = '/assets/' + asset.disgest_path
+        asset_list[logical_path] = '/assets/' + asset.digest_path
     end
   end
   
