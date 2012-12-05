@@ -921,7 +921,7 @@ code. See that compile function? That&#8217;s where the code to make the asset m
 </span><span class='line'>    <span class="n">asset_list</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span class='line'>    <span class="n">settings</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">each_logical_path</span> <span class="k">do</span> <span class="o">|</span><span class="n">logical_path</span><span class="o">|</span>
 </span><span class='line'>      <span class="k">if</span> <span class="n">asset</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">find_asset</span><span class="p">(</span><span class="n">logical_path</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">asset_list</span><span class="o">[</span><span class="n">logical_path</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;/assets/&#39;</span> <span class="o">+</span> <span class="n">asset</span><span class="o">.</span><span class="n">disgest_path</span>
+</span><span class='line'>        <span class="n">asset_list</span><span class="o">[</span><span class="n">logical_path</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;/assets/&#39;</span> <span class="o">+</span> <span class="n">asset</span><span class="o">.</span><span class="n">digest_path</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
