@@ -47,6 +47,8 @@ is frustrating.
 
 So how do you do it?
 
+<!--more-->
+
 ``` ruby Gemfile
 source :rubygems
 ruby "1.9.3"

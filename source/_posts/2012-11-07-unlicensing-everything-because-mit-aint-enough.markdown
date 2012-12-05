@@ -16,6 +16,8 @@ under by default:
 > released in the Public Domain, or licensed under [CC0](http://creativecommons.org/publicdomain/zero/1.0/)
 > or [the Unlicense](http://unlicense.org), whichever gives __you__ the most rights.
 
+<!--more-->
+
 Now, *what does it mean*?
 
  - Most of my significant work already has an attached notice, and thus is governed by that notice,

@@ -22,6 +22,8 @@ exist yet. [WebRTC](http://dev.w3.org/2011/webrtc/editor/webrtc.html#peer-to-pee
 is getting there, but this part of it isn't implemented anywhere yet. I therefore
 had to make my own.
 
+<!--more-->
+
 Thus, _Plong_'s backend is a scalable web and websocket server written in Go,
 which provides the infrastructure required to have pseudo-peer-to-peer connections
 over WebSockets. The protocol is not too complex but certainly too long to describe

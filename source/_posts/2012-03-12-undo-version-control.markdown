@@ -26,6 +26,8 @@ typing an #unblog entry in a very primitive text editor. You start a paragraph (
 press Ctrl-Z thrice (4), and type 'I was' (5) then go on writing. In a "classical" undo
 mechanism, here's what happens:
 
+<!--more-->
+
 1. 'I', 't' get pushed to the stack
 2. 't', 'I' get popped off
 3. 'T', 'h', 'e' get pushed on
