@@ -4,7 +4,7 @@
   <title><![CDATA[Category: go | ⚔ passcod ⚔]]></title>
   <link href="http://passcod.net/blog/categories/go/atom.xml" rel="self"/>
   <link href="http://passcod.net/"/>
-  <updated>2012-12-06T09:25:02+13:00</updated>
+  <updated>2012-12-06T10:08:11+13:00</updated>
   <id>http://passcod.net/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -33,6 +33,9 @@ had to be a web p2p protocol available right now in browsers. This doesn't
 exist yet. <a href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#peer-to-peer-data-api">WebRTC</a>
 is getting there, but this part of it isn't implemented anywhere yet. I therefore
 had to make my own.</p>
+
+<!--more-->
+
 
 <p>Thus, <em>Plong</em>'s backend is a scalable web and websocket server written in Go,
 which provides the infrastructure required to have pseudo-peer-to-peer connections
