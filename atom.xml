@@ -4,7 +4,7 @@
   <title><![CDATA[⚔ passcod ⚔]]></title>
   <link href="http://passcod.net/atom.xml" rel="self"/>
   <link href="http://passcod.net/"/>
-  <updated>2012-12-16T22:14:04+13:00</updated>
+  <updated>2012-12-16T22:20:08+13:00</updated>
   <id>http://passcod.net/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -934,6 +934,9 @@ comparing if one number is smaller than the other), and it looks cryptic to the 
 
 
 <p><img src="http://passcod.net/images/blog/h3Ml1.png" alt="Weechat date/time" /></p>
+
+<p>Note: <em>Using strftime (from unix&#8217;s <code>date</code> or the C utility, and its incarnation in many other languages), that format
+can be expressed as <code>%Y%W%u</code>. Do not use <code>%w</code> with <code>%W</code>, it breaks the mathematical continuity.</em></p>
 ]]></content>
   </entry>
   
