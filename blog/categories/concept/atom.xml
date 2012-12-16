@@ -4,7 +4,7 @@
   <title><![CDATA[Category: concept | ⚔ passcod ⚔]]></title>
   <link href="http://passcod.net/blog/categories/concept/atom.xml" rel="self"/>
   <link href="http://passcod.net/"/>
-  <updated>2012-12-16T22:04:27+13:00</updated>
+  <updated>2012-12-16T22:14:04+13:00</updated>
   <id>http://passcod.net/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Bullets dump for Imaku]]></title>
+    <link href="http://passcod.net/2012/12/16/bullets-dump-for-imaku.html"/>
+    <updated>2012-12-16T22:11:00+13:00</updated>
+    <id>http://passcod.net/2012/12/16/bullets-dump-for-imaku</id>
+    <content type="html"><![CDATA[<ul>
+<li>White to be the dominant colour, not black as in every other thing out there.</li>
+<li>Simple design, flat feel. Most others try to bring depth, but maybe trying too hard…</li>
+<li>Icon grid is overrated. Text is nice too.</li>
+<li>For non-phone devices (desktops / laptop / tablets / hybrids), the keyboard is accessible:
+
+<ul>
+<li>Alfred / Gnome3 -style type to search and launch</li>
+<li>Maybe bring back Ubiquity principles?</li>
+</ul>
+</li>
+<li>Modifiers for touch screens:
+
+<ul>
+<li>Hold one corner == Control / Alt / Super keys</li>
+</ul>
+</li>
+<li>Use touchpads fully: gestures, etc – not just left/right click simulation</li>
+<li>Forget the past:
+
+<ul>
+<li>DON'T BE BACKWARD COMPATIBLE !!!</li>
+<li>Menu bar? Pfff.</li>
+<li>Docks? No need.</li>
+<li>Window decorations? Nope: can use modifier keys to manipulate windows (resize, move) and gestures / hotkeys to close them.</li>
+</ul>
+</li>
+<li>But learn from it:
+
+<ul>
+<li>DON'T FORGET POWER USERS !!!</li>
+<li>Ease of manipulating windows in bulk (tiling, layouts)</li>
+<li>Settings, options, customisability.</li>
+<li>In fact, educate users through "forced-learning" (like what is used in games, e.g. Meat Boy) so everyone's a power user.</li>
+<li>Forget apps: applications are programs, we should make them simpler, not dumb.</li>
+<li>PIPES !!! Pipes in Unix are the best thing ever, why couldn't we have something similar?</li>
+</ul>
+</li>
+<li>Rich command line, like Firefox's Dev Tools and Ace's control line
+
+<ul>
+<li>Make it an integral part of the system, not just something for geeks</li>
+</ul>
+</li>
+<li>Infinite desktop space:
+
+<ul>
+<li>No separate desktops / workspaces</li>
+<li>The screen is a viewport onto the virtual desktop area.</li>
+<li>Can save viewpoints to have quick-access</li>
+<li>Base operation is 2D-only, but can lapse into the Z if user can handle the additional cognitive load ;)</li>
+<li>Can do the usual, and pin windows to viewport</li>
+<li>Super-advanced features:
+
+<ul>
+<li>Multiple screens have multiple viewports</li>
+<li>Can connect different user spaces in one large canvas</li>
+<li>A bit like multi-player tmux but for the desktop / GUI</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Undo-Version-Control]]></title>
