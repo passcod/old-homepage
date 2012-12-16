@@ -8,6 +8,14 @@ categories: [unblog, checkthis, concept]
 
 _Original on [Checkthis.com](http://checkthis.com/l7p8)_
 
+*Edit (12507): As [mako yass](http://checkthis.com/user/makoyass) pointed out, this already exists…
+in vim. Oh, and there's also [an Emacs mode](http://e-texteditor.com/blog/2006/making-undo-usable)
+that copies that ability. The E editor for Windows [also has it](http://e-texteditor.com/blog/2006/making-undo-usable).
+There's an open [feature request](http://sublimetext.userecho.com/topic/92833-undo-trees/) for
+Sublime Text, and I'm thinking of implementing it for [CodeMirror](http://codemirror.net/). At
+the time I wrote this page, I didn't have the right terminology… this is called an __undo tree__.*
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 The littlest things tend to get very interesting if you look closely
 enough. Take the world, for example: an altogether boring place to be,
