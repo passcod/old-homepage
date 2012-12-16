@@ -28,3 +28,6 @@ I use it in various places, including:
  - Here
 
 ![Weechat date/time](/images/blog/h3Ml1.png)
+
+Note: *Using strftime (from unix's `date` or the C utility, and its incarnation in many other languages), that format
+can be expressed as `%Y%W%u`. Do not use `%w` with `%W`, it breaks the mathematical continuity.*
