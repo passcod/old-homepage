@@ -9,8 +9,9 @@
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="White to be the dominant colour, not black as in every other thing out there.
-Simple design, flat feel. Most others try to bring depth, but maybe &hellip;">
+  <meta name="description" content="So, IFTTT is cool. It&#8217;s a nitfy little service that glues various
+services together, pipe-style, and makes the realtime web just that
+much more &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +67,88 @@ Simple design, flat feel. Most others try to bring depth, but maybe &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">On IFTTT Not Having an HTTP ‘this’ Nor ‘that’</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2013-01-04T18:20:00+13:00" datetime="2013-01-04T18:20:00+13:00" pubdate data-updated="true">2013·01·5 ⚔ Friday</time>
+        
+         | <a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So, <a href="https://ifttt.com">IFTTT</a> is cool. It&#8217;s a nitfy little service that glues various
+services together, pipe-style, and makes the realtime web just that
+much more useful. Only, I thought they&#8217;d have the decency of including
+HTTP triggers and channels so we could do whatever we damn well wanted
+instead of being stuck with the handful of services we&#8217;re actually using.</p>
+
+<p>So I need something to:</p>
+
+<ul>
+<li>Trigger an IFTTT recipe,</li>
+<li>get triggered by a recipe,</li>
+<li>and be able to send and receive arbitrary data through that.</li>
+</ul>
+
+
+<p>My first thought was: let&#8217;s create a service that translates HTTP calls
+to something IFTTT can handle and vice-versa. Woo! Boo! Not so easy.
+Here are a few options:</p>
+
+<h2>Email</h2>
+
+<p>Possibly the easiest one to work with, albeit with a few serious caveats.
+You can send emails to trigger@ifttt.com and it can also send you emails
+as actions. The data is free-form and not really length-limited, and you
+can even send a file through for binary data support.</p>
+
+<p>Unfortunately, IFTTT only supports a single email channel per account, so
+that means you&#8217;d have to give up on the email channel for other purposes.
+(This ain&#8217;t so bad: you could always plug the HTTP calls into a 3rd-party
+email service.)</p>
+
+<h2>Feed</h2>
+
+<p><em>Trigger only</em></p>
+
+<p>Probably the best solution for triggers, this has the same advantages as email
+minus the file attachment, but with better-structured data (more fields).</p>
+
+<h2>Gmail</h2>
+
+<p>Like email, but a bit better. Notably, you can send an email from your Gmail
+account as an action, and trigger a recipe when a new email arrives, optionally
+tagged. This could be a bit nicer as it allows you to still use both Email and
+Gmail as channels. However, if you&#8217;ve got a Gmail account linked to IFTTT, there&#8217;s
+no reason to use Email at all except for proxying things through as shown above.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -638,6 +721,10 @@ mechanism, here&#8217;s what happens:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">On IFTTT not having an HTTP ‘this’ nor ‘that’</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/12/16/bullets-dump-for-imaku.html">Bullets dump for Imaku</a>
       </li>
     
@@ -651,10 +738,6 @@ mechanism, here&#8217;s what happens:</p>
     
       <li class="post">
         <a href="/2012/11/07/unlicensing-everything-because-mit-aint-enough.html">Unlicensing Everything</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/07/25/the-80-slash-20-rule.html">The 80/20 Rule</a>
       </li>
     
   </ul>

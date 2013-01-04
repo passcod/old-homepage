@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en" manifest="/.appcache"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Undo-Version-Control - ⚔ passcod ⚔</title>
+  <title>On IFTTT not having an HTTP ‘this’ nor ‘that’ - ⚔ passcod ⚔</title>
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="Original on Checkthis.com Edit (12507): As mako yass pointed out, this already exists…
-in vim. Oh, and there&#8217;s also an Emacs mode
-that copies &hellip;">
+  <meta name="description" content="So, IFTTT is cool. It&#8217;s a nitfy little service that glues various
+services together, pipe-style, and makes the realtime web just that
+much more &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@ that copies &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://passcod.net/2012/03/12/undo-version-control.html">
+  <link rel="canonical" href="http://passcod.net/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -70,7 +70,7 @@ that copies &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Undo-Version-Control</h1>
+      <h1 class="entry-title">On IFTTT Not Having an HTTP ‘this’ Nor ‘that’</h1>
     
     
       <p class="meta">
@@ -86,7 +86,7 @@ that copies &hellip;">
   
 
 
-<time title="2012-03-12T00:00:00+13:00" datetime="2012-03-12T00:00:00+13:00" pubdate data-updated="true">2012·11·1 ⚔ Monday</time>
+<time title="2013-01-04T18:20:00+13:00" datetime="2013-01-04T18:20:00+13:00" pubdate data-updated="true">2013·01·5 ⚔ Friday</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -95,82 +95,51 @@ that copies &hellip;">
   </header>
 
 
-<div class="entry-content"><p><em>Original on <a href="http://checkthis.com/l7p8">Checkthis.com</a></em></p>
+<div class="entry-content"><p>So, <a href="https://ifttt.com">IFTTT</a> is cool. It&#8217;s a nitfy little service that glues various
+services together, pipe-style, and makes the realtime web just that
+much more useful. Only, I thought they&#8217;d have the decency of including
+HTTP triggers and channels so we could do whatever we damn well wanted
+instead of being stuck with the handful of services we&#8217;re actually using.</p>
 
-<p><em>Edit (12507): As <a href="http://checkthis.com/user/makoyass">mako yass</a> pointed out, this already exists…
-in vim. Oh, and there&#8217;s also <a href="http://e-texteditor.com/blog/2006/making-undo-usable">an Emacs mode</a>
-that copies that ability. The E editor for Windows <a href="http://e-texteditor.com/blog/2006/making-undo-usable">also has it</a>.
-There&#8217;s an open <a href="http://sublimetext.userecho.com/topic/92833-undo-trees/">feature request</a> for
-Sublime Text, and I&#8217;m thinking of implementing it for <a href="http://codemirror.net/">CodeMirror</a>. At
-the time I wrote this page, I didn&#8217;t have the right terminology… this is called an <strong>undo tree</strong>.</em></p>
-
-<hr />
-
-<p>The littlest things tend to get very interesting if you look closely
-enough. Take the world, for example: an altogether boring place to be,
-for sure, but the little things that make it work are altogether fascinating. Ask Higgs.</p>
-
-<p>I was happily cogitating when my mind came to wonder about the inner
-workings of two very different but very similar things: Git and Undo.
-If you don&#8217;t know what I&#8217;m talking about, <a href="https://www.google.com/search?q=git">google “git”</a>
-or <a href="https://en.wikipedia.org/wiki/Git_%28software%29">look on Wikipedia</a> or
-<a href="http://www-cs-students.stanford.edu/%7Eblynn/gitmagic/">read this book</a>.
-I assume everybody is familiar with the Undo button in <del>all</del> many applications.</p>
-
-<p>Now, the way I see it, Undo works by pushing past actions onto a stack. Imagine you&#8217;re
-typing an #unblog entry in a very primitive text editor. You start a paragraph (0), type
-&#8216;It&#8217; (1), decide against it, press Ctrl-Z twice (2), type &#8216;The&#8217; (3), pause for a second,
-press Ctrl-Z thrice (4), and type &#8216;I was&#8217; (5) then go on writing. In a &#8220;classical&#8221; undo
-mechanism, here&#8217;s what happens:</p>
-
-<!--more-->
-
-
-<ol>
-<li>&#8216;I&#8217;, &#8216;t&#8217; get pushed to the stack</li>
-<li>&#8216;t&#8217;, &#8216;I&#8217; get popped off</li>
-<li>&#8216;T&#8217;, &#8216;h&#8217;, &#8216;e&#8217; get pushed on</li>
-<li>&#8216;e&#8217;, &#8216;h&#8217;, &#8216;T&#8217; get popped off</li>
-<li>&#8216;I&#8217;, &#8216;_&#8217;, &#8216;w&#8217;, &#8216;a&#8217;, &#8216;s&#8217; and the rest of your entry get pushed on</li>
-</ol>
-
-
-<p>This is cool, but it&#8217;s awfully linear. What if you write a paragraph, Ctrl-Z it out,
-write another one, then realise the first one was miles better? With this linear stack,
-there&#8217;s nothing you can do other than try to piece back things from your (poor) memory.</p>
-
-<p>I think it would be cool to have git-style version control for your undo history. Actually,
-it would be completely mind-blowing and friggin&#8217; wonder-inducing, but I&#8217;m trying to keep
-myself controlled so I can type this up instead of jumping around gleefully.</p>
-
-<p>With undo-version-control, the little scenario above would look like:</p>
-
-<ol>
-<li>&#8216;I&#8217;, &#8216;t&#8217; get pushed to history</li>
-<li>The current state (<em>HEAD</em> in git-speak) gets rolled back to &#8216;t&#8217;, then &#8216;I&#8217;</li>
-<li>&#8216;T&#8217;, &#8216;h&#8217;, &#8216;e&#8217; get pushed to a new history branch</li>
-<li><em>HEAD</em> is rolled back to &#8216;e&#8217;, &#8216;h&#8217;, &#8216;T&#8217;</li>
-<li>We are now on the original branch, and go downstream by one step (to &#8216;I&#8217;),
-then branch off and &#8216;_&#8217;, &#8216;w&#8217;, &#8216;a&#8217;, &#8216;s&#8217; and the rest of it get pushed to that new branch.</li>
-</ol>
-
-
-<p>A bit more complex, for sure. To give you an idea, here&#8217;s how it would look, tree wise:</p>
-
-<p><img src="https://s3-eu-west-1.amazonaws.com/checkthis.com/asset/4f5f4550dd5de200010013aa/4f5f4550dd5de200010013aa-medium.png" alt="tree-like-structure" /></p>
-
-<p>Now imagine you write a paragraph, Ctrl-Z it, write another worse one, and want to go back. Well: you can. And also&#8230;</p>
+<p>So I need something to:</p>
 
 <ul>
-<li>Realise that the second one was <em>actually</em> better, and go back again</li>
-<li>Merge branches together</li>
-<li>Tag particular points in the history</li>
-<li><strong>Rebase</strong> the fuck out of it all</li>
-<li>Melt your brains</li>
+<li>Trigger an IFTTT recipe,</li>
+<li>get triggered by a recipe,</li>
+<li>and be able to send and receive arbitrary data through that.</li>
 </ul>
 
 
-<p>Way!</p>
+<p>My first thought was: let&#8217;s create a service that translates HTTP calls
+to something IFTTT can handle and vice-versa. Woo! Boo! Not so easy.
+Here are a few options:</p>
+
+<h2>Email</h2>
+
+<p>Possibly the easiest one to work with, albeit with a few serious caveats.
+You can send emails to trigger@ifttt.com and it can also send you emails
+as actions. The data is free-form and not really length-limited, and you
+can even send a file through for binary data support.</p>
+
+<p>Unfortunately, IFTTT only supports a single email channel per account, so
+that means you&#8217;d have to give up on the email channel for other purposes.
+(This ain&#8217;t so bad: you could always plug the HTTP calls into a 3rd-party
+email service.)</p>
+
+<h2>Feed</h2>
+
+<p><em>Trigger only</em></p>
+
+<p>Probably the best solution for triggers, this has the same advantages as email
+minus the file attachment, but with better-structured data (more fields).</p>
+
+<h2>Gmail</h2>
+
+<p>Like email, but a bit better. Notably, you can send an email from your Gmail
+account as an action, and trigger a recipe when a new email arrives, optionally
+tagged. This could be a bit nicer as it allows you to still use both Email and
+Gmail as channels. However, if you&#8217;ve got a Gmail account linked to IFTTT, there&#8217;s
+no reason to use Email at all except for proxying things through as shown above.</p>
 </div>
 
 
@@ -193,12 +162,12 @@ then branch off and &#8216;_&#8217;, &#8216;w&#8217;, &#8216;a&#8217;, &#8216;s&
   
 
 
-<time title="2012-03-12T00:00:00+13:00" datetime="2012-03-12T00:00:00+13:00" pubdate data-updated="true">2012·11·1 ⚔ Monday</time>
+<time title="2013-01-04T18:20:00+13:00" datetime="2013-01-04T18:20:00+13:00" pubdate data-updated="true">2013·01·5 ⚔ Friday</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/checkthis/'>checkthis</a>, <a class='category' href='/blog/categories/concept/'>concept</a>, <a class='category' href='/blog/categories/unblog/'>unblog</a>
+    <a class='category' href='/blog/categories/go/'>go</a>, <a class='category' href='/blog/categories/onthesides/'>onthesides</a>, <a class='category' href='/blog/categories/software/'>software</a>
   
 </span>
 
@@ -207,7 +176,7 @@ then branch off and &#8216;_&#8217;, &#8216;w&#8217;, &#8216;a&#8217;, &#8216;s&
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://passcod.net/2012/03/12/undo-version-control.html" data-via="passcod" data-counturl="http://passcod.net/2012/03/12/undo-version-control.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://passcod.net/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html" data-via="passcod" data-counturl="http://passcod.net/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -220,8 +189,8 @@ then branch off and &#8216;_&#8217;, &#8216;w&#8217;, &#8216;a&#8217;, &#8216;s&
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/2012/12/16/bullets-dump-for-imaku.html" title="Previous Post: Bullets dump for Imaku">&laquo; Bullets dump for Imaku</a>
       
-        <a class="basic-alignment right" href="/2012/03/17/the-minimalist-date-format.html" title="Next Post: The Minimalist Date Format">The Minimalist Date Format &raquo;</a>
       
     </p>
   </footer>
@@ -359,8 +328,8 @@ then branch off and &#8216;_&#8217;, &#8216;w&#8217;, &#8216;a&#8217;, &#8216;s&
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://passcod.net/2012/03/12/undo-version-control.html';
-        var disqus_url = 'http://passcod.net/2012/03/12/undo-version-control.html';
+        var disqus_identifier = 'http://passcod.net/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html';
+        var disqus_url = 'http://passcod.net/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html';
         var disqus_script = 'embed.js';
       
     (function () {
