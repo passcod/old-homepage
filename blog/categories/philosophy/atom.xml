@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: philosophy | ⚔ passcod ⚔]]></title>
+  <link href="http://passcod.net/blog/categories/philosophy/atom.xml" rel="self"/>
+  <link href="http://passcod.net/"/>
+  <updated>2013-01-06T18:46:30+13:00</updated>
+  <id>http://passcod.net/</id>
+  <author>
+    <name><![CDATA[Félix Saparelli]]></name>
+    <email><![CDATA[me@passcod.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Having the Source lets one remake and derive]]></title>
+    <link href="http://passcod.net/2013/01/06/having-the-source-lets-one-remake-and-derive.html"/>
+    <updated>2013-01-06T18:13:00+13:00</updated>
+    <id>http://passcod.net/2013/01/06/having-the-source-lets-one-remake-and-derive</id>
+    <content type="html"><![CDATA[<p>I've been reading articles by <a href="http://yudkowsky.net/">Eliezer Yudkowsky</a> recently, and here's
+one that struck me could also refer to open-source software:</p>
+
+<blockquote><p><a href="http://yudkowsky.net/rational/the-simple-truth">A shepherd builds a counting system</a> that works by throwing a pebble
+into a bucket whenever a sheep leaves the fold, and taking a pebble
+out whenever a sheep returns.  If you, the apprentice, do not understand
+this system—if it is magic that works for no apparent reason—then
+you will not know what to do if you accidentally drop an extra pebble
+into the bucket.  That which you cannot make yourself, you cannot
+remake when the situation calls for it.  You cannot go back to the
+source, tweak one of the parameter settings, and regenerate the output,
+without the source.  If "Two plus four equals six" is a brute fact unto
+you, and then one of the elements changes to "five", how are you to
+know that "two plus five equals seven" when you were simply told that
+"two plus four equals six"?</p>
+
+<p>If you see a small plant that drops a seed whenever a bird passes it,
+it will not occur to you that you can use this plant to partially
+automate the sheep-counter.  Though you learned something that the
+original maker would use to improve on his invention, you can't go back
+to the source and re-create it.</p>
+
+<p><em>(from <a href="http://lesswrong.com/lw/la/truly_part_of_you/">Less Wrong's “Truly Part of You”</a>)</em></p></blockquote>
+
+<p>However, simply <em>using</em> open-source software does not give you an understanding
+of its workings. It does not demystify it, it does not alleviate the <em>magic</em>
+of the thing. In computer science especially, there is this concept of <a href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">leaky
+abstractions</a>: these are most flagrant and disturbing when one has no or
+little understanding of the abstracted layer.</p>
+
+<p>This is why I make a point of reading through at least part of the source of
+every program and library I work with on a regular basis. I have read a bit
+of the Linux kernel, a small chunk of the Firefox OS UI, most of Sinatra but
+much less of Rails, I have debugged and contributed to one of my systems'
+package manager, and just this afternoon I trudged through a Gem to insert
+a debug statement and peek within an HTTPS request.</p>
+
+<p>All these experiences provided me with knowledge I could never get just by
+reading documentation. This knowledge allows me the incredible power of
+remixing various bits into new solutions. What's more, even though I have
+cursed a bunch of developers while attempting to parse their witty one-liners,
+I can hopefully learn from their mistakes and not just mine. Hmmm… <em>hopefully</em>.</p>
+]]></content>
+  </entry>
+  
+</feed>
