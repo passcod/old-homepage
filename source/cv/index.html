@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Georgia, serif;
+  background: #FAFAFA;
+  font-feature-settings: "liga";
+  font-size: 15pt;
+  line-height: 1.5;
+}
+
+body {
+  width: 21cm;
+  height: 29.7cm;
+  margin: 1cm auto;
+  padding: 1cm 3cm;
+  border: 1px solid #DDD;
+  background: #FFF;
+}
+
+h1 {
+  font-family: Helvetica, sans-serif;
+  font-weight: 100;
+  color: #999;
+  font-variant: small-caps;
+  font-feature-settings: "smcp"'
+}
+
+header h1 {
+  color: #666;
+  border-bottom: 0.2cm dotted #EEE;
+  margin: 0 0 -1em;
+}
+
+header {
+  white-space: pre-line;
+  margin-bottom: 1cm;
+}
+
+header address {
+  float: right;
+  text-align: right;
+}
+
+section {
+  margin-top: 1cm;
+}
+
+section h1 {
+  position: relative;
+  left: -0.5cm;
+  margin-bottom: 0.3cm;
+  border-bottom: 2px dotted #EEE;
+}
+
+section p {
+  padding: 0 1.5cm;
+  margin-top: 0;
+}
+
+section address, section time {
+  font-size: 11.5pt;
+  color: #666;
+  font-weight: 100;
+}
+
+section address {
+  text-align: right;
+  position: relative;
+  top: -3em;
+}
+
+footer {
+  color: #AAAAAA;
+  font-size: 8pt;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+footer a {
+  color: grey;
+}
+
+footer a:hover, footer a:focus {
+  border-bottom: 2px solid grey;
+  font-weight: bold;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.tech {
+  border-bottom: 1px dashed #DDD;
+}
+
+.position {
+  font-variant: small-caps;
+}
+
+@media print {
+  body {
+    margin: 0;
+    border: 0;
+  }
+  
+  footer {
+    display: none;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Félix Saparelli</h1>
+      <address>
+        4 Huanui Rd
+        Glenbervie RD3
+        WHANGAREI 0173</address>
+      <a href="mailto:me@passcod.net">me@passcod.net</a>
+      <a href="//passcod.net">http://passcod.net</a>
+      <tel>(+64) 022 601 3595</tel>
+    </header>
+    <section class="work">
+      <h1>Experience</h1>
+      
+      <time>(ongoing)</time>
+      <p><span class="position">Open Source guy</span>
+        and jack-of-all-trades; creating and contributing
+        to various <span class="tech">Javascript, Ruby, CSS,
+        Python…</span> projects and experiments.</p>
+      <address>
+        <a href="https://github.com/passcod">github.com/passcod</a>
+      </address>
+      
+      <time>Feb-May 2012</time>
+      <p><span class="position">Front-end developer</span>
+        at a web startup; using <span class="tech">Ruby on
+        Rails</span> to build a self-help social networking
+        platform.</p>
+      <address>
+        <span class="company">
+          <a href="http://changery.com">Changery</a></span>,
+        Auckland
+      </address>
+
+      <time>2007 &ndash; 2011</time>
+      <p><span class="position">Webmaster</span> for a small
+        business; using <span class="tech">PHP &amp; Apache</span>
+        to implement and maintain a brochure website.</p>
+      <address>
+        <span class="company">
+          <a href="http://adventureforest.co.nz">Adventure Forest</a></span>,
+        Whangarei
+      </address>
+    </section>
+
+    <section class="edu">
+      <h1>Education</h1>
+
+      <time>2011-present</time>      
+      <p><span class="position">Computer Science major</span>
+        studying <span class="tech">algorithms, databases, and
+        formal logic</span> using <span class="tech">Java</span>.</p>
+      <address>
+        <span class="company">
+          <a href="http://aut.ac.nz">AUT</a></span>,
+        Auckland
+      </address>
+    </section>
+    <footer>
+      (also available as
+      <a href="https://passcod.net/cv/render-1112.pdf">PDF</a>
+      or
+      <a href="https://passcod.net/cv/render-1112.png">PNG</a>)
+    </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  </body>
+</html>
