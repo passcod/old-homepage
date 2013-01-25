@@ -4,7 +4,7 @@
   <title><![CDATA[⚔ passcod ⚔]]></title>
   <link href="http://passcod.net/atom.xml" rel="self"/>
   <link href="http://passcod.net/"/>
-  <updated>2013-01-15T16:46:22+13:00</updated>
+  <updated>2013-01-25T16:35:10+13:00</updated>
   <id>http://passcod.net/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -12,6 +12,183 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[My Expectations as a Developer]]></title>
+    <link href="http://passcod.net/2013/03/01/my-expectations-as-a-developer.html"/>
+    <updated>2013-03-01T01:03:00+13:00</updated>
+    <id>http://passcod.net/2013/03/01/my-expectations-as-a-developer</id>
+    <content type="html"><![CDATA[<p>A part of my personal philosophy, a guiding principle of sorts,
+if you will, is “don’t expect anything (thus anything good that
+happens is bonus).” This is a perfectly good and valid principle,
+and I have to say it feels pretty sweet— until you realise life
+is better <em>with</em> expectations.</p>
+
+<p>My expectations as a working man come to two simple things: get
+paid enough to live comfortably, and not have dicks as bosses.
+Fortunately, this tends to be pretty easy to find. My expectations
+as a developer are quite a lot more thorough. My expectations as
+a working developer must therefore be both of these, and maybe a
+little more.</p>
+
+<ul>
+<li><p>I expect to see your tech stack, and I expect you to be truthful
+about it. “Ruby” is not enough of a description. Do you mean RoR
+or an alternative full-stack framework or a micro-framework or a
+custom-coded, no frameworks-involved, thing? Similarly, saying
+you use “Language X and Framework Y version Z” when in fact 90%
+of your code is years-old-pasted-together-badly-architectured and
+the other 10% is a partial migration to Y v.Z, and my job will
+in fact be to help you maintain the whole and maybe convert it
+later on… which brings me to my next point:</p></li>
+<li><p>I expect you to tell me what I’m going to do and stick to it.
+If you hire me as a developer I expect to work as a developer,
+not as an “IT guy,” and I certainly do not expect to have to
+repair your crapware or set up firewall rules to prevent other
+employees from looking at Facebook during work. On the other
+hand, if I start behaving more like a sysadmin while I should
+be coding, tell me off. I’ll thank you in the long run.</p></li>
+<li><p>Finally, and this might be me being pedantic: <em>if you use four
+exclamation marks I’m going to laugh at you and move on</em>. There’s
+various levels of irritation I get into due to poor typography
+and copy, and it might seem puny, but it says something about
+you and without your other redeeming features on display I will
+judge you harshly. I do <em>not</em> expect you to know the difference
+between <a href="https://dash.passcod.net">an en dash and an em dash</a>, and using <a href="http://www.typographyforlawyers.com/?page_id=1701">double-hyphens
+instead</a> can be understandable, as well as <a href="https://twitter.com/LeaVerou/status/291333834904055809">curly quotes</a>,
+but misplace an apostrophe and you’re in for trouble.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[On the sides, really really alpha]]></title>
+    <link href="http://passcod.net/2013/01/25/on-the-sides.html"/>
+    <updated>2013-01-25T15:31:00+13:00</updated>
+    <id>http://passcod.net/2013/01/25/on-the-sides</id>
+    <content type="html"><![CDATA[<p>So, <a href="http://passcod.net/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">IFTTT sucks</a>. Turns out there&#8217;s a better IFTTT out there
+called <a href="https://zapier.com/">Zapier</a> that has a really easy to use developer interface.
+Hence, I created a Zapier service for <strong>On the sides</strong>. Due to my own
+UI not being great, though, you&#8217;ll have to fiddle around with cURL (or
+better, <a href="http://httpie.org/">httpie</a>, which is what I&#8217;ll be using below) to make it all
+work.</p>
+
+<h2>Pre-reqs</h2>
+
+<ul>
+<li><p>You&#8217;ll need a Zapier account. This takes about 20 seconds to create, email
+verification isn&#8217;t even necessary, and they&#8217;ve got a decent free plan.</p></li>
+<li><p>You&#8217;ll need to log in to <a href="https://login.persona.org/">Mozilla Persona</a>. You can actually do that
+later on when signing in to <strong>On the sides</strong>, but if emails take a bit of
+time to arrive you might want to do it now if you have never done it before.
+If you&#8217;re just playing around, use <code>some-word@mockmyid.com</code> instead when
+doing the Mozilla Persona thing (but only there!).</p></li>
+<li><p>You&#8217;ll need something to consume HTTP APIs with ease. I&#8217;ll use httpie, as
+mentioned above, or you can use cURL, or a JS console with jQuery.ajax or
+anything else that floats your boat. Whatever. It needs to be able to do
+GET and POST (with PUT and DELETE as bonuses), and set custom headers.</p></li>
+<li><p>You&#8217;ll need to know how to open the JS console. I won&#8217;t tell you how, just
+figure it out and if you can&#8217;t, well, you probably can&#8217;t do the rest anyway.</p></li>
+<li><p>You&#8217;ll need about 15 minutes. More if you&#8217;re slow. Less if you&#8217;re da baws.</p></li>
+</ul>
+
+
+<h2>On the sides AUTH</h2>
+
+<ol>
+<li><p>Go to http://box.thesid.es and press the “Login” button. Or the “Start” button.
+They do the same thing. If you can&#8217;t see anything but a jumble of weird text,
+click everywhere and you&#8217;ll eventually hit it.</p></li>
+<li><p>The Persona Login window will open. Follow the intructions.</p></li>
+<li><p>If successful, you should be left with quite a bit less text. Open a JS console
+or Firebug or whatever and enter:</p>
+
+<blockquote><blockquote><blockquote><p>localStorage.session</p></blockquote></blockquote></blockquote></li>
+<li><p>You should now have your session token. Open a terminal, and run this:</p>
+
+<p> $ export SESS=paste-your-session-token-here</p></li>
+</ol>
+
+
+<p>That will perform the double function of letting you easily access it for cURL or
+httpie and save it somewhere easy to access for future steps.</p>
+
+<h2>Create a job</h2>
+
+<ol>
+<li><p>Create a JS script to run on <strong>on the sides</strong>. Make it available somewhere
+on the web, like in a <a href="https://gist.github.com">Gist</a> or at some pastebin or in a text file on your
+server. It needs to be plain (not in an HTML thingimabob) and accessible with
+a simple GET. Redirection (301,302) is ok. You can use <a href="https://gist.github.com/raw/4516319">this example script</a>
+to start with or if you&#8217;re lazy.</p></li>
+<li><p>Register the job:</p>
+
+<p> $ http &#8211;form POST http://api.box.thesid.es/job/new X-Session:$SESS script=&#8221;http://example.com/script.js&#8221;</p></li>
+<li><p>That should give a nice 200 with something like this:</p>
+
+<p> {
+   &#8220;created_at&#8221;: &#8220;2013/01/08 15:03:47 +0000&#8221;,
+   &#8220;description&#8221;: &#8220;&#8221;,
+   &#8220;hit_url&#8221;: &#8220;&#8221;,
+   &#8220;id&#8221;: &#8220;712fd8ff8e294ccae40b25a71e68593e&#8221;,
+   &#8220;key&#8221;: &#8220;9a741e29cf49fa3a91a53e2c44de6b1c94048206&#8221;,
+   &#8220;script&#8221;: &#8220;http://example.com/script.js&#8221;
+ }</p></li>
+</ol>
+
+
+<h2>Zapier action</h2>
+
+<ol>
+<li><p>Log in to Zapier. Ask me to send you the invite email so you can access
+the <strong>On the sides</strong> service.</p></li>
+<li><p>Press the ‘Create a New Zap’ button.</p></li>
+<li><p>Select a trigger (personally I find that GTalk is a good try/debug trigger).</p></li>
+<li><p>Search for “on” and drag “On the sides” to the action box.</p></li>
+<li><p>You&#8217;ll need to “Add your On the sides Account”. This requires a <code>session</code>
+and <code>key</code> field. The <code>session</code> one is the value stored in <code>$SESS</code> above. The
+<code>key</code> one is the one from the JSON you got when creating a job. You can also
+get it back using:</p>
+
+<p> $ http GET api.box.thesid.es/me X-Session:$SESS</p></li>
+<li><p>At the next step, you&#8217;ll need the “Job ID”, which you got when creating the job
+above, and can also get back using:</p>
+
+<p> $ http GET api.box.thesid.es/jobs X-Session:$SESS</p></li>
+<li><p>Skip the rest and just Enable the Zap at the bottom of the page.</p></li>
+</ol>
+
+
+<h2>Zapier trigger</h2>
+
+<ol>
+<li><p>Create a New Zap again.</p></li>
+<li><p>Select an action. Something like GTalk works.</p></li>
+<li><p>Select <strong>On the sides</strong> as trigger.</p></li>
+<li><p>You&#8217;ll need to enter the same Job ID as before.</p></li>
+<li><p>If you&#8217;re using GTalk as action, you&#8217;ll probably want to set the message to
+something like:</p>
+
+<p>  Job  has finished.</p></li>
+<li><p>Enable it.</p></li>
+</ol>
+
+
+<h2>Test it!</h2>
+
+<p>(Hopefully I haven&#8217;t forgotten anything and it works.)</p>
+
+<p>Now you can trigger the job (using GTalk: just send a message to the zapbot).
+When the job finishes, your action will be called (using GTalk: you&#8217;ll receive
+a message). Currently there&#8217;s no way to give data to a job nor get data back
+from it automatically, but it should be a good demo.</p>
+
+<h2>Play around</h2>
+
+<p>Get out in the sun once in a while, though.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Having the Source lets one remake and derive]]></title>

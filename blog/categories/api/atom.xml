@@ -4,7 +4,7 @@
   <title><![CDATA[Category: api | ⚔ passcod ⚔]]></title>
   <link href="http://passcod.net/blog/categories/api/atom.xml" rel="self"/>
   <link href="http://passcod.net/"/>
-  <updated>2013-01-25T16:27:45+13:00</updated>
+  <updated>2013-01-25T16:35:10+13:00</updated>
   <id>http://passcod.net/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[On the sides: really really alpha]]></title>
+    <title type="html"><![CDATA[On the sides, really really alpha]]></title>
     <link href="http://passcod.net/2013/01/25/on-the-sides.html"/>
     <updated>2013-01-25T15:31:00+13:00</updated>
     <id>http://passcod.net/2013/01/25/on-the-sides</id>
@@ -53,23 +53,14 @@ They do the same thing. If you can't see anything but a jumble of weird text,
 click everywhere and you'll eventually hit it.</p></li>
 <li><p>The Persona Login window will open. Follow the intructions.</p></li>
 <li><p>If successful, you should be left with quite a bit less text. Open a JS console
-or Firebug or whatever and enter:</p></li>
+or Firebug or whatever and enter:</p>
+
+<blockquote><blockquote><blockquote><p>localStorage.session</p></blockquote></blockquote></blockquote></li>
+<li><p>You should now have your session token. Open a terminal, and run this:</p>
+
+<p> $ export SESS=paste-your-session-token-here</p></li>
 </ol>
 
-
-<p>```javascript</p>
-
-<blockquote><blockquote><blockquote><p>localStorage.session
-```</p></blockquote></blockquote></blockquote>
-
-<ol>
-<li>You should now have your session token. Open a terminal, and run this:</li>
-</ol>
-
-
-<p><code>shell
-$ export SESS=paste-your-session-token-here
-</code></p>
 
 <p>That will perform the double function of letting you easily access it for cURL or
 httpie and save it somewhere easy to access for future steps.</p>
@@ -82,32 +73,21 @@ on the web, like in a <a href="https://gist.github.com">Gist</a> or at some past
 server. It needs to be plain (not in an HTML thingimabob) and accessible with
 a simple GET. Redirection (301,302) is ok. You can use <a href="https://gist.github.com/raw/4516319">this example script</a>
 to start with or if you're lazy.</p></li>
-<li><p>Register the job:</p></li>
+<li><p>Register the job:</p>
+
+<p> $ http --form POST http://api.box.thesid.es/job/new X-Session:$SESS script="http://example.com/script.js"</p></li>
+<li><p>That should give a nice 200 with something like this:</p>
+
+<p> {
+   "created_at": "2013/01/08 15:03:47 +0000",
+   "description": "",
+   "hit_url": "",
+   "id": "712fd8ff8e294ccae40b25a71e68593e",
+   "key": "9a741e29cf49fa3a91a53e2c44de6b1c94048206",
+   "script": "http://example.com/script.js"
+ }</p></li>
 </ol>
 
-
-<p><code>shell
-$ http --form POST http://api.box.thesid.es/job/new X-Session:$SESS script="http://example.com/script.js"
-</code></p>
-
-<ol>
-<li>That should give a nice 200 with something like this:</li>
-</ol>
-
-
-<p>```json
-{</p>
-
-<pre><code>"created_at": "2013/01/08 15:03:47 +0000",
-"description": "",
-"hit_url": "",
-"id": "712fd8ff8e294ccae40b25a71e68593e",
-"key": "9a741e29cf49fa3a91a53e2c44de6b1c94048206",
-"script": "http://example.com/script.js"
-</code></pre>
-
-<p>}
-```</p>
 
 <h2>Zapier action</h2>
 
@@ -122,19 +102,11 @@ and <code>key</code> field. The <code>session</code> one is the value stored in 
 <code>key</code> one is the one from the JSON you got when creating a job. You can also
 get it back using:</p>
 
-<p><code>shell
-$ http GET api.box.thesid.es/me X-Session:$SESS
-</code></p>
-
-<p>(It'll be the <code>primary_key</code> value.)</p></li>
+<p> $ http GET api.box.thesid.es/me X-Session:$SESS</p></li>
 <li><p>At the next step, you'll need the “Job ID”, which you got when creating the job
 above, and can also get back using:</p>
 
-<p><code>shell
-$ http GET api.box.thesid.es/jobs X-Session:$SESS
-</code></p>
-
-<p>(It'll be the <code>id</code> or <code>job_id</code> value.)</p></li>
+<p> $ http GET api.box.thesid.es/jobs X-Session:$SESS</p></li>
 <li><p>Skip the rest and just Enable the Zap at the bottom of the page.</p></li>
 </ol>
 
@@ -147,16 +119,10 @@ $ http GET api.box.thesid.es/jobs X-Session:$SESS
 <li><p>Select <strong>On the sides</strong> as trigger.</p></li>
 <li><p>You'll need to enter the same Job ID as before.</p></li>
 <li><p>If you're using GTalk as action, you'll probably want to set the message to
-something like:</p></li>
-</ol>
+something like:</p>
 
-
-<p><code>text
-Job {{id}} has finished.
-</code></p>
-
-<ol>
-<li>Enable it.</li>
+<p>  Job  has finished.</p></li>
+<li><p>Enable it.</p></li>
 </ol>
 
 
