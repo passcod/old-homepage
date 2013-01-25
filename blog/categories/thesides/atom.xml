@@ -4,7 +4,7 @@
   <title><![CDATA[Category: thesides | ⚔ passcod ⚔]]></title>
   <link href="http://passcod.net/blog/categories/thesides/atom.xml" rel="self"/>
   <link href="http://passcod.net/"/>
-  <updated>2013-01-25T16:43:08+13:00</updated>
+  <updated>2013-01-25T16:45:03+13:00</updated>
   <id>http://passcod.net/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -60,19 +60,19 @@ or Firebug or whatever and enter:</p></li>
 </ol>
 
 
-<p>``` javascript ~Console~</p>
+<p>  ``` javascript ~Console~</p>
 
 <blockquote><blockquote><blockquote><p>localStorage.session
-```</p></blockquote></blockquote></blockquote>
+  ```</p></blockquote></blockquote></blockquote>
 
 <ol>
 <li>You should now have your session token. Open a terminal, and run this:</li>
 </ol>
 
 
-<p><code>bash ~Terminal~
-$ export SESS=paste-your-session-token-here
-</code></p>
+<p>  <code>bash ~Terminal~
+  $ export SESS=paste-your-session-token-here
+ </code></p>
 
 <p>That will perform the double function of letting you easily access it for cURL or
 httpie and save it somewhere easy to access for future steps.</p>
@@ -89,16 +89,16 @@ to start with or if you're lazy.</p></li>
 </ol>
 
 
-<p><code>bash ~Terminal~
-$ http --form POST http://api.box.thesid.es/job/new X-Session:$SESS script="http://example.com/script.js"
-</code></p>
+<p>  <code>bash ~Terminal~
+  $ http --form POST http://api.box.thesid.es/job/new X-Session:$SESS script="http://example.com/script.js"
+ </code></p>
 
 <ol>
 <li>That should give a nice 200 with something like this:</li>
 </ol>
 
 
-<p>``` json ~Response~</p>
+<p>  ``` json ~Response~</p>
 
 <pre><code>{
   "created_at": "2013/01/08 15:03:47 +0000",
@@ -110,7 +110,7 @@ $ http --form POST http://api.box.thesid.es/job/new X-Session:$SESS script="http
 }
 </code></pre>
 
-<p>```</p>
+<p>  ```</p>
 
 <h2>Zapier action</h2>
 
@@ -127,9 +127,9 @@ get it back using:</p></li>
 </ol>
 
 
-<p><code>bash ~Terminal~
-$ http GET api.box.thesid.es/me X-Session:$SESS
-</code></p>
+<p>  <code>bash ~Terminal~
+  $ http GET api.box.thesid.es/me X-Session:$SESS
+ </code></p>
 
 <ol>
 <li>At the next step, you'll need the “Job ID”, which you got when creating the job
@@ -137,9 +137,9 @@ above, and can also get back using:</li>
 </ol>
 
 
-<p><code>bash ~Terminal~
-$ http GET api.box.thesid.es/jobs X-Session:$SESS
-</code></p>
+<p>  <code>bash ~Terminal~
+  $ http GET api.box.thesid.es/jobs X-Session:$SESS
+ </code></p>
 
 <ol>
 <li>Skip the rest and just Enable the Zap at the bottom of the page.</li>
@@ -158,9 +158,9 @@ something like:</p></li>
 </ol>
 
 
-<p><code>plain Message
-Job  has finished.
-</code></p>
+<p>  <code>plain Message
+  Job  has finished.
+ </code></p>
 
 <ol>
 <li>Enable it.</li>
