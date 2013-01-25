@@ -123,6 +123,9 @@ figure it out and if you can&#8217;t, well, you probably can&#8217;t do the rest
 </ul>
 
 
+<!-- more -->
+
+
 <h2>On the sides AUTH</h2>
 
 <ol>
@@ -131,13 +134,23 @@ They do the same thing. If you can&#8217;t see anything but a jumble of weird te
 click everywhere and you&#8217;ll eventually hit it.</p></li>
 <li><p>The Persona Login window will open. Follow the intructions.</p></li>
 <li><p>If successful, you should be left with quite a bit less text. Open a JS console
-or Firebug or whatever and enter:</p>
-
-<blockquote><blockquote><blockquote><p>localStorage.session</p></blockquote></blockquote></blockquote></li>
-<li><p>You should now have your session token. Open a terminal, and run this:</p>
-
-<p> $ export SESS=paste-your-session-token-here</p></li>
+or Firebug or whatever and enter:</p></li>
 </ol>
+
+
+<figure class='code'><figcaption><span>~Console~</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nx">localStorage</span><span class="p">.</span><span class="nx">session</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>You should now have your session token. Open a terminal, and run this:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span>~Terminal~</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">SESS</span><span class="o">=</span>paste-your-session-token-here
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>That will perform the double function of letting you easily access it for cURL or
@@ -151,20 +164,37 @@ on the web, like in a <a href="https://gist.github.com">Gist</a> or at some past
 server. It needs to be plain (not in an HTML thingimabob) and accessible with
 a simple GET. Redirection (301,302) is ok. You can use <a href="https://gist.github.com/raw/4516319">this example script</a>
 to start with or if you&#8217;re lazy.</p></li>
-<li><p>Register the job:</p>
-
-<p> $ http &#8211;form POST http://api.box.thesid.es/job/new X-Session:$SESS script=&#8221;http://example.com/script.js&#8221;</p></li>
-<li><p>That should give a nice 200 with something like this:</p>
-
-<p> {
-   &#8220;created_at&#8221;: &#8220;2013/01/08 15:03:47 +0000&#8221;,
-   &#8220;description&#8221;: &#8220;&#8221;,
-   &#8220;hit_url&#8221;: &#8220;&#8221;,
-   &#8220;id&#8221;: &#8220;712fd8ff8e294ccae40b25a71e68593e&#8221;,
-   &#8220;key&#8221;: &#8220;9a741e29cf49fa3a91a53e2c44de6b1c94048206&#8221;,
-   &#8220;script&#8221;: &#8220;http://example.com/script.js&#8221;
- }</p></li>
+<li><p>Register the job:</p></li>
 </ol>
+
+
+<figure class='code'><figcaption><span>~Terminal~</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>http --form POST http://api.box.thesid.es/job/new X-Session:<span class="nv">$SESS</span> <span class="nv">script</span><span class="o">=</span><span class="s2">&quot;http://example.com/script.js&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>That should give a nice 200 with something like this:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span>~Response~</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nt">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2013/01/08 15:03:47 +0000&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;hit_url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;712fd8ff8e294ccae40b25a71e68593e&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;9a741e29cf49fa3a91a53e2c44de6b1c94048206&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;script&quot;</span><span class="p">:</span> <span class="s2">&quot;http://example.com/script.js&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Zapier action</h2>
@@ -178,14 +208,28 @@ the <strong>On the sides</strong> service.</p></li>
 <li><p>You&#8217;ll need to “Add your On the sides Account”. This requires a <code>session</code>
 and <code>key</code> field. The <code>session</code> one is the value stored in <code>$SESS</code> above. The
 <code>key</code> one is the one from the JSON you got when creating a job. You can also
-get it back using:</p>
+get it back using:</p></li>
+</ol>
 
-<p> $ http GET api.box.thesid.es/me X-Session:$SESS</p></li>
-<li><p>At the next step, you&#8217;ll need the “Job ID”, which you got when creating the job
-above, and can also get back using:</p>
 
-<p> $ http GET api.box.thesid.es/jobs X-Session:$SESS</p></li>
-<li><p>Skip the rest and just Enable the Zap at the bottom of the page.</p></li>
+<figure class='code'><figcaption><span>~Terminal~</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>http GET api.box.thesid.es/me X-Session:<span class="nv">$SESS</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>At the next step, you&#8217;ll need the “Job ID”, which you got when creating the job
+above, and can also get back using:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span>~Terminal~</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>http GET api.box.thesid.es/jobs X-Session:<span class="nv">$SESS</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Skip the rest and just Enable the Zap at the bottom of the page.</li>
 </ol>
 
 
@@ -197,10 +241,16 @@ above, and can also get back using:</p>
 <li><p>Select <strong>On the sides</strong> as trigger.</p></li>
 <li><p>You&#8217;ll need to enter the same Job ID as before.</p></li>
 <li><p>If you&#8217;re using GTalk as action, you&#8217;ll probably want to set the message to
-something like:</p>
+something like:</p></li>
+</ol>
 
-<p>  Job  has finished.</p></li>
-<li><p>Enable it.</p></li>
+
+<figure class='code'><figcaption><span>Message</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Job  has finished.</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Enable it.</li>
 </ol>
 
 
