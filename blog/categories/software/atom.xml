@@ -4,7 +4,7 @@
   <title><![CDATA[Category: software | ⚔ passcod ⚔]]></title>
   <link href="http://passcod.net/blog/categories/software/atom.xml" rel="self"/>
   <link href="http://passcod.net/"/>
-  <updated>2013-01-25T16:35:10+13:00</updated>
+  <updated>2013-01-25T16:36:06+13:00</updated>
   <id>http://passcod.net/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -12,55 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[My Expectations as a Developer]]></title>
-    <link href="http://passcod.net/2013/03/01/my-expectations-as-a-developer.html"/>
-    <updated>2013-03-01T01:03:00+13:00</updated>
-    <id>http://passcod.net/2013/03/01/my-expectations-as-a-developer</id>
-    <content type="html"><![CDATA[<p>A part of my personal philosophy, a guiding principle of sorts,
-if you will, is “don’t expect anything (thus anything good that
-happens is bonus).” This is a perfectly good and valid principle,
-and I have to say it feels pretty sweet— until you realise life
-is better <em>with</em> expectations.</p>
-
-<p>My expectations as a working man come to two simple things: get
-paid enough to live comfortably, and not have dicks as bosses.
-Fortunately, this tends to be pretty easy to find. My expectations
-as a developer are quite a lot more thorough. My expectations as
-a working developer must therefore be both of these, and maybe a
-little more.</p>
-
-<ul>
-<li><p>I expect to see your tech stack, and I expect you to be truthful
-about it. “Ruby” is not enough of a description. Do you mean RoR
-or an alternative full-stack framework or a micro-framework or a
-custom-coded, no frameworks-involved, thing? Similarly, saying
-you use “Language X and Framework Y version Z” when in fact 90%
-of your code is years-old-pasted-together-badly-architectured and
-the other 10% is a partial migration to Y v.Z, and my job will
-in fact be to help you maintain the whole and maybe convert it
-later on… which brings me to my next point:</p></li>
-<li><p>I expect you to tell me what I’m going to do and stick to it.
-If you hire me as a developer I expect to work as a developer,
-not as an “IT guy,” and I certainly do not expect to have to
-repair your crapware or set up firewall rules to prevent other
-employees from looking at Facebook during work. On the other
-hand, if I start behaving more like a sysadmin while I should
-be coding, tell me off. I’ll thank you in the long run.</p></li>
-<li><p>Finally, and this might be me being pedantic: <em>if you use four
-exclamation marks I’m going to laugh at you and move on</em>. There’s
-various levels of irritation I get into due to poor typography
-and copy, and it might seem puny, but it says something about
-you and without your other redeeming features on display I will
-judge you harshly. I do <em>not</em> expect you to know the difference
-between <a href="https://dash.passcod.net">an en dash and an em dash</a>, and using <a href="http://www.typographyforlawyers.com/?page_id=1701">double-hyphens
-instead</a> can be understandable, as well as <a href="https://twitter.com/LeaVerou/status/291333834904055809">curly quotes</a>,
-but misplace an apostrophe and you’re in for trouble.</p></li>
-</ul>
-
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[On the sides, really really alpha]]></title>
@@ -360,6 +311,54 @@ headaches. Your pick.</p>
 <p>This isn't perfect. I consider the software stable as of version 1.0.1, but the
 protocol and implementation details were thought up mostly on the spot. It might
 have weird breakage and it might not be too efficient. Early stuff! :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The 80/20 Rule]]></title>
+    <link href="http://passcod.net/2012/07/25/the-80-slash-20-rule.html"/>
+    <updated>2012-07-25T07:14:00+12:00</updated>
+    <id>http://passcod.net/2012/07/25/the-80-slash-20-rule</id>
+    <content type="html"><![CDATA[<p><em>Original on <a href="http://gist.io/3170138">Gist.IO</a></em></p>
+
+<blockquote><p>I've been saying that to friends, family, and colleagues for a while now,
+and I think maybe I should just write it down and refer to it instead of
+rehashing it every time. In the last few dozen explanations, it hasn't
+actually changed, so I think it's pretty stable. Of course, the community
+will have something to say, and that's expected!</p></blockquote>
+
+<p>There are more or less seven states to a new (software) project:</p>
+
+<ol>
+<li><strong>Figment</strong>. That's when it's just an idea, and maybe you've written
+something down on a paper napkin, or discussed it over coffee with a friend.</li>
+<li><strong>Planning</strong>. You're actually putting more thought into it, doing the initial
+research, hopefully consolidating the idea into something manageable.</li>
+<li><strong>Prototype</strong>. Not necessarily code. Sometimes a prototype can just be rectangles
+of paper under magnets on a whiteboard, and a few arrows here and there to represent
+dynamics. Also known (in the case of code) as <strong>pre-alpha</strong>.</li>
+<li><strong>Alpha</strong>. Finally! Code. You've probably pulled a directory structure out of thin air
+and the code doesn't actually do anything remotely productive yet.</li>
+<li><strong>Beta</strong>. The project has most of its original main features completed, even though
+there's still a lot of bugs. You've taken features out of the codebase and told yourself
+you'll implement them later.</li>
+<li><strong>Stable</strong>. The project has gotten enough XP and evolves into a product. There's still
+bugs and quirks, but the main features are there and you can finally release it to the
+wider public (although if you're open-source, this is more likely to happen on 4 or 5).</li>
+<li><strong>Future</strong>. This is rumored to be the hardest part of the journey. This has two parts:
+provide support for the now-released product, and continue development on new &amp; more
+advanced features.</li>
+</ol>
+
+
+<p>These are general states. You might find that 1-3 can be collapsed, or that there's a bunch
+of extras in-between 6 and 7. You might also not agree on some of the descriptions I've given.
+That's fine. What's important is the actual rule:</p>
+
+<h3>When going from one state to the other, there is an 80% loss rate.</h3>
+
+<p>In other words, for every 1000 things I've thought of, 200 got to be planned, 40 were prototyped,
+8 made it to alpha, and 1.6 got to beta. I've had exactly one project reach state 7, and it's discontinued.</p>
 ]]></content>
   </entry>
   

@@ -9,9 +9,9 @@
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="A part of my personal philosophy, a guiding principle of sorts,
-if you will, is “don’t expect anything (thus anything good that
-happens is bonus).” &hellip;">
+  <meta name="description" content="So, IFTTT sucks. Turns out there&#8217;s a better IFTTT out there
+called Zapier that has a really easy to use developer interface.
+Hence, I created a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,84 +68,6 @@ happens is bonus).” &hellip;">
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/03/01/my-expectations-as-a-developer.html">My Expectations as a Developer</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2013-03-01T01:03:00+13:00" datetime="2013-03-01T01:03:00+13:00" pubdate data-updated="true">2013·09·5 ⚔ Friday</time>
-        
-         | <a href="/2013/03/01/my-expectations-as-a-developer.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A part of my personal philosophy, a guiding principle of sorts,
-if you will, is “don’t expect anything (thus anything good that
-happens is bonus).” This is a perfectly good and valid principle,
-and I have to say it feels pretty sweet— until you realise life
-is better <em>with</em> expectations.</p>
-
-<p>My expectations as a working man come to two simple things: get
-paid enough to live comfortably, and not have dicks as bosses.
-Fortunately, this tends to be pretty easy to find. My expectations
-as a developer are quite a lot more thorough. My expectations as
-a working developer must therefore be both of these, and maybe a
-little more.</p>
-
-<ul>
-<li><p>I expect to see your tech stack, and I expect you to be truthful
-about it. “Ruby” is not enough of a description. Do you mean RoR
-or an alternative full-stack framework or a micro-framework or a
-custom-coded, no frameworks-involved, thing? Similarly, saying
-you use “Language X and Framework Y version Z” when in fact 90%
-of your code is years-old-pasted-together-badly-architectured and
-the other 10% is a partial migration to Y v.Z, and my job will
-in fact be to help you maintain the whole and maybe convert it
-later on… which brings me to my next point:</p></li>
-<li><p>I expect you to tell me what I’m going to do and stick to it.
-If you hire me as a developer I expect to work as a developer,
-not as an “IT guy,” and I certainly do not expect to have to
-repair your crapware or set up firewall rules to prevent other
-employees from looking at Facebook during work. On the other
-hand, if I start behaving more like a sysadmin while I should
-be coding, tell me off. I’ll thank you in the long run.</p></li>
-<li><p>Finally, and this might be me being pedantic: <em>if you use four
-exclamation marks I’m going to laugh at you and move on</em>. There’s
-various levels of irritation I get into due to poor typography
-and copy, and it might seem puny, but it says something about
-you and without your other redeeming features on display I will
-judge you harshly. I do <em>not</em> expect you to know the difference
-between <a href="https://dash.passcod.net">an en dash and an em dash</a>, and using <a href="http://www.typographyforlawyers.com/?page_id=1701">double-hyphens
-instead</a> can be understandable, as well as <a href="https://twitter.com/LeaVerou/status/291333834904055809">curly quotes</a>,
-but misplace an apostrophe and you’re in for trouble.</p></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -886,6 +808,74 @@ is frustrating.</p>
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/03/17/the-minimalist-date-format.html">The Minimalist Date Format</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2012-03-17T17:17:00+13:00" datetime="2012-03-17T17:17:00+13:00" pubdate data-updated="true">2012·11·6 ⚔ Saturday</time>
+        
+         | <a href="/2012/03/17/the-minimalist-date-format.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Original on <a href="http://checkthis.com/7qf4">Checkthis.com</a></em></p>
+
+<p>The Minimalist date format is a 5- or 7- digits number which represents a date (no time).
+It increases mathematically (i.e. you can compare whether a date precedes another by
+comparing if one number is smaller than the other), and it looks cryptic to the ignorant.</p>
+
+<p>It is made of (in that order):</p>
+
+<ol>
+<li>the 2- or 4- digit year,</li>
+<li>the 2-digit ISO week number, and</li>
+<li>the 1-digit ISO week day number.</li>
+</ol>
+
+
+<p>All these are zero padded, thus the resulting number is always 5 or 7 digits long.</p>
+
+<p>I use it in various places, including:</p>
+
+<ul>
+<li>Some version numbers</li>
+<li>Artwork</li>
+<li>Weechat</li>
+<li>Here</li>
+</ul>
+
+
+<p><img src="/images/blog/h3Ml1.png" alt="Weechat date/time" /></p>
+
+<p>Note: <em>Using strftime (from unix&#8217;s <code>date</code> or the C utility, and its incarnation in many other languages), that format
+can be expressed as <code>%Y%W%u</code>. Do not use <code>%w</code> with <code>%W</code>, it breaks the mathematical continuity.</em></p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -901,10 +891,6 @@ is frustrating.</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2013/03/01/my-expectations-as-a-developer.html">My Expectations as a Developer</a>
-      </li>
-    
-      <li class="post">
         <a href="/2013/01/25/on-the-sides.html">On the sides, really really alpha</a>
       </li>
     
@@ -918,6 +904,10 @@ is frustrating.</p>
     
       <li class="post">
         <a href="/2012/12/16/bullets-dump-for-imaku.html">Bullets dump for Imaku</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/05/ssl-enabled-passcod.html">SSL-enabled passcod</a>
       </li>
     
   </ul>
