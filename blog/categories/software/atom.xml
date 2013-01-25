@@ -4,7 +4,7 @@
   <title><![CDATA[Category: software | ⚔ passcod ⚔]]></title>
   <link href="http://passcod.net/blog/categories/software/atom.xml" rel="self"/>
   <link href="http://passcod.net/"/>
-  <updated>2013-01-15T16:46:22+13:00</updated>
+  <updated>2013-01-25T16:27:45+13:00</updated>
   <id>http://passcod.net/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -12,6 +12,217 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[My Expectations as a Developer]]></title>
+    <link href="http://passcod.net/2013/03/01/my-expectations-as-a-developer.html"/>
+    <updated>2013-03-01T01:03:00+13:00</updated>
+    <id>http://passcod.net/2013/03/01/my-expectations-as-a-developer</id>
+    <content type="html"><![CDATA[<p>A part of my personal philosophy, a guiding principle of sorts,
+if you will, is “don’t expect anything (thus anything good that
+happens is bonus).” This is a perfectly good and valid principle,
+and I have to say it feels pretty sweet— until you realise life
+is better <em>with</em> expectations.</p>
+
+<p>My expectations as a working man come to two simple things: get
+paid enough to live comfortably, and not have dicks as bosses.
+Fortunately, this tends to be pretty easy to find. My expectations
+as a developer are quite a lot more thorough. My expectations as
+a working developer must therefore be both of these, and maybe a
+little more.</p>
+
+<ul>
+<li><p>I expect to see your tech stack, and I expect you to be truthful
+about it. “Ruby” is not enough of a description. Do you mean RoR
+or an alternative full-stack framework or a micro-framework or a
+custom-coded, no frameworks-involved, thing? Similarly, saying
+you use “Language X and Framework Y version Z” when in fact 90%
+of your code is years-old-pasted-together-badly-architectured and
+the other 10% is a partial migration to Y v.Z, and my job will
+in fact be to help you maintain the whole and maybe convert it
+later on… which brings me to my next point:</p></li>
+<li><p>I expect you to tell me what I’m going to do and stick to it.
+If you hire me as a developer I expect to work as a developer,
+not as an “IT guy,” and I certainly do not expect to have to
+repair your crapware or set up firewall rules to prevent other
+employees from looking at Facebook during work. On the other
+hand, if I start behaving more like a sysadmin while I should
+be coding, tell me off. I’ll thank you in the long run.</p></li>
+<li><p>Finally, and this might be me being pedantic: <em>if you use four
+exclamation marks I’m going to laugh at you and move on</em>. There’s
+various levels of irritation I get into due to poor typography
+and copy, and it might seem puny, but it says something about
+you and without your other redeeming features on display I will
+judge you harshly. I do <em>not</em> expect you to know the difference
+between <a href="https://dash.passcod.net">an en dash and an em dash</a>, and using <a href="http://www.typographyforlawyers.com/?page_id=1701">double-hyphens
+instead</a> can be understandable, as well as <a href="https://twitter.com/LeaVerou/status/291333834904055809">curly quotes</a>,
+but misplace an apostrophe and you’re in for trouble.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[On the sides: really really alpha]]></title>
+    <link href="http://passcod.net/2013/01/25/on-the-sides.html"/>
+    <updated>2013-01-25T15:31:00+13:00</updated>
+    <id>http://passcod.net/2013/01/25/on-the-sides</id>
+    <content type="html"><![CDATA[<p>So, <a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">IFTTT sucks</a>. Turns out there's a better IFTTT out there
+called <a href="https://zapier.com/">Zapier</a> that has a really easy to use developer interface.
+Hence, I created a Zapier service for <strong>On the sides</strong>. Due to my own
+UI not being great, though, you'll have to fiddle around with cURL (or
+better, <a href="http://httpie.org/">httpie</a>, which is what I'll be using below) to make it all
+work.</p>
+
+<h2>Pre-reqs</h2>
+
+<ul>
+<li><p>You'll need a Zapier account. This takes about 20 seconds to create, email
+verification isn't even necessary, and they've got a decent free plan.</p></li>
+<li><p>You'll need to log in to <a href="https://login.persona.org/">Mozilla Persona</a>. You can actually do that
+later on when signing in to <strong>On the sides</strong>, but if emails take a bit of
+time to arrive you might want to do it now if you have never done it before.
+If you're just playing around, use <code>some-word@mockmyid.com</code> instead when
+doing the Mozilla Persona thing (but only there!).</p></li>
+<li><p>You'll need something to consume HTTP APIs with ease. I'll use httpie, as
+mentioned above, or you can use cURL, or a JS console with jQuery.ajax or
+anything else that floats your boat. Whatever. It needs to be able to do
+GET and POST (with PUT and DELETE as bonuses), and set custom headers.</p></li>
+<li><p>You'll need to know how to open the JS console. I won't tell you how, just
+figure it out and if you can't, well, you probably can't do the rest anyway.</p></li>
+<li><p>You'll need about 15 minutes. More if you're slow. Less if you're da baws.</p></li>
+</ul>
+
+
+<h2>On the sides AUTH</h2>
+
+<ol>
+<li><p>Go to http://box.thesid.es and press the “Login” button. Or the “Start” button.
+They do the same thing. If you can't see anything but a jumble of weird text,
+click everywhere and you'll eventually hit it.</p></li>
+<li><p>The Persona Login window will open. Follow the intructions.</p></li>
+<li><p>If successful, you should be left with quite a bit less text. Open a JS console
+or Firebug or whatever and enter:</p></li>
+</ol>
+
+
+<p>```javascript</p>
+
+<blockquote><blockquote><blockquote><p>localStorage.session
+```</p></blockquote></blockquote></blockquote>
+
+<ol>
+<li>You should now have your session token. Open a terminal, and run this:</li>
+</ol>
+
+
+<p><code>shell
+$ export SESS=paste-your-session-token-here
+</code></p>
+
+<p>That will perform the double function of letting you easily access it for cURL or
+httpie and save it somewhere easy to access for future steps.</p>
+
+<h2>Create a job</h2>
+
+<ol>
+<li><p>Create a JS script to run on <strong>on the sides</strong>. Make it available somewhere
+on the web, like in a <a href="https://gist.github.com">Gist</a> or at some pastebin or in a text file on your
+server. It needs to be plain (not in an HTML thingimabob) and accessible with
+a simple GET. Redirection (301,302) is ok. You can use <a href="https://gist.github.com/raw/4516319">this example script</a>
+to start with or if you're lazy.</p></li>
+<li><p>Register the job:</p></li>
+</ol>
+
+
+<p><code>shell
+$ http --form POST http://api.box.thesid.es/job/new X-Session:$SESS script="http://example.com/script.js"
+</code></p>
+
+<ol>
+<li>That should give a nice 200 with something like this:</li>
+</ol>
+
+
+<p>```json
+{</p>
+
+<pre><code>"created_at": "2013/01/08 15:03:47 +0000",
+"description": "",
+"hit_url": "",
+"id": "712fd8ff8e294ccae40b25a71e68593e",
+"key": "9a741e29cf49fa3a91a53e2c44de6b1c94048206",
+"script": "http://example.com/script.js"
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>Zapier action</h2>
+
+<ol>
+<li><p>Log in to Zapier. Ask me to send you the invite email so you can access
+the <strong>On the sides</strong> service.</p></li>
+<li><p>Press the ‘Create a New Zap’ button.</p></li>
+<li><p>Select a trigger (personally I find that GTalk is a good try/debug trigger).</p></li>
+<li><p>Search for “on” and drag “On the sides” to the action box.</p></li>
+<li><p>You'll need to “Add your On the sides Account”. This requires a <code>session</code>
+and <code>key</code> field. The <code>session</code> one is the value stored in <code>$SESS</code> above. The
+<code>key</code> one is the one from the JSON you got when creating a job. You can also
+get it back using:</p>
+
+<p><code>shell
+$ http GET api.box.thesid.es/me X-Session:$SESS
+</code></p>
+
+<p>(It'll be the <code>primary_key</code> value.)</p></li>
+<li><p>At the next step, you'll need the “Job ID”, which you got when creating the job
+above, and can also get back using:</p>
+
+<p><code>shell
+$ http GET api.box.thesid.es/jobs X-Session:$SESS
+</code></p>
+
+<p>(It'll be the <code>id</code> or <code>job_id</code> value.)</p></li>
+<li><p>Skip the rest and just Enable the Zap at the bottom of the page.</p></li>
+</ol>
+
+
+<h2>Zapier trigger</h2>
+
+<ol>
+<li><p>Create a New Zap again.</p></li>
+<li><p>Select an action. Something like GTalk works.</p></li>
+<li><p>Select <strong>On the sides</strong> as trigger.</p></li>
+<li><p>You'll need to enter the same Job ID as before.</p></li>
+<li><p>If you're using GTalk as action, you'll probably want to set the message to
+something like:</p></li>
+</ol>
+
+
+<p><code>text
+Job {{id}} has finished.
+</code></p>
+
+<ol>
+<li>Enable it.</li>
+</ol>
+
+
+<h2>Test it!</h2>
+
+<p>(Hopefully I haven't forgotten anything and it works.)</p>
+
+<p>Now you can trigger the job (using GTalk: just send a message to the zapbot).
+When the job finishes, your action will be called (using GTalk: you'll receive
+a message). Currently there's no way to give data to a job nor get data back
+from it automatically, but it should be a good demo.</p>
+
+<h2>Play around</h2>
+
+<p>Get out in the sun once in a while, though.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[On IFTTT not having an HTTP ‘this’ nor ‘that’]]></title>
@@ -183,498 +394,6 @@ headaches. Your pick.</p>
 <p>This isn't perfect. I consider the software stable as of version 1.0.1, but the
 protocol and implementation details were thought up mostly on the spot. It might
 have weird breakage and it might not be too efficient. Early stuff! :)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[The 80/20 Rule]]></title>
-    <link href="http://passcod.net/2012/07/25/the-80-slash-20-rule.html"/>
-    <updated>2012-07-25T07:14:00+12:00</updated>
-    <id>http://passcod.net/2012/07/25/the-80-slash-20-rule</id>
-    <content type="html"><![CDATA[<p><em>Original on <a href="http://gist.io/3170138">Gist.IO</a></em></p>
-
-<blockquote><p>I've been saying that to friends, family, and colleagues for a while now,
-and I think maybe I should just write it down and refer to it instead of
-rehashing it every time. In the last few dozen explanations, it hasn't
-actually changed, so I think it's pretty stable. Of course, the community
-will have something to say, and that's expected!</p></blockquote>
-
-<p>There are more or less seven states to a new (software) project:</p>
-
-<ol>
-<li><strong>Figment</strong>. That's when it's just an idea, and maybe you've written
-something down on a paper napkin, or discussed it over coffee with a friend.</li>
-<li><strong>Planning</strong>. You're actually putting more thought into it, doing the initial
-research, hopefully consolidating the idea into something manageable.</li>
-<li><strong>Prototype</strong>. Not necessarily code. Sometimes a prototype can just be rectangles
-of paper under magnets on a whiteboard, and a few arrows here and there to represent
-dynamics. Also known (in the case of code) as <strong>pre-alpha</strong>.</li>
-<li><strong>Alpha</strong>. Finally! Code. You've probably pulled a directory structure out of thin air
-and the code doesn't actually do anything remotely productive yet.</li>
-<li><strong>Beta</strong>. The project has most of its original main features completed, even though
-there's still a lot of bugs. You've taken features out of the codebase and told yourself
-you'll implement them later.</li>
-<li><strong>Stable</strong>. The project has gotten enough XP and evolves into a product. There's still
-bugs and quirks, but the main features are there and you can finally release it to the
-wider public (although if you're open-source, this is more likely to happen on 4 or 5).</li>
-<li><strong>Future</strong>. This is rumored to be the hardest part of the journey. This has two parts:
-provide support for the now-released product, and continue development on new &amp; more
-advanced features.</li>
-</ol>
-
-
-<p>These are general states. You might find that 1-3 can be collapsed, or that there's a bunch
-of extras in-between 6 and 7. You might also not agree on some of the descriptions I've given.
-That's fine. What's important is the actual rule:</p>
-
-<h3>When going from one state to the other, there is an 80% loss rate.</h3>
-
-<p>In other words, for every 1000 things I've thought of, 200 got to be planned, 40 were prototyped,
-8 made it to alpha, and 1.6 got to beta. I've had exactly one project reach state 7, and it's discontinued.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sprockets on Sinatra (&amp; Heroku)]]></title>
-    <link href="http://passcod.net/2012/06/03/sprockets-on-sinatra-and-heroku.html"/>
-    <updated>2012-06-03T00:00:00+12:00</updated>
-    <id>http://passcod.net/2012/06/03/sprockets-on-sinatra-and-heroku</id>
-    <content type="html"><![CDATA[<p><em>Original on <a href="http://checkthis.com/biye">Checkthis.com</a>.</em></p>
-
-<p>In the world of ruby, there exists this framework called Rails, which I'm
-sure you've heard about. I happen not to like it very much. One of the
-reasons is that I've read maybe 2% of Rails' code, whereas for most of the
-other gems I use this is more like 40%. With Rails, I rely on magic (and,
-yea, it's nice) and with the other stuff, I rely on my own knowledge. I
-prefer the latter.</p>
-
-<p>There's also that Rails is an MVC framework, which is best buds with
-ActiveRecord and is a pain to manage as soon as you separate them. If you
-don't want or need the MVC pattern, or ActiveRecord, you're in for trouble.
-If you are unfortunate enough to need a gem which is incompatible with a Rails
-component, even if said component is supposed to be optional, you have my sympathies.</p>
-
-<p>In the world of Ruby, there also exists a little wonder called Sinatra. Sinatra
-is just the dispatcher part of Rails, plus the templating, plus a few other nifty
-features, but done right. It's small, sharp, lean, and mean. And it does exactly as
-advertised, no more, no less. When building an application with Sinatra, you get to
-pick and choose. DataMapper vs. ActiveRecord vs. Sequel? A single line in the Gemfile.
-Not MVC? No problem. Custom directory structure? We wouldn't have it any other way.</p>
-
-<p>There's <strong>no magic</strong> in Sinatra (or just plain Rack, if that's your fancy). It's all
-<strong>just code</strong>. And chances are you'll have written or read a lot of it.
-<a href="http://wordpress.org/">Wordpress says code is poetry</a>, and I agree, but given that
-Wordpress is written in PHP, I feel that with ruby... <em>code is art</em>.</p>
-
-<p><img src="https://s3-eu-west-1.amazonaws.com/checkthis.com/asset/4fca9c0855a70a00030025d7/4fca9c0855a70a00030025d7-medium.png" alt="Code is art" /></p>
-
-<p>In the world of ruby, there happens to be another wonder called Sprockets. Sprockets
-is what powers Rails' 3.1+ asset pipeline. And therein lies the problem.</p>
-
-<p>Sprockets is an awesome tool, and adding it to a Rack application makes things even
-sparklier than pink unicorns. But it's relatively under-documented and Googling for
-solutions returns Rails-related stuff 99% of the time. Annoying. That's due to a little
-something called sprockets-rails, which takes sprockets, adds magic, and transforms it
-into the asset pipeline. Trying to use asset pipeline know-how with standalone Sprockets
-is frustrating.</p>
-
-<p>So how do you do it?</p>
-
-<!--more-->
-
-
-<p>``` ruby Gemfile
-source :rubygems
-ruby "1.9.3"</p>
-
-<p>gem "sinatra"</p>
-
-<p>group :app do
-  gem "haml"
-  gem "json"
-  gem "sprockets-helpers"
-end</p>
-
-<p>group :rackup do
-  gem "rack"
-  gem "unicorn"
-end</p>
-
-<p>group :assets do
-  gem "sprockets"
-  gem "sprockets-helpers"
-  gem "stylus"
-  gem "coffee-script"
-  gem "yui-compressor"
-  gem "uglifier"
-end</p>
-
-<p>group :development do
-  gem "heroku", require: false
-  gem "foreman", require: false
-  gem "shotgun", require: false
-  gem "thin", require: false
-  gem "rake", require: false
-end
-```</p>
-
-<p>First, you'll need most of these. You don't need <a href="http://unicorn.bogomips.org/">Unicorn</a>
-nor <a href="https://github.com/rtomayko/shotgun">Shotgun</a> nor <a href="http://learnboost.github.com/stylus/">Stylus</a>
-nor <a href="http://coffeescript.org/">CoffeeScript</a>, pick and choose these.</p>
-
-<p>Some gems are duplicated in groups. That's normal. I make use of Bundler's auto-require
-facility to keep code simple, and that happens.</p>
-
-<p>Finally, the ruby "1.9.3" declaration is a new feature in Bundler 1.2, so you might need
-to install the <code>--pre</code> version of the gem. I use 1.9.3, and I think some stuff breaks in
-1.9.2, so beware. If you really need 1.9.2, you'll need to fix these yourself. <em>(Note:
-no longer relevant.)</em></p>
-
-<p>``` ruby start.rb
-require 'bundler'
-Bundler.require :default, :app
-require './config/sprockets'</p>
-
-<p>configure do
-  set :production, ENV['RACK_ENV'] == 'production'
-  set :app_root, File.realdirpath('.')
-  set :assets, YourApp::Assets::Environment.get(settings.app_root, settings.production)</p>
-
-<p>  Sprockets::Helpers.configure do |config|</p>
-
-<pre><code>config.environment = settings.assets
-config.prefix      = '/assets'
-config.digest      = true
-config.public_path = settings.public_folder
-</code></pre>
-
-<p>  end
-end</p>
-
-<h1>...</h1>
-
-<p>```</p>
-
-<p>This is the Sinatra main app file. Some like to call it app.rb, I <del>don't</del> didn't
-like that because the app is much more than just this file.</p>
-
-<p>The top 2 first lines load everything in the <code>:app</code> and <code>:default</code>
-Gemfile groups. That includes Sinatra and sprocket-helpers. This file is mostly
-bootstrapping the live side of things, and I'll come back to it later.</p>
-
-<p>Most of the meat of the problem is contained in the "./config/sprockets" file
-we require at the top, which looks like this:</p>
-
-<p>``` ruby config/sprockets.rb
-require 'bundler'
-Bundler.require :default, :assets</p>
-
-<p>module YourApp
-  module Assets</p>
-
-<pre><code>class Environment
-  def self.get(root_path, preprocess = false)
-    assets = Sprockets::Environment.new root_path
-
-    # Application assets
-    assets.append_path 'assets/stylesheets'
-    assets.append_path 'assets/javascripts'
-
-    # Vendor assets
-    assets.append_path 'vendor/assets/stylesheets'
-    assets.append_path 'vendor/assets/javascripts'
-
-    Stylus.setup assets
-
-    if preprocess
-      assets.css_compressor = YUI.CssCompressor.new
-      assets.js_compressor = Uglifier.new
-    end
-
-    return assets
-  end
-end
-</code></pre>
-
-<p>  end
-end
-```</p>
-
-<p>Meat indeed, but pretty straightforward. That could actually just be a function,
-but I was too lazy to refactor it again after battling with it for hours. Or, it
-could be duck-typed. That could work too.</p>
-
-<p>There's a call to Stylus, there, if you want don't want Stylus and prefer Sass or
-Less, just remove that and modify the Gemfile appropriately.</p>
-
-<p>There's no lib/assets paths because I don't feel the need for them.</p>
-
-<p>The compressors have to be passed as instances. That's one of the differences with
-the Rails magic way, but it's no hassle.</p>
-
-<p>Going back to start.rb above, you'll see that we get the Sprockets environment,
-and set up the helpers, but never actually set up the serving of said assets.
-That's done in two ways:</p>
-
-<p>``` ruby config.ru
-require 'bundler'
-Bundler.require :default, :rackup</p>
-
-<p>if ENV['RACK_ENV'] == 'production'
-  require './config/sprockets'
-  assets = YourApp::Assets::Environment.get File.realdirpath('.')
-  map('/assets') { run assets.index }
-end</p>
-
-<p>require './start'
-map('/') { run Sinatra::Application }
-```</p>
-
-<p>Here we go. If we're in development (use <a href="http://ddollar.github.com/foreman/#RUNNING">the .env and Foreman</a>),
-run the live Sprockets server. Otherwise, don't. For production, we do this:</p>
-
-<p>``` ruby Rakefile
-require './config/sprockets'
-require './config/precompiler'
-require 'fileutils'
-require 'json'
-require 'yaml'</p>
-
-<p>namespace :assets do
-  root = File.realdirpath('.')</p>
-
-<p>  desc 'Precompile assets for production'
-  task :precompile => :clean do</p>
-
-<pre><code>assets = YourApp::Assets::Environment.get root, ENV['RACK_ENV'] == 'production'
-precompiler = YourApp::Assets::Compiler.new sprockets: assets, precompile: [ /\./ ]
-
-print 'Precompiling assets... '
-precompiler.compile
-puts 'DONE'
-
-print 'Generating asset manifests... '
-asset_list = {}
-assets.each_logical_path do |logical_path|
-  if asset = assets.find_asset(logical_path)
-    asset_list[logical_path] = '/assets/' + asset.digest_path
-  end
-end
-IO.write File.join(root, '/public/asset_manifest.json'), JSON.generate(asset_list)
-IO.write File.join(root, '/public/asset_manifest.js'), 'ASSETS='+JSON.generate(asset_list)
-IO.write File.join(root, '/public/asset_manifest.yml'), asset_list.to_yaml
-puts 'DONE'
-</code></pre>
-
-<p>  end</p>
-
-<p>  desc 'Clean assets folder'
-  task :clean do</p>
-
-<pre><code>print 'Destroying public/assets... '
-FileUtils.rm_rf File.join(root, '/public/assets')
-puts 'DONE'
-</code></pre>
-
-<p>  end
-end
-```</p>
-
-<p>The Rakefile takes care of the precompilation. This works with Heroku so long as the
-task is named <code>assets:precompile</code>, so we're covered there.</p>
-
-<p>I precompile everything, which might be too much, but adjust the Regexp as you want.
-And then we write the asset manifests. These are to do with a pretty bad caveat which
-I'll detail later. For now, we need to have a look the meat of the compiler,
-in "./config/precompiler":</p>
-
-<p>``` ruby config/precompiler.rb
-module YourApp
-  module Assets</p>
-
-<pre><code># Adapted from: https://github.com/stevehodgkiss/guard-sprockets2
-class Compiler
-  def initialize(options = {})
-    configure(options)
-    @target = Pathname.new(@assets_path)
-  end
-
-  def clean
-    FileUtils.rm_rf @assets_path, :secure =&gt; true
-  end
-
-  def compile
-    @sprockets.send(:expire_index!)
-    success = true
-    @precompile.each do |path|
-      @sprockets.each_logical_path do |logical_path|
-        next unless path_matches?(path, logical_path)
-
-        if asset = @sprockets.find_asset(logical_path)
-          success = compile_asset(asset)
-          break unless success
-        end
-      end
-    end
-    success
-  end
-
-  protected
-
-  def compile_asset(asset)
-    filename = @digest ? @target.join(asset.digest_path) : @target.join(asset.logical_path)
-
-    FileUtils.mkdir_p filename.dirname
-    asset.write_to(filename)
-    asset.write_to("#{filename}.gz") if @gz &amp;&amp; filename.to_s =~ /\.(css|js)$/
-    true
-  rescue =&gt; e
-    puts unless ENV["GUARD_ENV"] == "test"
-    UI.error e.message.gsub(/^Error: /, '')
-    false
-  end
-
-  def path_matches?(path, logical_path)
-    if path.is_a?(Regexp)
-      path.match(logical_path)
-    else
-      File.fnmatch(path.to_s, logical_path)
-    end
-  end
-
-  def configure(options)
-    @sprockets = options[:sprockets]
-    @assets_path = options[:assets_path]
-    @precompile = options[:precompile]
-    @digest = options[:digest]
-    @gz = options[:gz]
-    set_defaults
-  end
-
-  def set_defaults
-    if defined?(Rails)
-      @sprockets ||= Rails.application.assets
-      @assets_path ||= File.join(Rails.public_path, Rails.application.config.assets.prefix)
-      @precompile ||= Rails.application.config.assets.precompile
-    else
-      @assets_path ||= "#{Dir.pwd}/public/assets"
-      @precompile ||= [ /\w+\.(?!js|css).+/, /application.(css|js)$/ ]
-    end
-    @digest = true if @digest.nil?
-    @gz = true if @gz.nil?
-  end
-end
-</code></pre>
-
-<p>  end
-end
-```</p>
-
-<p>It's really just a straight copy-paste from the <a href="https://github.com/stevehodgkiss/guard-sprockets2">guard-sprockets2</a>
-code. See that compile function? That's where the code to make the asset manifests comes from.</p>
-
-<p>Speaking of which, when we're in development, we also need those manifests, so add this to your routes:</p>
-
-<p>``` ruby routes.rb</p>
-
-<h1>...</h1>
-
-<p>if !settings.production
-  get '/asset_manifest.:format' do</p>
-
-<pre><code>asset_list = {}
-settings.assets.each_logical_path do |logical_path|
-  if asset = settings.assets.find_asset(logical_path)
-    asset_list[logical_path] = '/assets/' + asset.digest_path
-end
-</code></pre>
-
-<p>  end</p>
-
-<p>  if params[:format] == 'json'</p>
-
-<pre><code>JSON.generate asset_list
-</code></pre>
-
-<p>  elsif params[:format] == 'yml'</p>
-
-<pre><code>asset_list.to_yaml
-</code></pre>
-
-<p>  else</p>
-
-<pre><code>'ASSETS='+JSON.generate(asset_list)
-</code></pre>
-
-<p>  end
-end</p>
-
-<h1>...</h1>
-
-<p>```</p>
-
-<p>And you should also set up your helpers:</p>
-
-<p>``` ruby helpers.rb
-helpers do
-  # ...</p>
-
-<p>  def meta_charset</p>
-
-<pre><code>'&lt;meta charset="UTF-8"&gt;'
-</code></pre>
-
-<p>  end</p>
-
-<p>  def stylesheet(s)</p>
-
-<pre><code>s = asset_path(s+'.css') unless s =~ /^(https?:\/)?\//
-"&lt;link rel=\"stylesheet\" href=\"#{s}\"&gt;"
-</code></pre>
-
-<p>  end</p>
-
-<p>  def javascript(s)</p>
-
-<pre><code>s = asset_path(s+'.js') unless s =~ /^(https?:\/)?\//
-"&lt;script src=\"#{s}\"&gt;&lt;/script&gt;"
-</code></pre>
-
-<p>  end</p>
-
-<p>  include Sprockets::Helpers
-end
-```</p>
-
-<h2>Caveats</h2>
-
-<p>There's two biggies here:</p>
-
-<ol>
-<li><p><strong>No image assets.</strong>
-I don't think that's too much bad, because unless you want to use automated
-sprite generation, you can safely relocate your images to public/ and fix your
-paths. Apart from that, you'll also have to say goodbye to Sprockets' cache-busting,
-but I'm sure you'll survive. Or find an alternative.</p></li>
-<li><p><strong>No asset_path helpers in assets</strong>
-Slightly more annoying, and the reason for the manifests. You can't use erb nor eco
-nor ejs, and therefore, you can't use asset_path helpers in assets. You still have
-them in your views, though.</p></li>
-</ol>
-
-
-<h2>The Code</h2>
-
-<p>The <em>original</em> code samples above were all images, and that was mostly intentional. It was
-so you couldn't copy-paste stuff. Learn, sheeple!</p>
-
-<p>More seriously, checkthis.com doesn't support code listings, so that was all I could do at
-the time. I had also provided a link to the original project of mine that implemented this,
-but I destroyed this a while back.</p>
-
-<p>For this reason, when I did the migration over to Octopress, I <em>manually copied and typed</em>
-all the code samples. Thus there might be typos, so if it doesn't work, look around. And don't
-forget to comment back so I can fix it here, too!</p>
 ]]></content>
   </entry>
   
