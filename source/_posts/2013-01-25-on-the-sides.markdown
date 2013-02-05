@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "On the sides: really really alpha"
+title: "On the sides, really really alpha"
 date: 2013-01-25 15:31
 comments: true
 categories:
@@ -45,6 +45,8 @@ figure it out and if you can't, well, you probably can't do the rest anyway.
 
 [4]: https://login.persona.org/
 
+<!-- more -->
+
 
 On the sides AUTH
 -----------------
@@ -57,16 +59,16 @@ click everywhere and you'll eventually hit it.
 
 3. If successful, you should be left with quite a bit less text. Open a JS console
 or Firebug or whatever and enter:
-
-```javascript
->>> localStorage.session
-```
+  
+  ``` javascript ~Console~
+  >>> localStorage.session
+  ```
 
 4. You should now have your session token. Open a terminal, and run this:
-
-```shell
-$ export SESS=paste-your-session-token-here
-```
+  
+  ``` bash ~Terminal~
+  $ export SESS=paste-your-session-token-here
+  ```
 
 That will perform the double function of letting you easily access it for cURL or
 httpie and save it somewhere easy to access for future steps.
@@ -83,22 +85,23 @@ to start with or if you're lazy.
 
 2. Register the job:
 
-```shell
-$ http --form POST http://api.box.thesid.es/job/new X-Session:$SESS script="http://example.com/script.js"
-```
+  ``` bash ~Terminal~
+  $ http --form POST http://api.box.thesid.es/job/new X-Session:$SESS script="http://example.com/script.js"
+  ```
 
 3. That should give a nice 200 with something like this:
 
-```json
-{
-    "created_at": "2013/01/08 15:03:47 +0000",
-    "description": "",
-    "hit_url": "",
-    "id": "712fd8ff8e294ccae40b25a71e68593e",
-    "key": "9a741e29cf49fa3a91a53e2c44de6b1c94048206",
-    "script": "http://example.com/script.js"
-}
-```
+
+  ``` json ~Response~
+    {
+      "created_at": "2013/01/08 15:03:47 +0000",
+      "description": "",
+      "hit_url": "",
+      "id": "712fd8ff8e294ccae40b25a71e68593e",
+      "key": "9a741e29cf49fa3a91a53e2c44de6b1c94048206",
+      "script": "http://example.com/script.js"
+    }
+  ```
 
 [5]: https://gist.github.com
 [6]: https://gist.github.com/raw/4516319
@@ -120,21 +123,17 @@ the __On the sides__ service.
    and `key` field. The `session` one is the value stored in `$SESS` above. The
    `key` one is the one from the JSON you got when creating a job. You can also
    get it back using:
-   
-   ```shell
-   $ http GET api.box.thesid.es/me X-Session:$SESS
-   ```
-   
-   (It'll be the `primary_key` value.)
+
+  ``` bash ~Terminal~
+  $ http GET api.box.thesid.es/me X-Session:$SESS
+  ```
 
 6. At the next step, you'll need the “Job ID”, which you got when creating the job
    above, and can also get back using:
-   
-   ```shell
-   $ http GET api.box.thesid.es/jobs X-Session:$SESS
-   ```
-   
-   (It'll be the `id` or `job_id` value.)
+
+  ``` bash ~Terminal~
+  $ http GET api.box.thesid.es/jobs X-Session:$SESS
+  ```
 
 7. Skip the rest and just Enable the Zap at the bottom of the page.
 
@@ -153,9 +152,9 @@ Zapier trigger
 5. If you're using GTalk as action, you'll probably want to set the message to
 something like:
 
-```text
-Job {{id}} has finished.
-```
+  ``` plain Message
+  Job {{id}} has finished.
+  ```
 
 6. Enable it.
 
