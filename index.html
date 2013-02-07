@@ -9,9 +9,9 @@
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="So, IFTTT sucks. Turns out there&#8217;s a better IFTTT out there
-called Zapier that has a really easy to use developer interface.
-Hence, I created a &hellip;">
+  <meta name="description" content="About 3 weeks ago I tried to reboot DynWorker, my library
+to “make web threading fun.” I wanted not only to take advantage
+of newer technology, but &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +68,135 @@ Hence, I created a &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/02/07/late-introduction-to-libworker-dot-js.html">Late Introduction to libworker.js</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2013-02-07T22:19:00+13:00" datetime="2013-02-07T22:19:00+13:00" pubdate data-updated="true">2013·06·4 ⚔ Thursday</time>
+        
+         | <a href="/2013/02/07/late-introduction-to-libworker-dot-js.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>About 3 weeks ago I tried to reboot <a href="https://passcod.name/DynWorker">DynWorker</a>, my library
+to “make web threading fun.” I wanted not only to take advantage
+of newer technology, but also to give it a good layer of fresh
+paint. I started by manually translating it all in CoffeeScript.</p>
+
+<p>And it was looking good! The straight conversion worked, so I made
+a tiny change and tried to use a data:URI to load the worker code.
+Which turned out to be impossible. I essentially wanted to take the
+entire library, stringify it, base64-encode it, and put it in a
+variable… preferably at run-time. Y’know, so I didn&#8217;t have to dupe
+my entire code in the source!</p>
+
+<p>One of the best (!) solutions I found went like this:</p>
+
+<figure class='code'><figcaption><span>JS in Coffee, ah-yup</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">var</span> <span class="nv">src = </span><span class="s">&quot;</span>
+</span><span class='line'><span class="s">(function () {</span>
+</span><span class='line'><span class="s">  ...</span>
+</span><span class='line'><span class="s">  do something</span>
+</span><span class='line'><span class="s">  ...</span>
+</span><span class='line'><span class="s">}())&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="vi">@DynWorker.src = </span><span class="s">&quot;data:text/javascript;base64,&quot;</span> <span class="o">+</span> <span class="nx">btoa</span> <span class="nx">src</span>
+</span><span class='line'><span class="nb">eval</span> <span class="nx">src</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Don’t do that, kids.</em></p>
+
+<p>Besides, I had looked at the list of features I had to test, the list
+of features I had thought of, the list of features I probably needed
+to implement, and daaamn, boy, ah wasn’ gonna be done with it sooner.
+So I tanked it.</p>
+
+<p>Instead, I created <a href="https://github.com/passcod/libworker.js">libworker.js</a>. DynWorker has a line in the readme
+saying it pretty low-level. That ain’t true no more. Libworker.js is to
+DynWorker what Assembly is to C++ : a completely different level.</p>
+
+<p>Here is the entirety of the source. You can take that and paste
+it in your console and it’ll work. Promise.</p>
+
+<figure class='code'><figcaption><span>libworker.min.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">b</span><span class="p">){</span>
+</span><span class='line'><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">b</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="nx">a</span><span class="o">=</span><span class="nb">String</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="mi">5</span><span class="o">&gt;</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="o">&amp;&amp;</span><span class="s2">&quot;eval:&quot;</span><span class="o">===</span><span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span><span class="k">return</span> <span class="nx">b</span><span class="p">.</span><span class="nb">eval</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">b</span><span class="p">,</span>
+</span><span class='line'><span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">5</span><span class="p">))});</span><span class="kd">function</span> <span class="nx">c</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="nx">metal</span><span class="o">=</span><span class="kc">null</span><span class="o">!=</span><span class="nx">a</span><span class="o">?</span><span class="nx">a</span><span class="o">:</span><span class="k">new</span> <span class="nx">Worker</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">src</span><span class="p">)}</span>
+</span><span class='line'><span class="nx">c</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">send</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="nx">metal</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="nx">a</span><span class="p">)};</span>
+</span><span class='line'><span class="nx">c</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nb">eval</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;eval:&quot;</span><span class="o">+</span><span class="nx">a</span><span class="p">)};</span>
+</span><span class='line'><span class="nx">c</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s1">&#39;data:text/javascript;base64,dmFyIGI7Yj10aGlzO&#39;</span><span class="o">+</span>
+</span><span class='line'><span class="s1">&#39;3RoaXMuYWRkRXZlbnRMaXN0ZW5lcigibWVzc2FnZSIsZnVuY3Rp&#39;</span><span class="o">+</span>
+</span><span class='line'><span class="s1">&#39;b24oYSl7YT1TdHJpbmcoYS5kYXRhKTtpZighKDU+YS5sZW5ndGg&#39;</span><span class="o">+</span>
+</span><span class='line'><span class="s1">&#39;pJiYiZXZhbDoiPT09YS5zbGljZSgwLDUpKXJldHVybiBiLmV2YW&#39;</span><span class="o">+</span>
+</span><span class='line'><span class="s1">&#39;wuY2FsbChiLGEuc2xpY2UoNSkpfSk7&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">b</span><span class="p">.</span><span class="nx">libworker</span><span class="o">=</span><span class="nx">c</span><span class="p">;</span>
+</span><span class='line'><span class="p">}(</span><span class="k">this</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>(It’s actually <a href="https://github.com/passcod/libworker.js/blob/master/libworker.coffee">written in CoffeeScript</a>, don’t you worry, this
+is not the source source, it’s not completely unmantainable. Although
+I actually “hand-compile” this thing.)</p>
+
+<p>If you can’t read minified JavaScript, there’s <a href="https://passcod.name/libworker.js">a page with examples</a>
+available, albeit quite short. I just can’t justify too many words on this
+little code!</p>
+
+<p>This library can be included directly in any project that needs to use
+WebWorkers, like <strong>Dyno.js</strong>, my upcoming Actor framework for browsers,
+for which there is little source available in very non-obvious places.<br/>
+You’ll just have to wait ;-)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -719,74 +848,6 @@ is frustrating.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/03/17/the-minimalist-date-format.html">The Minimalist Date Format</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2012-03-17T17:17:00+13:00" datetime="2012-03-17T17:17:00+13:00" pubdate data-updated="true">2012·11·6 ⚔ Saturday</time>
-        
-         | <a href="/2012/03/17/the-minimalist-date-format.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>Original on <a href="http://checkthis.com/7qf4">Checkthis.com</a></em></p>
-
-<p>The Minimalist date format is a 5- or 7- digits number which represents a date (no time).
-It increases mathematically (i.e. you can compare whether a date precedes another by
-comparing if one number is smaller than the other), and it looks cryptic to the ignorant.</p>
-
-<p>It is made of (in that order):</p>
-
-<ol>
-<li>the 2- or 4- digit year,</li>
-<li>the 2-digit ISO week number, and</li>
-<li>the 1-digit ISO week day number.</li>
-</ol>
-
-
-<p>All these are zero padded, thus the resulting number is always 5 or 7 digits long.</p>
-
-<p>I use it in various places, including:</p>
-
-<ul>
-<li>Some version numbers</li>
-<li>Artwork</li>
-<li>Weechat</li>
-<li>Here</li>
-</ul>
-
-
-<p><img src="/images/blog/h3Ml1.png" alt="Weechat date/time" /></p>
-
-<p>Note: <em>Using strftime (from unix&#8217;s <code>date</code> or the C utility, and its incarnation in many other languages), that format
-can be expressed as <code>%Y%W%u</code>. Do not use <code>%w</code> with <code>%W</code>, it breaks the mathematical continuity.</em></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -802,6 +863,10 @@ can be expressed as <code>%Y%W%u</code>. Do not use <code>%w</code> with <code>%
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/02/07/late-introduction-to-libworker-dot-js.html">Late introduction to libworker.js</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/25/on-the-sides.html">On the sides, really really alpha</a>
       </li>
     
@@ -815,10 +880,6 @@ can be expressed as <code>%Y%W%u</code>. Do not use <code>%w</code> with <code>%
     
       <li class="post">
         <a href="/2012/12/16/bullets-dump-for-imaku.html">Bullets dump for Imaku</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/05/ssl-enabled-passcod.html">SSL-enabled passcod</a>
       </li>
     
   </ul>

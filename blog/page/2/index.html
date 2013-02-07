@@ -9,9 +9,8 @@
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="Original on Checkthis.com Edit (12507): As mako yass pointed out, this already exists…
-in vim. Oh, and there&#8217;s also an Emacs mode
-that copies &hellip;">
+  <meta name="description" content="Original on Checkthis.com The Minimalist date format is a 5- or 7- digits number which represents a date (no time).
+It increases mathematically (i.e &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +67,74 @@ that copies &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/03/17/the-minimalist-date-format.html">The Minimalist Date Format</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2012-03-17T17:17:00+13:00" datetime="2012-03-17T17:17:00+13:00" pubdate data-updated="true">2012·11·6 ⚔ Saturday</time>
+        
+         | <a href="/2012/03/17/the-minimalist-date-format.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Original on <a href="http://checkthis.com/7qf4">Checkthis.com</a></em></p>
+
+<p>The Minimalist date format is a 5- or 7- digits number which represents a date (no time).
+It increases mathematically (i.e. you can compare whether a date precedes another by
+comparing if one number is smaller than the other), and it looks cryptic to the ignorant.</p>
+
+<p>It is made of (in that order):</p>
+
+<ol>
+<li>the 2- or 4- digit year,</li>
+<li>the 2-digit ISO week number, and</li>
+<li>the 1-digit ISO week day number.</li>
+</ol>
+
+
+<p>All these are zero padded, thus the resulting number is always 5 or 7 digits long.</p>
+
+<p>I use it in various places, including:</p>
+
+<ul>
+<li>Some version numbers</li>
+<li>Artwork</li>
+<li>Weechat</li>
+<li>Here</li>
+</ul>
+
+
+<p><img src="/images/blog/h3Ml1.png" alt="Weechat date/time" /></p>
+
+<p>Note: <em>Using strftime (from unix&#8217;s <code>date</code> or the C utility, and its incarnation in many other languages), that format
+can be expressed as <code>%Y%W%u</code>. Do not use <code>%w</code> with <code>%W</code>, it breaks the mathematical continuity.</em></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -153,6 +220,10 @@ mechanism, here&#8217;s what happens:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/02/07/late-introduction-to-libworker-dot-js.html">Late introduction to libworker.js</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/25/on-the-sides.html">On the sides, really really alpha</a>
       </li>
     
@@ -166,10 +237,6 @@ mechanism, here&#8217;s what happens:</p>
     
       <li class="post">
         <a href="/2012/12/16/bullets-dump-for-imaku.html">Bullets dump for Imaku</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/05/ssl-enabled-passcod.html">SSL-enabled passcod</a>
       </li>
     
   </ul>

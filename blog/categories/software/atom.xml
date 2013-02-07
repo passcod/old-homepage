@@ -4,7 +4,7 @@
   <title><![CDATA[Category: software | ⚔ passcod ⚔]]></title>
   <link href="http://passcod.net/blog/categories/software/atom.xml" rel="self"/>
   <link href="http://passcod.net/"/>
-  <updated>2013-02-05T20:56:17+13:00</updated>
+  <updated>2013-02-07T23:28:31+13:00</updated>
   <id>http://passcod.net/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Late introduction to libworker.js]]></title>
+    <link href="http://passcod.net/2013/02/07/late-introduction-to-libworker-dot-js.html"/>
+    <updated>2013-02-07T22:19:00+13:00</updated>
+    <id>http://passcod.net/2013/02/07/late-introduction-to-libworker-dot-js</id>
+    <content type="html"><![CDATA[<p>About 3 weeks ago I tried to reboot <a href="https://passcod.name/DynWorker">DynWorker</a>, my library
+to “make web threading fun.” I wanted not only to take advantage
+of newer technology, but also to give it a good layer of fresh
+paint. I started by manually translating it all in CoffeeScript.</p>
+
+<p>And it was looking good! The straight conversion worked, so I made
+a tiny change and tried to use a data:URI to load the worker code.
+Which turned out to be impossible. I essentially wanted to take the
+entire library, stringify it, base64-encode it, and put it in a
+variable… preferably at run-time. Y’know, so I didn't have to dupe
+my entire code in the source!</p>
+
+<p>One of the best (!) solutions I found went like this:</p>
+
+<p>``` coffeescript JS in Coffee, ah-yup
+var src = "
+(function () {
+  ...
+  do something
+  ...
+}())"</p>
+
+<p>@DynWorker.src = "data:text/javascript;base64," + btoa src
+eval src
+```</p>
+
+<p><em>Don’t do that, kids.</em></p>
+
+<p>Besides, I had looked at the list of features I had to test, the list
+of features I had thought of, the list of features I probably needed
+to implement, and daaamn, boy, ah wasn’ gonna be done with it sooner.
+So I tanked it.</p>
+
+<p>Instead, I created <a href="https://github.com/passcod/libworker.js">libworker.js</a>. DynWorker has a line in the readme
+saying it pretty low-level. That ain’t true no more. Libworker.js is to
+DynWorker what Assembly is to C++ : a completely different level.</p>
+
+<p>Here is the entirety of the source. You can take that and paste
+it in your console and it’ll work. Promise.</p>
+
+<p><code>javascript libworker.min.js
+(function(b){
+"use strict";
+b.addEventListener("message",function(a){a=String(a.data);
+if(!(5&gt;a.length)&amp;&amp;"eval:"===a.slice(0,5))return b.eval.call(b,
+a.slice(5))});function c(a){this.metal=null!=a?a:new Worker(c.src)}
+c.prototype.send=function(a){this.metal.postMessage(a)};
+c.prototype.eval=function(a){this.send("eval:"+a)};
+c.src='data:text/javascript;base64,dmFyIGI7Yj10aGlzO'+
+'3RoaXMuYWRkRXZlbnRMaXN0ZW5lcigibWVzc2FnZSIsZnVuY3Rp'+
+'b24oYSl7YT1TdHJpbmcoYS5kYXRhKTtpZighKDU+YS5sZW5ndGg'+
+'pJiYiZXZhbDoiPT09YS5zbGljZSgwLDUpKXJldHVybiBiLmV2YW'+
+'wuY2FsbChiLGEuc2xpY2UoNSkpfSk7';
+b.libworker=c;
+}(this));
+</code></p>
+
+<p>(It’s actually <a href="https://github.com/passcod/libworker.js/blob/master/libworker.coffee">written in CoffeeScript</a>, don’t you worry, this
+is not the source source, it’s not completely unmantainable. Although
+I actually “hand-compile” this thing.)</p>
+
+<p>If you can’t read minified JavaScript, there’s <a href="https://passcod.name/libworker.js">a page with examples</a>
+available, albeit quite short. I just can’t justify too many words on this
+little code!</p>
+
+<p>This library can be included directly in any project that needs to use
+WebWorkers, like <strong>Dyno.js</strong>, my upcoming Actor framework for browsers,
+for which there is little source available in very non-obvious places.<br/>
+You’ll just have to wait ;-)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[On the sides, really really alpha]]></title>
@@ -352,54 +429,6 @@ headaches. Your pick.</p>
 <p>This isn't perfect. I consider the software stable as of version 1.0.1, but the
 protocol and implementation details were thought up mostly on the spot. It might
 have weird breakage and it might not be too efficient. Early stuff! :)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[The 80/20 Rule]]></title>
-    <link href="http://passcod.net/2012/07/25/the-80-slash-20-rule.html"/>
-    <updated>2012-07-25T07:14:00+12:00</updated>
-    <id>http://passcod.net/2012/07/25/the-80-slash-20-rule</id>
-    <content type="html"><![CDATA[<p><em>Original on <a href="http://gist.io/3170138">Gist.IO</a></em></p>
-
-<blockquote><p>I've been saying that to friends, family, and colleagues for a while now,
-and I think maybe I should just write it down and refer to it instead of
-rehashing it every time. In the last few dozen explanations, it hasn't
-actually changed, so I think it's pretty stable. Of course, the community
-will have something to say, and that's expected!</p></blockquote>
-
-<p>There are more or less seven states to a new (software) project:</p>
-
-<ol>
-<li><strong>Figment</strong>. That's when it's just an idea, and maybe you've written
-something down on a paper napkin, or discussed it over coffee with a friend.</li>
-<li><strong>Planning</strong>. You're actually putting more thought into it, doing the initial
-research, hopefully consolidating the idea into something manageable.</li>
-<li><strong>Prototype</strong>. Not necessarily code. Sometimes a prototype can just be rectangles
-of paper under magnets on a whiteboard, and a few arrows here and there to represent
-dynamics. Also known (in the case of code) as <strong>pre-alpha</strong>.</li>
-<li><strong>Alpha</strong>. Finally! Code. You've probably pulled a directory structure out of thin air
-and the code doesn't actually do anything remotely productive yet.</li>
-<li><strong>Beta</strong>. The project has most of its original main features completed, even though
-there's still a lot of bugs. You've taken features out of the codebase and told yourself
-you'll implement them later.</li>
-<li><strong>Stable</strong>. The project has gotten enough XP and evolves into a product. There's still
-bugs and quirks, but the main features are there and you can finally release it to the
-wider public (although if you're open-source, this is more likely to happen on 4 or 5).</li>
-<li><strong>Future</strong>. This is rumored to be the hardest part of the journey. This has two parts:
-provide support for the now-released product, and continue development on new &amp; more
-advanced features.</li>
-</ol>
-
-
-<p>These are general states. You might find that 1-3 can be collapsed, or that there's a bunch
-of extras in-between 6 and 7. You might also not agree on some of the descriptions I've given.
-That's fine. What's important is the actual rule:</p>
-
-<h3>When going from one state to the other, there is an 80% loss rate.</h3>
-
-<p>In other words, for every 1000 things I've thought of, 200 got to be planned, 40 were prototyped,
-8 made it to alpha, and 1.6 got to beta. I've had exactly one project reach state 7, and it's discontinued.</p>
 ]]></content>
   </entry>
   
