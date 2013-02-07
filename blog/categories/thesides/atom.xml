@@ -2,22 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: thesides | ⚔ passcod ⚔]]></title>
-  <link href="http://passcod.net/blog/categories/thesides/atom.xml" rel="self"/>
-  <link href="http://passcod.net/"/>
-  <updated>2013-02-07T23:28:31+13:00</updated>
-  <id>http://passcod.net/</id>
+  <link href="https://passcod.name/blog/categories/thesides/atom.xml" rel="self"/>
+  <link href="https://passcod.name/"/>
+  <updated>2013-02-07T23:36:28+13:00</updated>
+  <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
-    <email><![CDATA[me@passcod.net]]></email>
+    <email><![CDATA[me@passcod.name]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
     <title type="html"><![CDATA[On the sides, really really alpha]]></title>
-    <link href="http://passcod.net/2013/01/25/on-the-sides.html"/>
+    <link href="https://passcod.name/2013/01/25/on-the-sides.html"/>
     <updated>2013-01-25T15:31:00+13:00</updated>
-    <id>http://passcod.net/2013/01/25/on-the-sides</id>
+    <id>https://passcod.name/2013/01/25/on-the-sides</id>
     <content type="html"><![CDATA[<p>So, <a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">IFTTT sucks</a>. Turns out there's a better IFTTT out there
 called <a href="https://zapier.com/">Zapier</a> that has a really easy to use developer interface.
 Hence, I created a Zapier service for <strong>On the sides</strong>. Due to my own

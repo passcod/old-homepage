@@ -2,22 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: plong | ⚔ passcod ⚔]]></title>
-  <link href="http://passcod.net/blog/categories/plong/atom.xml" rel="self"/>
-  <link href="http://passcod.net/"/>
-  <updated>2013-02-07T23:28:31+13:00</updated>
-  <id>http://passcod.net/</id>
+  <link href="https://passcod.name/blog/categories/plong/atom.xml" rel="self"/>
+  <link href="https://passcod.name/"/>
+  <updated>2013-02-07T23:36:28+13:00</updated>
+  <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
-    <email><![CDATA[me@passcod.net]]></email>
+    <email><![CDATA[me@passcod.name]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
     <title type="html"><![CDATA[Introducing Plong: A pseudo-peer-to-peer WebSocket solution]]></title>
-    <link href="http://passcod.net/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution.html"/>
+    <link href="https://passcod.name/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution.html"/>
     <updated>2012-12-04T21:08:00+13:00</updated>
-    <id>http://passcod.net/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution</id>
+    <id>https://passcod.name/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution</id>
     <content type="html"><![CDATA[<p>My latest open source project is <a href="//plong.me">Plong.me</a>, a zero-setup
 file transfer app. I say file <em>transfer</em> and not file <em>sharing</em> because
 no data is ever stored in "the cloud" or on a computer other than the ones

@@ -2,22 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: onthesides | ⚔ passcod ⚔]]></title>
-  <link href="http://passcod.net/blog/categories/onthesides/atom.xml" rel="self"/>
-  <link href="http://passcod.net/"/>
-  <updated>2013-02-07T23:28:31+13:00</updated>
-  <id>http://passcod.net/</id>
+  <link href="https://passcod.name/blog/categories/onthesides/atom.xml" rel="self"/>
+  <link href="https://passcod.name/"/>
+  <updated>2013-02-07T23:36:28+13:00</updated>
+  <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
-    <email><![CDATA[me@passcod.net]]></email>
+    <email><![CDATA[me@passcod.name]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
     <title type="html"><![CDATA[On IFTTT not having an HTTP ‘this’ nor ‘that’]]></title>
-    <link href="http://passcod.net/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html"/>
+    <link href="https://passcod.name/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html"/>
     <updated>2013-01-04T18:20:00+13:00</updated>
-    <id>http://passcod.net/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1</id>
+    <id>https://passcod.name/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1</id>
     <content type="html"><![CDATA[<p>So, <a href="https://ifttt.com">IFTTT</a> is cool. It's a nitfy little service that glues various
 services together, pipe-style, and makes the realtime web just that
 much more useful. Only, I thought they'd have the decency of including

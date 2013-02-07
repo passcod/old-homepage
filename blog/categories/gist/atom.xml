@@ -2,22 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: gist | ⚔ passcod ⚔]]></title>
-  <link href="http://passcod.net/blog/categories/gist/atom.xml" rel="self"/>
-  <link href="http://passcod.net/"/>
-  <updated>2013-02-07T23:28:31+13:00</updated>
-  <id>http://passcod.net/</id>
+  <link href="https://passcod.name/blog/categories/gist/atom.xml" rel="self"/>
+  <link href="https://passcod.name/"/>
+  <updated>2013-02-07T23:36:28+13:00</updated>
+  <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
-    <email><![CDATA[me@passcod.net]]></email>
+    <email><![CDATA[me@passcod.name]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
     <title type="html"><![CDATA[The 80/20 Rule]]></title>
-    <link href="http://passcod.net/2012/07/25/the-80-slash-20-rule.html"/>
+    <link href="https://passcod.name/2012/07/25/the-80-slash-20-rule.html"/>
     <updated>2012-07-25T07:14:00+12:00</updated>
-    <id>http://passcod.net/2012/07/25/the-80-slash-20-rule</id>
+    <id>https://passcod.name/2012/07/25/the-80-slash-20-rule</id>
     <content type="html"><![CDATA[<p><em>Original on <a href="http://gist.io/3170138">Gist.IO</a></em></p>
 
 <blockquote><p>I've been saying that to friends, family, and colleagues for a while now,
