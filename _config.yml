@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://passcod.net
+url: https://passcod.name
 title: ⚔ passcod ⚔
 subtitle: Somewhat of a geek, but more of a techie.
 author: Félix Saparelli
@@ -20,7 +20,7 @@ date_format: "%Y·%V·%u ⚔ %A"
 subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
-email: me@passcod.net
+email: me@passcod.name
 
 # ----------------------- #
 #    Jekyll & Plugins     #
