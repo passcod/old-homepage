@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: pubsub | ⚔ passcod ⚔]]></title>
+  <link href="https://passcod.name/blog/categories/pubsub/atom.xml" rel="self"/>
+  <link href="https://passcod.name/"/>
+  <updated>2013-02-09T19:40:41+13:00</updated>
+  <id>https://passcod.name/</id>
+  <author>
+    <name><![CDATA[Félix Saparelli]]></name>
+    <email><![CDATA[me@passcod.name]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[PubNub vs. Pusher]]></title>
+    <link href="https://passcod.name/2011/12/15/pubnub-vs-pusher.html"/>
+    <updated>2011-12-15T18:46:00+13:00</updated>
+    <id>https://passcod.name/2011/12/15/pubnub-vs-pusher</id>
+    <content type="html"><![CDATA[<p>I signed up for a <a href="http://www.pubnub.com">PubNub</a> and a <a href="http://pusher.com">Pusher</a> account at nearly the same
+time, before even looking at their pricing:</p>
+
+<p><img src="/images/blog/2011-12-15-pubnub-pusher-gmail.png" alt="Gmail importance filter places PubNub above Pusher" /></p>
+
+<p>GMail’s “importance” filter picked it up right away. I took a closer look:</p>
+
+<p>I have to say, I’m a sucker for pay-as-you-go, so PubNub immediately appealed
+more than Pusher. But what made me really choose is Socket.IO integration. That
+I can write a Javascript app using Socket.IO with a prototyping backend in
+Node.JS, then switch to a more robust Ruby on Heroku platform for beta &amp;
+publication seamlessly is awesome.</p>
+
+<p>So, PubNub, here I come! (But I’ll keep Pusher there, just in case :)</p>
+
+<hr />
+
+<p>(<em>notes from the future</em>)</p>
+
+<p>Further down the track, I used Pusher more often than I did PubNub, but less
+than I did just plain WebSocket and WebRTC. What can I say? I'm a sucker for
+custom solutions, too.</p>
+]]></content>
+  </entry>
+  
+</feed>

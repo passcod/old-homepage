@@ -4,7 +4,7 @@
   <title><![CDATA[⚔ passcod ⚔]]></title>
   <link href="https://passcod.name/atom.xml" rel="self"/>
   <link href="https://passcod.name/"/>
-  <updated>2013-02-09T18:19:28+13:00</updated>
+  <updated>2013-02-09T19:40:41+13:00</updated>
   <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -1393,6 +1393,154 @@ then branch off and &#8216;_&#8217;, &#8216;w&#8217;, &#8216;a&#8217;, &#8216;s&
 
 
 <p>Way!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Collusion &amp; my web day]]></title>
+    <link href="https://passcod.name/2012/02/29/collusion-and-my-web-day.html"/>
+    <updated>2012-02-29T14:07:00+13:00</updated>
+    <id>https://passcod.name/2012/02/29/collusion-and-my-web-day</id>
+    <content type="html"><![CDATA[<p>After a bit less than a day after installing <a href="http://t.co/yBVSwJrW">Collusion</a>, I spent a bit
+untangling the nodes and took a screenshot. Here is my one day of web
+connections:</p>
+
+<p><a href="http://imgur.com/DLXYs"><img src="https://passcod.name/images/blog/DLXYs.png" alt="Connection graph for website visits in one day" /></a></p>
+
+<p>You can clearly see the central websites: <a href="https://passcod.name//facebook.com">Facebook</a> (even though I do not
+use it anymore, its presence is everywhere), <a href="https://passcod.name//twitter.com">Twitter</a>, and <a href="https://passcod.name//google.com">Google</a>.
+Worth noting is that these three sites are not connected. <a href="http://tumblr.com">Tumblr</a>,
+<a href="https://passcod.name//wordpress.com">Wordpress</a>, and <a href="https://passcod.name//mozilla.com">Mozilla</a> are also close by. I use Tumblr (for work) and
+Mozilla (for joy) a lot, but I was quite surprised to see Wordpress there.
+Turns out reading a single article connected it (and me!) to 8 other websites.</p>
+
+<p><a href="http://changery.com">Changery</a> is the blank one to the right of Mozilla. You can see it’s pretty
+well connected, even though there’s not much on there. I would have expected
+<a href="https://passcod.name//github.com">GitHub</a> and <a href="https://passcod.name//secure.gravatar.com">Gravatar</a> to be more connected, but maybe it’s better that
+way. The one hidden above <a href="http://stackoverflow.com">StackOverflow</a> is <a href="http://askubuntu.com">askubuntu.com</a>. It’s
+kinda weird that it’s not connected to <a href="http://ubuntu.com">ubuntu.com</a>, which is the blank one
+to the right of <a href="https://passcod.name//foursquare.com">Foursquare</a> with three links.</p>
+
+<p><a href="https://passcod.name//wikipedia.org">Wikipedia</a> is completely disconnected, which is OK given I haven’t visited
+it today. The one linked to it is <a href="http://yarp.com">Yarp</a>, which I briefly visited to get
+the doc for their <a href="http://timeago.yarp.com/">Timeago jQuery plugin</a>. <a href="http://arstechnica.com">Ars Technica</a> is quite
+strongly surrounded, hmph.</p>
+
+<p>The original purpose of Collusion being to see who tracks you, let’s give a
+special mention to QuantServe, who is the most linked reddie here.</p>
+
+<p>This picture is very interesting. There’s definitely much more that can be said
+about it, more analysis, etc. Also, the way things grouped themselves (even if
+I have influenced it to make the overall picture clearer) is revealing of what
+websites are the core of my web experience, and which are not, esp. regarding
+which I have pinned as App Tabs, and which I have not. Thank <a href="https://passcod.name//twitter.com/toolness">@toolness</a>!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mt Ruapehu]]></title>
+    <link href="https://passcod.name/2012/01/27/mt-ruapehu.html"/>
+    <updated>2012-01-27T13:00:00+13:00</updated>
+    <id>https://passcod.name/2012/01/27/mt-ruapehu</id>
+    <content type="html"><![CDATA[<p>At a bloody expensive internet cafe. STOP. Camera broke on first day of trip.
+STOP. Managed to borrow one to snap two pictures. STOP. A postcard shot of Mt
+Ruapehu from Whakapapaiti Hut, and the Hut itself. STOP. Here they are:</p>
+
+<p><a href="http://imgur.com/a/txvCh"><img src="https://passcod.name/images/blog/vmwmj.jpg" alt="Mt Ruapehu" /></a></p>
+
+<p><a href="http://imgur.com/a/txvCh"><img src="https://passcod.name/images/blog/WKwtn.jpg" alt="Whakapapaiti Hut" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PubNub vs. Pusher]]></title>
+    <link href="https://passcod.name/2011/12/15/pubnub-vs-pusher.html"/>
+    <updated>2011-12-15T18:46:00+13:00</updated>
+    <id>https://passcod.name/2011/12/15/pubnub-vs-pusher</id>
+    <content type="html"><![CDATA[<p>I signed up for a <a href="http://www.pubnub.com">PubNub</a> and a <a href="http://pusher.com">Pusher</a> account at nearly the same
+time, before even looking at their pricing:</p>
+
+<p><img src="https://passcod.name/images/blog/2011-12-15-pubnub-pusher-gmail.png" alt="Gmail importance filter places PubNub above Pusher" /></p>
+
+<p>GMail’s “importance” filter picked it up right away. I took a closer look:</p>
+
+<p>I have to say, I’m a sucker for pay-as-you-go, so PubNub immediately appealed
+more than Pusher. But what made me really choose is Socket.IO integration. That
+I can write a Javascript app using Socket.IO with a prototyping backend in
+Node.JS, then switch to a more robust Ruby on Heroku platform for beta &amp;
+publication seamlessly is awesome.</p>
+
+<p>So, PubNub, here I come! (But I’ll keep Pusher there, just in case :)</p>
+
+<hr />
+
+<p>(<em>notes from the future</em>)</p>
+
+<p>Further down the track, I used Pusher more often than I did PubNub, but less
+than I did just plain WebSocket and WebRTC. What can I say? I&#8217;m a sucker for
+custom solutions, too.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Controlling Sound in Ubuntu]]></title>
+    <link href="https://passcod.name/2011/12/14/controlling-sound-in-ubuntu.html"/>
+    <updated>2011-12-14T18:41:00+13:00</updated>
+    <id>https://passcod.name/2011/12/14/controlling-sound-in-ubuntu</id>
+    <content type="html"><![CDATA[<p>I’ve had problems with sound before in Ubuntu (and variants: Mint, Elementary).
+Basically, when you plug in headphones, the sound comes of both the speakers
+and the headphones! Not really what I want… although I have found this to be
+useful sometimes.</p>
+
+<p>There might be a solution meddling with the config files of alsa and sound
+drivers, but I wasn’t particularly interested in this: my problem was that I
+couldn’t control the volume of the headphones and speakers separately.
+Alsamixer does just that.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ alsamixer</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Even better, on Oneiric, you can add it to the Unity dash by putting this into
+<strong>/usr/share/applications/alsamixer.desktop</strong>:</p>
+
+<figure class='code'><figcaption><span>alsamixer.desktop</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>[Desktop Entry]
+</span><span class='line'>Exec=alsamixer
+</span><span class='line'>Name=AlsaMixer
+</span><span class='line'>GenericName=Sound Controller
+</span><span class='line'>X-GNOME-FullName=Alsamixer
+</span><span class='line'>Comment=Control the sound. All of it.
+</span><span class='line'>Icon=audio-headset
+</span><span class='line'>StartupNotify=true
+</span><span class='line'>Terminal=true
+</span><span class='line'>Type=Application
+</span><span class='line'>Categories=GNOME;Audio;Music;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can change the name, icon, and comment to your liking, of course.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Walking in the North Island]]></title>
+    <link href="https://passcod.name/2011/11/29/walking-in-the-north-island.html"/>
+    <updated>2011-11-29T18:38:00+13:00</updated>
+    <id>https://passcod.name/2011/11/29/walking-in-the-north-island</id>
+    <content type="html"><![CDATA[<p>relatively alone, for some days, after the New Year.</p>
+
+<p>It’s gonna be fun!</p>
 ]]></content>
   </entry>
   

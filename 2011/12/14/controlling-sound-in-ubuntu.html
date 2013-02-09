@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en" manifest="/.appcache"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Controlling Sound in Ubuntu - ⚔ passcod ⚔</title>
+  <meta name="author" content="Félix Saparelli">
+
+  
+  <meta name="description" content="I’ve had problems with sound before in Ubuntu (and variants: Mint, Elementary).
+Basically, when you plug in headphones, the sound comes of both the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://passcod.name/2011/12/14/controlling-sound-in-ubuntu.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="⚔ passcod ⚔" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">⚔ passcod ⚔</a></h1>
+  
+    <h2>Somewhat of a geek, but more of a techie.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.co.nz/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:passcod.name" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/contact">Contact</a></li>
+  <li><a href="/cv">CV</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Controlling Sound in Ubuntu</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2011-12-14T18:41:00+13:00" datetime="2011-12-14T18:41:00+13:00" pubdate data-updated="true">2011·50·3 ⚔ Wednesday</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I’ve had problems with sound before in Ubuntu (and variants: Mint, Elementary).
+Basically, when you plug in headphones, the sound comes of both the speakers
+and the headphones! Not really what I want… although I have found this to be
+useful sometimes.</p>
+
+<p>There might be a solution meddling with the config files of alsa and sound
+drivers, but I wasn’t particularly interested in this: my problem was that I
+couldn’t control the volume of the headphones and speakers separately.
+Alsamixer does just that.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ alsamixer</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Even better, on Oneiric, you can add it to the Unity dash by putting this into
+<strong>/usr/share/applications/alsamixer.desktop</strong>:</p>
+
+<figure class='code'><figcaption><span>alsamixer.desktop</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>[Desktop Entry]
+</span><span class='line'>Exec=alsamixer
+</span><span class='line'>Name=AlsaMixer
+</span><span class='line'>GenericName=Sound Controller
+</span><span class='line'>X-GNOME-FullName=Alsamixer
+</span><span class='line'>Comment=Control the sound. All of it.
+</span><span class='line'>Icon=audio-headset
+</span><span class='line'>StartupNotify=true
+</span><span class='line'>Terminal=true
+</span><span class='line'>Type=Application
+</span><span class='line'>Categories=GNOME;Audio;Music;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can change the name, icon, and comment to your liking, of course.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Félix Saparelli</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2011-12-14T18:41:00+13:00" datetime="2011-12-14T18:41:00+13:00" pubdate data-updated="true">2011·50·3 ⚔ Wednesday</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="https://passcod.name/2011/12/14/controlling-sound-in-ubuntu.html" data-via="passcod" data-counturl="https://passcod.name/2011/12/14/controlling-sound-in-ubuntu.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2011/11/29/walking-in-the-north-island.html" title="Previous Post: Walking in the North Island">&laquo; Walking in the North Island</a>
+      
+      
+        <a class="basic-alignment right" href="/2011/12/15/pubnub-vs-pusher.html" title="Next Post: PubNub vs. Pusher">PubNub vs. Pusher &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/02/07/late-introduction-to-libworker-dot-js.html">Late introduction to libworker.js</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/25/on-the-sides.html">On the sides, really really alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/06/having-the-source-lets-one-remake-and-derive.html">Having the Source lets one remake and derive</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">On IFTTT not having an HTTP ‘this’ nor ‘that’</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/16/bullets-dump-for-imaku.html">Bullets dump for Imaku</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Things</h1>
+  <ul>
+    <li><a href="/passcod03.asc">Current GPG Key ⚔ FE31 5C83…</a></li>
+    <li><a href="//stuff.passcod.name/aucklug/">AuckLUG Videos ⚔ Recorded talks</a></li>
+    <li><a href="http://checkthis.com/adiskadime">Adiskadime ⚔ Cheap Linux CDs</a></li>
+    <li><a href="http://checkthis.com/i7up">People ⚔ Prose</a></li>
+    <li><a href="http://checkthis.com/kxag">H E A R T ⚔ Art</a></li>
+    <li><a href="http://bit.ly/zP698W">Dreams and Magic ⚔ Prose</a></li>
+    <li><a href="http://bit.ly/AfF3BU">Margae ⚔ Prose</a></li>
+    <li><a href="http://bit.ly/14IT3EV">Plugged In Dreams ⚔ Prose</a></li>
+    <li><a href="https://gist.github.com/3208086">Old #unblog posts</a></li>
+    <li><a href="http://stackoverflow.com/users/231788/passcod">StackOverflow</a></li>
+    <li><a href="http://careers.stackoverflow.com/passcod">SO Careers</a></li>
+    <li><a href="https://coderwall.com/passcod">Coderwall</a></li>
+    <li><a href="mailto:me@passcod.name">me@passcod.name</a></li>
+  </ul>
+</section>
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/passcod">@passcod</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'passcod',
+            count: 15,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("passcod", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/passcod" class="twitter-follow-button" data-show-count="false">Follow @passcod</a>
+  
+</section>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/117793015817962060333?rel=author">
+      <img src="//www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  <a href="/license.html" rel="license">Public Domain</a>
+  - Félix Saparelli -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'passcod';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'https://passcod.name/2011/12/14/controlling-sound-in-ubuntu.html';
+        var disqus_url = 'https://passcod.name/2011/12/14/controlling-sound-in-ubuntu.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+<script src="/javascripts/analytics.js"></script>
+
+</body>
+</html>

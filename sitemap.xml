@@ -1,6 +1,26 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>https://passcod.name/2011/11/29/walking-in-the-north-island.html</loc>
+        <lastmod>2013-02-09T18:40:06+13:00</lastmod>
+    </url>
+    <url>
+        <loc>https://passcod.name/2011/12/14/controlling-sound-in-ubuntu.html</loc>
+        <lastmod>2013-02-09T18:47:19+13:00</lastmod>
+    </url>
+    <url>
+        <loc>https://passcod.name/2011/12/15/pubnub-vs-pusher.html</loc>
+        <lastmod>2013-02-09T19:37:23+13:00</lastmod>
+    </url>
+    <url>
+        <loc>https://passcod.name/2012/01/27/mt-ruapehu.html</loc>
+        <lastmod>2013-02-09T19:05:32+13:00</lastmod>
+    </url>
+    <url>
+        <loc>https://passcod.name/2012/02/29/collusion-and-my-web-day.html</loc>
+        <lastmod>2013-02-09T19:34:10+13:00</lastmod>
+    </url>
+    <url>
         <loc>https://passcod.name/2012/03/12/undo-version-control.html</loc>
         <lastmod>2013-01-04T17:09:04+13:00</lastmod>
     </url>
@@ -58,7 +78,7 @@
     </url>
     <url>
         <loc>https://passcod.name/blog/archives/</loc>
-        <lastmod>2013-02-07T23:27:38+13:00</lastmod>
+        <lastmod>2013-02-09T19:37:23+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/contact/</loc>
@@ -66,7 +86,7 @@
     </url>
     <url>
         <loc>https://passcod.name/</loc>
-        <lastmod>2013-02-07T23:27:38+13:00</lastmod>
+        <lastmod>2013-02-09T19:37:23+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/passcod03.asc</loc>

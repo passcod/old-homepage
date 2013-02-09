@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ubuntu | ⚔ passcod ⚔]]></title>
+  <link href="https://passcod.name/blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="https://passcod.name/"/>
+  <updated>2013-02-09T19:40:41+13:00</updated>
+  <id>https://passcod.name/</id>
+  <author>
+    <name><![CDATA[Félix Saparelli]]></name>
+    <email><![CDATA[me@passcod.name]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Controlling Sound in Ubuntu]]></title>
+    <link href="https://passcod.name/2011/12/14/controlling-sound-in-ubuntu.html"/>
+    <updated>2011-12-14T18:41:00+13:00</updated>
+    <id>https://passcod.name/2011/12/14/controlling-sound-in-ubuntu</id>
+    <content type="html"><![CDATA[<p>I’ve had problems with sound before in Ubuntu (and variants: Mint, Elementary).
+Basically, when you plug in headphones, the sound comes of both the speakers
+and the headphones! Not really what I want… although I have found this to be
+useful sometimes.</p>
+
+<p>There might be a solution meddling with the config files of alsa and sound
+drivers, but I wasn’t particularly interested in this: my problem was that I
+couldn’t control the volume of the headphones and speakers separately.
+Alsamixer does just that.</p>
+
+<p><code>
+$ alsamixer
+</code></p>
+
+<p>Even better, on Oneiric, you can add it to the Unity dash by putting this into
+<strong>/usr/share/applications/alsamixer.desktop</strong>:</p>
+
+<p><code>text alsamixer.desktop
+[Desktop Entry]
+Exec=alsamixer
+Name=AlsaMixer
+GenericName=Sound Controller
+X-GNOME-FullName=Alsamixer
+Comment=Control the sound. All of it.
+Icon=audio-headset
+StartupNotify=true
+Terminal=true
+Type=Application
+Categories=GNOME;Audio;Music;
+</code></p>
+
+<p>You can change the name, icon, and comment to your liking, of course.</p>
+]]></content>
+  </entry>
+  
+</feed>
