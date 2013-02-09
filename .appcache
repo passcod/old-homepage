@@ -5,9 +5,6 @@ CACHE MANIFEST
 CACHE:
 https://passcod.name/
 
-https://passcod.name/libworker.js
-https://passcod.name/DynWorker
-
 https://passcod.name/passcod03.asc
 https://passcod.name/license.html
 https://passcod.name/blog/archives
@@ -27,6 +24,12 @@ https://passcod.name/2012/07/25/the-80-slash-20-rule.html
 https://passcod.name/2012/06/03/sprockets-on-sinatra-and-heroku.html
 https://passcod.name/2012/03/17/the-minimalist-date-format.html
 https://passcod.name/2012/03/12/undo-version-control.html
+https://passcod.name/2012/02/29/collusion-and-my-web-day.markdown
+https://passcod.name/2012/01/27/mt-ruapehu.markdown
+https://passcod.name/2011/12/15/pubnub-vs-pusher.markdown
+https://passcod.name/2011/12/14/controlling-sound-in-ubuntu.markdown
+https://passcod.name/2011/11/29/walking-in-the-north-island.markdown
+
 
 https://passcod.name/stylesheets/screen.css
 https://passcod.name/javascripts/modernizr-2.0.js
