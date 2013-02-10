@@ -9,9 +9,8 @@
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="About 3 weeks ago I tried to reboot DynWorker, my library
-to “make web threading fun.” I wanted not only to take advantage
-of newer technology, but &hellip;">
+  <meta name="description" content="I’ve been thinking about getting a new tagline recently. I don’t mean “Somewhat
+of a geek, but more of a techie.” That’s fine, and I’m pretty happy &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +67,66 @@ of newer technology, but &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/02/11/thinking-about-a-new-tagline.html">Thinking About a New Tagline</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2013-02-11T02:47:00+13:00" datetime="2013-02-11T02:47:00+13:00" pubdate data-updated="true">2013·07·1 ⚔ Monday</time>
+        
+         | <a href="/2013/02/11/thinking-about-a-new-tagline.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve been thinking about getting a new tagline recently. I don’t mean “Somewhat
+of a geek, but more of a techie.” That’s fine, and I’m pretty happy about it. I
+mean the stuff that comes after it, not on this blog, but [on Twitter][1] and
+[other][2] [places][3] where a bio is necessary. Currently, that’s:</p>
+
+<p><q>Makes the web, reads books, writes blurbs, admires fonts, critiques code.
+Thinks &lt;3 looks like an ice-cream cone.</q></p>
+
+<p>Obviously, for Twitter, it has to fit within 100 chars, and I have used longer
+versions or addendi on sites which are less restricted. I consider this version
+the ‘official’ one, though.</p>
+
+<p>I’ve been delaying changing it, though, because I really want to include
+something Mozilla-related, and I don’t think I’ve done nearly enough in any
+Mozilla-related domain to justify putting something in what is essentially part
+of my online identity. However, I&#8217;ve come to terms with it by accepting the
+caveat I need to make that new one extensible.</p>
+
+<p>I’ll probably use single words or one-unit terms separated with bullets (‘•’ or
+U+2022 or ⌥ + 8) or interpuncts (‘·’ or U+00B7 or ⇧ + ⌥ + 9) depending on which
+is best-looking in context and my mood at the time.</p>
+
+<p>This definitely requires more reflexion, though.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -766,88 +825,6 @@ That&#8217;s fine. What&#8217;s important is the actual rule:</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/06/03/sprockets-on-sinatra-and-heroku.html">Sprockets on Sinatra (&amp; Heroku)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2012-06-03T00:00:00+12:00" datetime="2012-06-03T00:00:00+12:00" pubdate data-updated="true">2012·22·7 ⚔ Sunday</time>
-        
-         | <a href="/2012/06/03/sprockets-on-sinatra-and-heroku.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>Original on <a href="http://checkthis.com/biye">Checkthis.com</a>.</em></p>
-
-<p>In the world of ruby, there exists this framework called Rails, which I&#8217;m
-sure you&#8217;ve heard about. I happen not to like it very much. One of the
-reasons is that I&#8217;ve read maybe 2% of Rails&#8217; code, whereas for most of the
-other gems I use this is more like 40%. With Rails, I rely on magic (and,
-yea, it&#8217;s nice) and with the other stuff, I rely on my own knowledge. I
-prefer the latter.</p>
-
-<p>There&#8217;s also that Rails is an MVC framework, which is best buds with
-ActiveRecord and is a pain to manage as soon as you separate them. If you
-don&#8217;t want or need the MVC pattern, or ActiveRecord, you&#8217;re in for trouble.
-If you are unfortunate enough to need a gem which is incompatible with a Rails
-component, even if said component is supposed to be optional, you have my sympathies.</p>
-
-<p>In the world of Ruby, there also exists a little wonder called Sinatra. Sinatra
-is just the dispatcher part of Rails, plus the templating, plus a few other nifty
-features, but done right. It&#8217;s small, sharp, lean, and mean. And it does exactly as
-advertised, no more, no less. When building an application with Sinatra, you get to
-pick and choose. DataMapper vs. ActiveRecord vs. Sequel? A single line in the Gemfile.
-Not MVC? No problem. Custom directory structure? We wouldn&#8217;t have it any other way.</p>
-
-<p>There&#8217;s <strong>no magic</strong> in Sinatra (or just plain Rack, if that&#8217;s your fancy). It&#8217;s all
-<strong>just code</strong>. And chances are you&#8217;ll have written or read a lot of it.
-<a href="http://wordpress.org/">Wordpress says code is poetry</a>, and I agree, but given that
-Wordpress is written in PHP, I feel that with ruby&#8230; <em>code is art</em>.</p>
-
-<p><img src="https://s3-eu-west-1.amazonaws.com/checkthis.com/asset/4fca9c0855a70a00030025d7/4fca9c0855a70a00030025d7-medium.png" alt="Code is art" /></p>
-
-<p>In the world of ruby, there happens to be another wonder called Sprockets. Sprockets
-is what powers Rails&#8217; 3.1+ asset pipeline. And therein lies the problem.</p>
-
-<p>Sprockets is an awesome tool, and adding it to a Rack application makes things even
-sparklier than pink unicorns. But it&#8217;s relatively under-documented and Googling for
-solutions returns Rails-related stuff 99% of the time. Annoying. That&#8217;s due to a little
-something called sprockets-rails, which takes sprockets, adds magic, and transforms it
-into the asset pipeline. Trying to use asset pipeline know-how with standalone Sprockets
-is frustrating.</p>
-
-<p>So how do you do it?</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/06/03/sprockets-on-sinatra-and-heroku.html">⚔ Read on…</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -863,6 +840,10 @@ is frustrating.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/02/11/thinking-about-a-new-tagline.html">Thinking about a new tagline</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/02/07/late-introduction-to-libworker-dot-js.html">Late introduction to libworker.js</a>
       </li>
     
@@ -876,10 +857,6 @@ is frustrating.</p>
     
       <li class="post">
         <a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">On IFTTT not having an HTTP ‘this’ nor ‘that’</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/16/bullets-dump-for-imaku.html">Bullets dump for Imaku</a>
       </li>
     
   </ul>

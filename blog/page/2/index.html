@@ -9,8 +9,8 @@
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="Original on Checkthis.com The Minimalist date format is a 5- or 7- digits number which represents a date (no time).
-It increases mathematically (i.e &hellip;">
+  <meta name="description" content="Original on Checkthis.com. In the world of ruby, there exists this framework called Rails, which I&#8217;m
+sure you&#8217;ve heard about. I happen &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +67,88 @@ It increases mathematically (i.e &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/06/03/sprockets-on-sinatra-and-heroku.html">Sprockets on Sinatra (&amp; Heroku)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2012-06-03T00:00:00+12:00" datetime="2012-06-03T00:00:00+12:00" pubdate data-updated="true">2012·22·7 ⚔ Sunday</time>
+        
+         | <a href="/2012/06/03/sprockets-on-sinatra-and-heroku.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Original on <a href="http://checkthis.com/biye">Checkthis.com</a>.</em></p>
+
+<p>In the world of ruby, there exists this framework called Rails, which I&#8217;m
+sure you&#8217;ve heard about. I happen not to like it very much. One of the
+reasons is that I&#8217;ve read maybe 2% of Rails&#8217; code, whereas for most of the
+other gems I use this is more like 40%. With Rails, I rely on magic (and,
+yea, it&#8217;s nice) and with the other stuff, I rely on my own knowledge. I
+prefer the latter.</p>
+
+<p>There&#8217;s also that Rails is an MVC framework, which is best buds with
+ActiveRecord and is a pain to manage as soon as you separate them. If you
+don&#8217;t want or need the MVC pattern, or ActiveRecord, you&#8217;re in for trouble.
+If you are unfortunate enough to need a gem which is incompatible with a Rails
+component, even if said component is supposed to be optional, you have my sympathies.</p>
+
+<p>In the world of Ruby, there also exists a little wonder called Sinatra. Sinatra
+is just the dispatcher part of Rails, plus the templating, plus a few other nifty
+features, but done right. It&#8217;s small, sharp, lean, and mean. And it does exactly as
+advertised, no more, no less. When building an application with Sinatra, you get to
+pick and choose. DataMapper vs. ActiveRecord vs. Sequel? A single line in the Gemfile.
+Not MVC? No problem. Custom directory structure? We wouldn&#8217;t have it any other way.</p>
+
+<p>There&#8217;s <strong>no magic</strong> in Sinatra (or just plain Rack, if that&#8217;s your fancy). It&#8217;s all
+<strong>just code</strong>. And chances are you&#8217;ll have written or read a lot of it.
+<a href="http://wordpress.org/">Wordpress says code is poetry</a>, and I agree, but given that
+Wordpress is written in PHP, I feel that with ruby&#8230; <em>code is art</em>.</p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/checkthis.com/asset/4fca9c0855a70a00030025d7/4fca9c0855a70a00030025d7-medium.png" alt="Code is art" /></p>
+
+<p>In the world of ruby, there happens to be another wonder called Sprockets. Sprockets
+is what powers Rails&#8217; 3.1+ asset pipeline. And therein lies the problem.</p>
+
+<p>Sprockets is an awesome tool, and adding it to a Rack application makes things even
+sparklier than pink unicorns. But it&#8217;s relatively under-documented and Googling for
+solutions returns Rails-related stuff 99% of the time. Annoying. That&#8217;s due to a little
+something called sprockets-rails, which takes sprockets, adds magic, and transforms it
+into the asset pipeline. Trying to use asset pipeline know-how with standalone Sprockets
+is frustrating.</p>
+
+<p>So how do you do it?</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/06/03/sprockets-on-sinatra-and-heroku.html">⚔ Read on…</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -507,6 +589,10 @@ Alsamixer does just that.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/02/11/thinking-about-a-new-tagline.html">Thinking about a new tagline</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/02/07/late-introduction-to-libworker-dot-js.html">Late introduction to libworker.js</a>
       </li>
     
@@ -520,10 +606,6 @@ Alsamixer does just that.</p>
     
       <li class="post">
         <a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">On IFTTT not having an HTTP ‘this’ nor ‘that’</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/16/bullets-dump-for-imaku.html">Bullets dump for Imaku</a>
       </li>
     
   </ul>

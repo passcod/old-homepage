@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tagline | ⚔ passcod ⚔]]></title>
+  <link href="https://passcod.name/blog/categories/tagline/atom.xml" rel="self"/>
+  <link href="https://passcod.name/"/>
+  <updated>2013-02-11T03:31:02+13:00</updated>
+  <id>https://passcod.name/</id>
+  <author>
+    <name><![CDATA[Félix Saparelli]]></name>
+    <email><![CDATA[me@passcod.name]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Thinking about a new tagline]]></title>
+    <link href="https://passcod.name/2013/02/11/thinking-about-a-new-tagline.html"/>
+    <updated>2013-02-11T02:47:00+13:00</updated>
+    <id>https://passcod.name/2013/02/11/thinking-about-a-new-tagline</id>
+    <content type="html"><![CDATA[<p>I’ve been thinking about getting a new tagline recently. I don’t mean “Somewhat
+of a geek, but more of a techie.” That’s fine, and I’m pretty happy about it. I
+mean the stuff that comes after it, not on this blog, but [on Twitter][1] and
+[other][2] [places][3] where a bio is necessary. Currently, that’s:</p>
+
+<p><q>Makes the web, reads books, writes blurbs, admires fonts, critiques code.
+Thinks &lt;3 looks like an ice-cream cone.</q></p>
+
+<p>Obviously, for Twitter, it has to fit within 100 chars, and I have used longer
+versions or addendi on sites which are less restricted. I consider this version
+the ‘official’ one, though.</p>
+
+<p>I’ve been delaying changing it, though, because I really want to include
+something Mozilla-related, and I don’t think I’ve done nearly enough in any
+Mozilla-related domain to justify putting something in what is essentially part
+of my online identity. However, I've come to terms with it by accepting the
+caveat I need to make that new one extensible.</p>
+
+<p>I’ll probably use single words or one-unit terms separated with bullets (‘•’ or
+U+2022 or ⌥ + 8) or interpuncts (‘·’ or U+00B7 or ⇧ + ⌥ + 9) depending on which
+is best-looking in context and my mood at the time.</p>
+
+<p>This definitely requires more reflexion, though.</p>
+]]></content>
+  </entry>
+  
+</feed>
