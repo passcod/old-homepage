@@ -4,7 +4,7 @@
   <title><![CDATA[Category: software | ⚔ passcod ⚔]]></title>
   <link href="https://passcod.name/blog/categories/software/atom.xml" rel="self"/>
   <link href="https://passcod.name/"/>
-  <updated>2013-02-16T22:01:02+13:00</updated>
+  <updated>2013-02-16T22:04:13+13:00</updated>
   <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -92,7 +92,7 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/Cellar/libxslt/1.1.28/lib/pk
 
 <p>Unfortunately, it died with this unhelful error:</p>
 
-<p>```
+<p>``` text
 checking for DEPS... no
 configure: error: Package requirements (libxslt</p>
 
