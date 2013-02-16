@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en" manifest="/.appcache"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Building Hotot - ⚔ passcod ⚔</title>
+  <meta name="author" content="Félix Saparelli">
+
+  
+  <meta name="description" content="A few days ago @codeofinterest [tweeted about Hotot][1], enthused about a
+“better [alternative] than TweetDeck.” I was intrigued. Hotot has [an &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://passcod.name/2013/02/16/building-hotot.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="⚔ passcod ⚔" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">⚔ passcod ⚔</a></h1>
+  
+    <h2>Somewhat of a geek, but more of a techie.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.co.nz/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:passcod.name" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/contact">Contact</a></li>
+  <li><a href="/cv">CV</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Building Hotot</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2013-02-16T02:33:00+13:00" datetime="2013-02-16T02:33:00+13:00" pubdate data-updated="true">2013·07·6 ⚔ Saturday</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>A few days ago <strong>@codeofinterest</strong> [tweeted about Hotot][1], enthused about a
+“better [alternative] than TweetDeck.” I was intrigued. Hotot has [an article
+on ghacks][2], [a GitHub repository][3], and a <em>defunct</em> [website][4]
+(it answers systematically with a 502). And of course, all the information and
+downloads and demos / screens are purportedly on there. Hidden. Frustrating.</p>
+
+<p>Not content with the [Chrome extension][5] (the only other time I ran Chrome
+solely for the purpose of a single application was TweetDeck, and I will not
+repeat that experience), I decided to build the software. How hard could it be?</p>
+
+<p><em>(Do not follow these instructions unless you know what you’re doing. There’s a
+Homebrew formula at the end which can be used for a far easier and better install.)</em></p>
+
+<!-- more -->
+
+
+<h2>Gtk2</h2>
+
+<p>Firstly, I had a choice to make: Gtk2, Gtk3, or Qt as a wrapper? I chose Gtk2.
+It seemed the easiest option. The README indicates the following dependencies
+for Gtk2:</p>
+
+<ul>
+<li><strong>python2</strong>: Easy, there’s one bundled with OS X, if I recall, although I
+have the Homebrew version myself.</li>
+<li><strong>pygtk</strong>: That one can be installed through <code>brew</code>. It builds cleanly.</li>
+<li><strong>python-webkit</strong>: This was the first snag I hit. <code>pip</code> finds <code>pywebkitgtk</code>,
+but doesn’t even attempt to install it due to a missing <code>setup.py</code>. It has
+to be built manually.</li>
+</ul>
+
+
+<p>PyWebkitGtk has an <code>INSTALL</code> file which is rather verbose, but boils down to
+the usual <code>./configure</code>, <code>make</code>, <code>make install</code>. Immediately, <code>./configure</code>
+stopped to ask me about missing dependencies:</p>
+
+<ul>
+<li><strong>gstreamer</strong>: Homebrew took care of that nicely.</li>
+<li><strong>pygtk</strong>: Which the previous step took care of.</li>
+<li><strong>gthread</strong>: Which is found in glib, which I do have installed (Homebrew).</li>
+<li><strong>libxslt</strong>: Which is included with OS X. Huh. It’s complaining quite
+specifically about this one. Why?</li>
+</ul>
+
+
+<p>I tried to install it through <code>brew install libxslt</code>, but Homebrew warned me it
+was keg-only, and that linking it <em>would</em> cause problems. Stuck, I nevertheless
+tried to, then ran <code>./configure</code> again, and when it still didn’t work, I ran a
+<code>brew unlink libxslt</code> to avoid trouble. I had a problem though: all the deps
+were there, but the configure script didn’t want to work. I suspected it was a
+path problem, though. So I tried various ways of specifying paths. <em>(In this
+situation, my old trick of using nested shells to preserve the original env and
+revert explorations quickly paid off immensely. I’d forgotten it for a while,
+moslty due to <code>tmux</code> and <code>popd</code>, but it’s quite cool.)</em> In the end, here’s what
+I believed would work:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">PYGTK_CFLAGS</span><span class="o">=</span><span class="s2">&quot;-I/usr/local/Cellar/pygtk/2.24.0/include/pygtk-2.0&quot;</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">PYGTK_CFLAGS</span><span class="o">=</span><span class="s2">&quot;$PYTHON_CFLAGS -I/usr/local/Cellar/pygobject/2.28.6/include/pygtk-2.0&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">export </span><span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/Cellar/gstreamer/0.10.36/lib/pkgconfig&quot;</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span><span class="s2">&quot;$PKG_CONFIG_PATH:/usr/local/Cellar/pygobject/2.28.6/lib/pkgconfig&quot;</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span><span class="s2">&quot;$PKG_CONFIG_PATH:/usr/local/Cellar/pygtk/2.24.0/lib/pkgconfig&quot;</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span><span class="s2">&quot;$PKG_CONFIG_PATH:/usr/local/Cellar/libxslt/1.1.28/lib/pkgconfig&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;$PATH:/usr/local/Cellar/gettext/0.18.2/bin/&quot;</span>
+</span><span class='line'>
+</span><span class='line'>./configure --prefix<span class="o">=</span>/usr/local/Cellar/pywebkitgtk/HEAD
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Unfortunately, it died with this unhelful error:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>checking <span class="k">for </span>DEPS... no
+</span><span class='line'>configure: error: Package requirements <span class="o">(</span>libxslt
+</span><span class='line'>                  gthread-2.0
+</span><span class='line'>                  pygtk-2.0<span class="o">)</span> were not met:
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Consider adjusting the PKG_CONFIG_PATH environment variable <span class="k">if </span>you
+</span><span class='line'>installed software in a non-standard prefix.
+</span><span class='line'>
+</span><span class='line'>Alternatively, you may <span class="nb">set </span>the environment variables DEPS_CFLAGS
+</span><span class='line'>and DEPS_LIBS to avoid the need to call pkg-config.
+</span><span class='line'>See the pkg-config man page <span class="k">for </span>more details.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That blank space should have details, such as which package is missing,
+exactly, but it’s emptiness here it really frustrating. However, it also brings
+a new, slightly more tedious, line of trials: setting <code>DEPS_*</code> directly and
+bypassing pkg-config altogether. But before I tried that, I decided to give one
+of the other wrappers a chance.</p>
+
+<h2>Qt</h2>
+
+<p>Qt 4.8 is in Homebrew and I already had it installed, so I went on to try and
+build Hotot. The instructions are:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git clone git://github.com/lyricat/Hotot
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>Hotot
+</span><span class='line'><span class="nv">$ </span>mkcd build
+</span><span class='line'><span class="nv">$ </span>cmake ..
+</span><span class='line'><span class="nv">$ </span>make
+</span><span class='line'><span class="c"># make install</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Cmake complained that it couldn’t find gettext, though, so I ran
+<code>brew link gettext --force</code> before building, with the intention of unlinking
+afterwards. That worked.</p>
+
+<p>As my system is configured using Homebrew, there is no need to run
+<code>make install</code> as root. Build and installation having proceeded without snag,
+I unlinked gettext and went on to the next step: trying it out.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>hotot-qt
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Easy does it…</p>
+
+<p><img src="/images/blog/2013-02-16-hotot-icon.png" alt="Pretty icon for Hotot" /></p>
+
+<p><img src="/images/blog/2013-02-16-hotot-first-screen.png" alt="OK, it seems to be alright…" /></p>
+
+<p><img src="/images/blog/2013-02-16-hotot-logged-in.png" alt="Logged in and ready to go!" /></p>
+
+<p>Here’s a Gist with a working <a href="https://gist.github.com/passcod/4966034">Homebrew formula for Hotot</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Félix Saparelli</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time title="2013-02-16T02:33:00+13:00" datetime="2013-02-16T02:33:00+13:00" pubdate data-updated="true">2013·07·6 ⚔ Saturday</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/os-x/'>OS X</a>, <a class='category' href='/blog/categories/software/'>software</a>, <a class='category' href='/blog/categories/twitter/'>twitter</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="https://passcod.name/2013/02/16/building-hotot.html" data-via="passcod" data-counturl="https://passcod.name/2013/02/16/building-hotot.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/02/14/why-django-unchained-makes-me-laugh.html" title="Previous Post: Why Django Unchained makes me laugh">&laquo; Why Django Unchained makes me laugh</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/02/16/building-hotot.html">Building Hotot</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/14/why-django-unchained-makes-me-laugh.html">Why Django Unchained makes me laugh</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/11/thinking-about-a-new-tagline.html">Thinking about a new tagline</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/07/late-introduction-to-libworker-dot-js.html">Late introduction to libworker.js</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/25/on-the-sides.html">On the sides, really really alpha</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Things</h1>
+  <ul>
+    <li><a href="/passcod03.asc">Current GPG Key ⚔ FE31 5C83…</a></li>
+    <li><a href="//stuff.passcod.name/aucklug/">AuckLUG Videos ⚔ Recorded talks</a></li>
+    <li><a href="http://checkthis.com/adiskadime">Adiskadime ⚔ Cheap Linux CDs</a></li>
+    <li><a href="http://checkthis.com/i7up">People ⚔ Prose</a></li>
+    <li><a href="http://checkthis.com/kxag">H E A R T ⚔ Art</a></li>
+    <li><a href="http://bit.ly/zP698W">Dreams and Magic ⚔ Prose</a></li>
+    <li><a href="http://bit.ly/AfF3BU">Margae ⚔ Prose</a></li>
+    <li><a href="http://bit.ly/14IT3EV">Plugged In Dreams ⚔ Prose</a></li>
+    <li><a href="https://gist.github.com/3208086">Old #unblog posts</a></li>
+    <li><a href="http://stackoverflow.com/users/231788/passcod">StackOverflow</a></li>
+    <li><a href="http://careers.stackoverflow.com/passcod">SO Careers</a></li>
+    <li><a href="https://coderwall.com/passcod">Coderwall</a></li>
+    <li><a href="mailto:me@passcod.name">me@passcod.name</a></li>
+  </ul>
+</section>
+<section>
+  <h1>Reputation</h1>
+  <a href="http://stackexchange.com/users/82437"><img
+    src="http://stackexchange.com/users/flair/82437.png"
+    width="208"
+    height="58"
+    alt="profile for F&#233;lix Saparelli on Stack Exchange, a network of free, community-driven Q&amp;A sites"
+    title="profile for F&#233;lix Saparelli on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a>
+</section>
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/passcod">@passcod</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'passcod',
+            count: 15,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("passcod", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/passcod" class="twitter-follow-button" data-show-count="false">Follow @passcod</a>
+  
+</section>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/117793015817962060333?rel=author">
+      <img src="//www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  <a href="/license.html" rel="license">Public Domain</a>
+  - Félix Saparelli -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'passcod';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'https://passcod.name/2013/02/16/building-hotot.html';
+        var disqus_url = 'https://passcod.name/2013/02/16/building-hotot.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+<script src="/javascripts/analytics.js"></script>
+
+</body>
+</html>

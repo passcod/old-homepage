@@ -4,7 +4,7 @@
   <title><![CDATA[⚔ passcod ⚔]]></title>
   <link href="https://passcod.name/atom.xml" rel="self"/>
   <link href="https://passcod.name/"/>
-  <updated>2013-02-12T15:00:49+13:00</updated>
+  <updated>2013-02-16T21:45:15+13:00</updated>
   <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -12,6 +12,198 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Building Hotot]]></title>
+    <link href="https://passcod.name/2013/02/16/building-hotot.html"/>
+    <updated>2013-02-16T02:33:00+13:00</updated>
+    <id>https://passcod.name/2013/02/16/building-hotot</id>
+    <content type="html"><![CDATA[<p>A few days ago <strong>@codeofinterest</strong> [tweeted about Hotot][1], enthused about a
+“better [alternative] than TweetDeck.” I was intrigued. Hotot has [an article
+on ghacks][2], [a GitHub repository][3], and a <em>defunct</em> [website][4]
+(it answers systematically with a 502). And of course, all the information and
+downloads and demos / screens are purportedly on there. Hidden. Frustrating.</p>
+
+<p>Not content with the [Chrome extension][5] (the only other time I ran Chrome
+solely for the purpose of a single application was TweetDeck, and I will not
+repeat that experience), I decided to build the software. How hard could it be?</p>
+
+<p><em>(Do not follow these instructions unless you know what you’re doing. There’s a
+Homebrew formula at the end which can be used for a far easier and better install.)</em></p>
+
+<!-- more -->
+
+
+<h2>Gtk2</h2>
+
+<p>Firstly, I had a choice to make: Gtk2, Gtk3, or Qt as a wrapper? I chose Gtk2.
+It seemed the easiest option. The README indicates the following dependencies
+for Gtk2:</p>
+
+<ul>
+<li><strong>python2</strong>: Easy, there’s one bundled with OS X, if I recall, although I
+have the Homebrew version myself.</li>
+<li><strong>pygtk</strong>: That one can be installed through <code>brew</code>. It builds cleanly.</li>
+<li><strong>python-webkit</strong>: This was the first snag I hit. <code>pip</code> finds <code>pywebkitgtk</code>,
+but doesn’t even attempt to install it due to a missing <code>setup.py</code>. It has
+to be built manually.</li>
+</ul>
+
+
+<p>PyWebkitGtk has an <code>INSTALL</code> file which is rather verbose, but boils down to
+the usual <code>./configure</code>, <code>make</code>, <code>make install</code>. Immediately, <code>./configure</code>
+stopped to ask me about missing dependencies:</p>
+
+<ul>
+<li><strong>gstreamer</strong>: Homebrew took care of that nicely.</li>
+<li><strong>pygtk</strong>: Which the previous step took care of.</li>
+<li><strong>gthread</strong>: Which is found in glib, which I do have installed (Homebrew).</li>
+<li><strong>libxslt</strong>: Which is included with OS X. Huh. It’s complaining quite
+specifically about this one. Why?</li>
+</ul>
+
+
+<p>I tried to install it through <code>brew install libxslt</code>, but Homebrew warned me it
+was keg-only, and that linking it <em>would</em> cause problems. Stuck, I nevertheless
+tried to, then ran <code>./configure</code> again, and when it still didn’t work, I ran a
+<code>brew unlink libxslt</code> to avoid trouble. I had a problem though: all the deps
+were there, but the configure script didn’t want to work. I suspected it was a
+path problem, though. So I tried various ways of specifying paths. <em>(In this
+situation, my old trick of using nested shells to preserve the original env and
+revert explorations quickly paid off immensely. I’d forgotten it for a while,
+moslty due to <code>tmux</code> and <code>popd</code>, but it’s quite cool.)</em> In the end, here’s what
+I believed would work:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">PYGTK_CFLAGS</span><span class="o">=</span><span class="s2">&quot;-I/usr/local/Cellar/pygtk/2.24.0/include/pygtk-2.0&quot;</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">PYGTK_CFLAGS</span><span class="o">=</span><span class="s2">&quot;$PYTHON_CFLAGS -I/usr/local/Cellar/pygobject/2.28.6/include/pygtk-2.0&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">export </span><span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/Cellar/gstreamer/0.10.36/lib/pkgconfig&quot;</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span><span class="s2">&quot;$PKG_CONFIG_PATH:/usr/local/Cellar/pygobject/2.28.6/lib/pkgconfig&quot;</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span><span class="s2">&quot;$PKG_CONFIG_PATH:/usr/local/Cellar/pygtk/2.24.0/lib/pkgconfig&quot;</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span><span class="s2">&quot;$PKG_CONFIG_PATH:/usr/local/Cellar/libxslt/1.1.28/lib/pkgconfig&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;$PATH:/usr/local/Cellar/gettext/0.18.2/bin/&quot;</span>
+</span><span class='line'>
+</span><span class='line'>./configure --prefix<span class="o">=</span>/usr/local/Cellar/pywebkitgtk/HEAD
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Unfortunately, it died with this unhelful error:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>checking <span class="k">for </span>DEPS... no
+</span><span class='line'>configure: error: Package requirements <span class="o">(</span>libxslt
+</span><span class='line'>                  gthread-2.0
+</span><span class='line'>                  pygtk-2.0<span class="o">)</span> were not met:
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Consider adjusting the PKG_CONFIG_PATH environment variable <span class="k">if </span>you
+</span><span class='line'>installed software in a non-standard prefix.
+</span><span class='line'>
+</span><span class='line'>Alternatively, you may <span class="nb">set </span>the environment variables DEPS_CFLAGS
+</span><span class='line'>and DEPS_LIBS to avoid the need to call pkg-config.
+</span><span class='line'>See the pkg-config man page <span class="k">for </span>more details.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That blank space should have details, such as which package is missing,
+exactly, but it’s emptiness here it really frustrating. However, it also brings
+a new, slightly more tedious, line of trials: setting <code>DEPS_*</code> directly and
+bypassing pkg-config altogether. But before I tried that, I decided to give one
+of the other wrappers a chance.</p>
+
+<h2>Qt</h2>
+
+<p>Qt 4.8 is in Homebrew and I already had it installed, so I went on to try and
+build Hotot. The instructions are:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git clone git://github.com/lyricat/Hotot
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>Hotot
+</span><span class='line'><span class="nv">$ </span>mkcd build
+</span><span class='line'><span class="nv">$ </span>cmake ..
+</span><span class='line'><span class="nv">$ </span>make
+</span><span class='line'><span class="c"># make install</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Cmake complained that it couldn’t find gettext, though, so I ran
+<code>brew link gettext --force</code> before building, with the intention of unlinking
+afterwards. That worked.</p>
+
+<p>As my system is configured using Homebrew, there is no need to run
+<code>make install</code> as root. Build and installation having proceeded without snag,
+I unlinked gettext and went on to the next step: trying it out.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>hotot-qt
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Easy does it…</p>
+
+<p><img src="https://passcod.name/images/blog/2013-02-16-hotot-icon.png" alt="Pretty icon for Hotot" /></p>
+
+<p><img src="https://passcod.name/images/blog/2013-02-16-hotot-first-screen.png" alt="OK, it seems to be alright…" /></p>
+
+<p><img src="https://passcod.name/images/blog/2013-02-16-hotot-logged-in.png" alt="Logged in and ready to go!" /></p>
+
+<p>Here’s a Gist with a working <a href="https://gist.github.com/passcod/4966034">Homebrew formula for Hotot</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Why Django Unchained makes me laugh]]></title>
+    <link href="https://passcod.name/2013/02/14/why-django-unchained-makes-me-laugh.html"/>
+    <updated>2013-02-14T03:22:00+13:00</updated>
+    <id>https://passcod.name/2013/02/14/why-django-unchained-makes-me-laugh</id>
+    <content type="html"><![CDATA[<p>It can’t be the romance. It’s above <em>Twilight</em>, but not quite <em>The Moor of
+Venice</em>. It can’t be the historical value. I might not be an expert on the
+years prior the <em>Civil War</em>, but I do consider myself reasonably educated, and
+certainly enough to appreciate the more obvious inaccuracies. It can’t be the
+suspense, of course. This is a grand tale, a <em>Tarantino</em>, where The Good Guys
+Win, and of that little is left to doubt.</p>
+
+<p>If it’s not either of these, then <em>what</em>, exactly, can it be which excited me
+so that I, not once nor twice but thrice, almost stood up and really did laugh
+out loud at the screen and with such a grin, what is it then which delighted
+me so?</p>
+
+<p>I attribute it to three things, because three is the magic number; beyond that
+you’ll lose patience and your attention will waver, and beneath your thirst
+won’t be quenched. The first thing is art, the second is art, and the third?
+the third is music.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Thinking about a new tagline]]></title>

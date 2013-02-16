@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OS X | ⚔ passcod ⚔]]></title>
   <link href="https://passcod.name/blog/categories/os-x/atom.xml" rel="self"/>
   <link href="https://passcod.name/"/>
-  <updated>2013-02-16T21:35:00+13:00</updated>
+  <updated>2013-02-16T21:45:15+13:00</updated>
   <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -74,7 +74,7 @@ revert explorations quickly paid off immensely. I’d forgotten it for a while,
 moslty due to <code>tmux</code> and <code>popd</code>, but it’s quite cool.)</em> In the end, here’s what
 I believed would work:</p>
 
-<p>``` shell
+<p>``` bash
 export PYGTK_CFLAGS="-I/usr/local/Cellar/pygtk/2.24.0/include/pygtk-2.0"
 export PYGTK_CFLAGS="$PYTHON_CFLAGS -I/usr/local/Cellar/pygobject/2.28.6/include/pygtk-2.0"</p>
 
@@ -117,7 +117,7 @@ of the other wrappers a chance.</p>
 <p>Qt 4.8 is in Homebrew and I already had it installed, so I went on to try and
 build Hotot. The instructions are:</p>
 
-<p>``` shell
+<p>``` bash
 $ git clone git://github.com/lyricat/Hotot
 $ cd Hotot
 $ mkcd build
@@ -136,7 +136,7 @@ afterwards. That worked.</p>
 <code>make install</code> as root. Build and installation having proceeded without snag,
 I unlinked gettext and went on to the next step: trying it out.</p>
 
-<p><code>shell
+<p><code>bash
 $ hotot-qt
 </code></p>
 
