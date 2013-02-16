@@ -4,7 +4,7 @@
   <title><![CDATA[Category: twitter | ⚔ passcod ⚔]]></title>
   <link href="https://passcod.name/blog/categories/twitter/atom.xml" rel="self"/>
   <link href="https://passcod.name/"/>
-  <updated>2013-02-16T22:04:13+13:00</updated>
+  <updated>2013-02-16T22:06:46+13:00</updated>
   <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -119,16 +119,14 @@ of the other wrappers a chance.</p>
 <p>Qt 4.8 is in Homebrew and I already had it installed, so I went on to try and
 build Hotot. The instructions are:</p>
 
-<p>``` bash
+<p><code>bash
 $ git clone git://github.com/lyricat/Hotot
 $ cd Hotot
 $ mkcd build
 $ cmake ..
-$ make</p>
-
-<h1>make install</h1>
-
-<p>```</p>
+$ make
+$ sudo make install
+</code></p>
 
 <p>Cmake complained that it couldn’t find gettext, though, so I ran
 <code>brew link gettext --force</code> before building, with the intention of unlinking

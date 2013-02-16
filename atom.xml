@@ -4,7 +4,7 @@
   <title><![CDATA[⚔ passcod ⚔]]></title>
   <link href="https://passcod.name/atom.xml" rel="self"/>
   <link href="https://passcod.name/"/>
-  <updated>2013-02-16T22:04:13+13:00</updated>
+  <updated>2013-02-16T22:06:46+13:00</updated>
   <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -154,7 +154,7 @@ build Hotot. The instructions are:</p>
 </span><span class='line'><span class="nv">$ </span>mkcd build
 </span><span class='line'><span class="nv">$ </span>cmake ..
 </span><span class='line'><span class="nv">$ </span>make
-</span><span class='line'><span class="c"># make install</span>
+</span><span class='line'><span class="nv">$ </span>sudo make install
 </span></code></pre></td></tr></table></div></figure>
 
 
