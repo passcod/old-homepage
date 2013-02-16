@@ -4,7 +4,7 @@
   <title><![CDATA[Category: twitter | ⚔ passcod ⚔]]></title>
   <link href="https://passcod.name/blog/categories/twitter/atom.xml" rel="self"/>
   <link href="https://passcod.name/"/>
-  <updated>2013-02-16T21:45:15+13:00</updated>
+  <updated>2013-02-16T21:58:15+13:00</updated>
   <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -18,18 +18,19 @@
     <link href="https://passcod.name/2013/02/16/building-hotot.html"/>
     <updated>2013-02-16T02:33:00+13:00</updated>
     <id>https://passcod.name/2013/02/16/building-hotot</id>
-    <content type="html"><![CDATA[<p>A few days ago <strong>@codeofinterest</strong> [tweeted about Hotot][1], enthused about a
-“better [alternative] than TweetDeck.” I was intrigued. Hotot has [an article
-on ghacks][2], [a GitHub repository][3], and a <em>defunct</em> [website][4]
+    <content type="html"><![CDATA[<p>A few days ago <strong>@codeofinterest</strong> <a href="https://twitter.com/codeofinterest/status/301268509709705217">tweeted about Hotot</a>, enthused about a
+“better [alternative] than TweetDeck.” I was intrigued. Hotot has <a href="http://www.ghacks.net/2011/03/28/hotot-give-this-new-linux-twitter-client-a-tweet/">an article
+on ghacks</a>, <a href="https://github.com/lyricat/Hotot">a GitHub repository</a>, and a <em>defunct</em> <a href="http://hotot.org">website</a>
 (it answers systematically with a 502). And of course, all the information and
 downloads and demos / screens are purportedly on there. Hidden. Frustrating.</p>
 
-<p>Not content with the [Chrome extension][5] (the only other time I ran Chrome
+<p>Not content with the <a href="https://chrome.google.com/webstore/detail/hotot/cnfkkfleeiooolklkgkmigodkmcopnji?hl=en">Chrome extension</a> (the only other time I ran Chrome
 solely for the purpose of a single application was TweetDeck, and I will not
 repeat that experience), I decided to build the software. How hard could it be?</p>
 
 <p><em>(Do not follow these instructions unless you know what you’re doing. There’s a
-Homebrew formula at the end which can be used for a far easier and better install.)</em></p>
+<a href="https://gist.github.com/passcod/4966034">Homebrew formula</a> at the end which can be used for a far easier and better
+install.)</em></p>
 
 <!-- more -->
 
