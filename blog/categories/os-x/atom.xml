@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OS X | ⚔ passcod ⚔]]></title>
   <link href="https://passcod.name/blog/categories/os-x/atom.xml" rel="self"/>
   <link href="https://passcod.name/"/>
-  <updated>2013-02-16T22:15:21+13:00</updated>
+  <updated>2013-02-16T22:17:55+13:00</updated>
   <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -29,9 +29,7 @@ Hidden. Frustrating.</p>
 solely for the purpose of a single application was TweetDeck, and I will not
 repeat that experience), I decided to build the software. How hard could it be?</p>
 
-<p><em>(Do not follow these instructions unless you know what you’re doing. There’s a
-<a href="https://gist.github.com/passcod/4966034">Homebrew formula</a> at the end which can be used for a far easier and better
-install.)</em></p>
+<p><em>(tl;dr: I made a <a href="https://gist.github.com/passcod/4966034">Homebrew formula</a> for it.)</em></p>
 
 <!-- more -->
 
