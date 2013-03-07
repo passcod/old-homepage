@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Camp Nano"
+date: 2013-03-08 02:34
+comments: true
+categories:
+  - self
+  - writing
+  - nanowrimo
+---
+
+I'll probably be writing 10~15k words during April.
