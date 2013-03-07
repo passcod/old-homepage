@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en" manifest="/.appcache"><!--<![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <title>contact - ⚔ passcod ⚔</title>
@@ -23,14 +23,14 @@ GitHub and around the wider web. If you have a comment or query &hellip;">
   <link rel="canonical" href="https://passcod.name/contact/index.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="⚔ passcod ⚔" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   
 
 </head>
@@ -60,7 +60,10 @@ GitHub and around the wider web. If you have a comment or query &hellip;">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/contact">Contact</a></li>
-  <li><a href="/cv">CV</a></li>
+<!--  <li><a href="/cv">CV</a></li> -->
+<!--  I’m not looking right now, but am open to short,
+      fixed term, specialised (no “fix this” shit) and
+      interesting contracts / arrangements if you wish. -->
 </ul>
 
 </nav>
@@ -83,7 +86,7 @@ GitHub and around the wider web. If you have a comment or query &hellip;">
   
 
 
-<time title="2013-01-01T13:01:00+13:00" datetime="2013-01-01T13:01:00+13:00" pubdate data-updated="true">2013·01·2 ⚔ Tuesday</time></p>
+<time datetime="2013-01-01T13:01:00+13:00" pubdate data-updated="true">2013·01·2 ⚔ Tuesday</time></p>
   </header>
   
   <p>Félix Saparelli<br/>
@@ -123,7 +126,7 @@ fine so make it interesting.</p>
   
 
 
-<time title="2013-01-01T13:01:00+13:00" datetime="2013-01-01T13:01:00+13:00" pubdate data-updated="true">2013·01·2 ⚔ Tuesday</time>
+<time datetime="2013-01-01T13:01:00+13:00" pubdate data-updated="true">2013·01·2 ⚔ Tuesday</time>
         
       </p>
       
@@ -153,6 +156,10 @@ fine so make it interesting.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/03/08/camp-nano.html">Camp Nano</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/02/16/building-hotot.html">Building Hotot</a>
       </li>
     
@@ -166,10 +173,6 @@ fine so make it interesting.</p>
     
       <li class="post">
         <a href="/2013/01/25/on-the-sides.html">On the sides, really really alpha</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/06/having-the-source-lets-one-remake-and-derive.html">Having the Source lets one remake and derive</a>
       </li>
     
   </ul>
@@ -251,7 +254,7 @@ fine so make it interesting.</p>
 <section class="googleplus">
   <h1>
     <a href="https://plus.google.com/117793015817962060333?rel=author">
-      <img src="//www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
       Google+
     </a>
   </h1>
@@ -280,7 +283,7 @@ fine so make it interesting.</p>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
+  js = d.createElement(s); js.id = id; js.async = true;
   js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
@@ -302,7 +305,7 @@ fine so make it interesting.</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

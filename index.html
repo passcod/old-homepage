@@ -2,16 +2,15 @@
 <!DOCTYPE html>
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en" manifest="/.appcache"><!--<![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <title>⚔ passcod ⚔</title>
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="A few days ago @codeofinterest tweeted about Hotot, enthused
-about a “better [alternative] than TweetDeck.” I was intrigued. Hotot has
-an article on &hellip;">
+  <meta name="description" content="I&#8217;ll probably be writing 10~15k words during April.
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -23,14 +22,14 @@ an article on &hellip;">
   <link rel="canonical" href="https://passcod.name/index.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="⚔ passcod ⚔" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   
 
 </head>
@@ -60,7 +59,10 @@ an article on &hellip;">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/contact">Contact</a></li>
-  <li><a href="/cv">CV</a></li>
+<!--  <li><a href="/cv">CV</a></li> -->
+<!--  I’m not looking right now, but am open to short,
+      fixed term, specialised (no “fix this” shit) and
+      interesting contracts / arrangements if you wish. -->
 </ul>
 
 </nav>
@@ -68,6 +70,44 @@ an article on &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/03/08/camp-nano.html">Camp Nano</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-08T02:34:00+13:00" pubdate data-updated="true">2013·10·5 ⚔ Friday</time>
+        
+         | <a href="/2013/03/08/camp-nano.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ll probably be writing 10~15k words during April.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -90,7 +130,7 @@ an article on &hellip;">
   
 
 
-<time title="2013-02-16T02:33:00+13:00" datetime="2013-02-16T02:33:00+13:00" pubdate data-updated="true">2013·07·6 ⚔ Saturday</time>
+<time datetime="2013-02-16T02:33:00+13:00" pubdate data-updated="true">2013·07·6 ⚔ Saturday</time>
         
          | <a href="/2013/02/16/building-hotot.html#disqus_thread">Comments</a>
         
@@ -144,7 +184,7 @@ repeat that experience), I decided to build the software. How hard could it be?<
   
 
 
-<time title="2013-02-11T02:47:00+13:00" datetime="2013-02-11T02:47:00+13:00" pubdate data-updated="true">2013·07·1 ⚔ Monday</time>
+<time datetime="2013-02-11T02:47:00+13:00" pubdate data-updated="true">2013·07·1 ⚔ Monday</time>
         
          | <a href="/2013/02/11/thinking-about-a-new-tagline.html#disqus_thread">Comments</a>
         
@@ -183,626 +223,6 @@ is best-looking in context and my mood at the time.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/02/07/late-introduction-to-libworker-dot-js.html">Late Introduction to libworker.js</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2013-02-07T22:19:00+13:00" datetime="2013-02-07T22:19:00+13:00" pubdate data-updated="true">2013·06·4 ⚔ Thursday</time>
-        
-         | <a href="/2013/02/07/late-introduction-to-libworker-dot-js.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>About 3 weeks ago I tried to reboot <a href="https://passcod.name/DynWorker">DynWorker</a>, my library
-to “make web threading fun.” I wanted not only to take advantage
-of newer technology, but also to give it a good layer of fresh
-paint. I started by manually translating it all in CoffeeScript.</p>
-
-<p>And it was looking good! The straight conversion worked, so I made
-a tiny change and tried to use a data:URI to load the worker code.
-Which turned out to be impossible. I essentially wanted to take the
-entire library, stringify it, base64-encode it, and put it in a
-variable… preferably at run-time. Y’know, so I didn&#8217;t have to dupe
-my entire code in the source!</p>
-
-<p>One of the best (!) solutions I found went like this:</p>
-
-<figure class='code'><figcaption><span>JS in Coffee, ah-yup</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">var</span> <span class="nv">src = </span><span class="s">&quot;</span>
-</span><span class='line'><span class="s">(function () {</span>
-</span><span class='line'><span class="s">  ...</span>
-</span><span class='line'><span class="s">  do something</span>
-</span><span class='line'><span class="s">  ...</span>
-</span><span class='line'><span class="s">}())&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="vi">@DynWorker.src = </span><span class="s">&quot;data:text/javascript;base64,&quot;</span> <span class="o">+</span> <span class="nx">btoa</span> <span class="nx">src</span>
-</span><span class='line'><span class="nb">eval</span> <span class="nx">src</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><em>Don’t do that, kids.</em></p>
-
-<p>Besides, I had looked at the list of features I had to test, the list
-of features I had thought of, the list of features I probably needed
-to implement, and daaamn, boy, ah wasn’ gonna be done with it sooner.
-So I tanked it.</p>
-
-<p>Instead, I created <a href="https://github.com/passcod/libworker.js">libworker.js</a>. DynWorker has a line in the readme
-saying it pretty low-level. That ain’t true no more. Libworker.js is to
-DynWorker what Assembly is to C++ : a completely different level.</p>
-
-<p>Here is the entirety of the source. You can take that and paste
-it in your console and it’ll work. Promise.</p>
-
-<figure class='code'><figcaption><span>libworker.min.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">b</span><span class="p">){</span>
-</span><span class='line'><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="nx">b</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="nx">a</span><span class="o">=</span><span class="nb">String</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
-</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="mi">5</span><span class="o">&gt;</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="o">&amp;&amp;</span><span class="s2">&quot;eval:&quot;</span><span class="o">===</span><span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span><span class="k">return</span> <span class="nx">b</span><span class="p">.</span><span class="nb">eval</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">b</span><span class="p">,</span>
-</span><span class='line'><span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">5</span><span class="p">))});</span><span class="kd">function</span> <span class="nx">c</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="nx">metal</span><span class="o">=</span><span class="kc">null</span><span class="o">!=</span><span class="nx">a</span><span class="o">?</span><span class="nx">a</span><span class="o">:</span><span class="k">new</span> <span class="nx">Worker</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">src</span><span class="p">)}</span>
-</span><span class='line'><span class="nx">c</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">send</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="nx">metal</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="nx">a</span><span class="p">)};</span>
-</span><span class='line'><span class="nx">c</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nb">eval</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;eval:&quot;</span><span class="o">+</span><span class="nx">a</span><span class="p">)};</span>
-</span><span class='line'><span class="nx">c</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s1">&#39;data:text/javascript;base64,dmFyIGI7Yj10aGlzO&#39;</span><span class="o">+</span>
-</span><span class='line'><span class="s1">&#39;3RoaXMuYWRkRXZlbnRMaXN0ZW5lcigibWVzc2FnZSIsZnVuY3Rp&#39;</span><span class="o">+</span>
-</span><span class='line'><span class="s1">&#39;b24oYSl7YT1TdHJpbmcoYS5kYXRhKTtpZighKDU+YS5sZW5ndGg&#39;</span><span class="o">+</span>
-</span><span class='line'><span class="s1">&#39;pJiYiZXZhbDoiPT09YS5zbGljZSgwLDUpKXJldHVybiBiLmV2YW&#39;</span><span class="o">+</span>
-</span><span class='line'><span class="s1">&#39;wuY2FsbChiLGEuc2xpY2UoNSkpfSk7&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nx">b</span><span class="p">.</span><span class="nx">libworker</span><span class="o">=</span><span class="nx">c</span><span class="p">;</span>
-</span><span class='line'><span class="p">}(</span><span class="k">this</span><span class="p">));</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>(It’s actually <a href="https://github.com/passcod/libworker.js/blob/master/libworker.coffee">written in CoffeeScript</a>, don’t you worry, this
-is not the source source, it’s not completely unmantainable. Although
-I actually “hand-compile” this thing.)</p>
-
-<p>If you can’t read minified JavaScript, there’s <a href="https://passcod.name/libworker.js">a page with examples</a>
-available, albeit quite short. I just can’t justify too many words on this
-little code!</p>
-
-<p>This library can be included directly in any project that needs to use
-WebWorkers, like <strong>Dyno.js</strong>, my upcoming Actor framework for browsers,
-for which there is little source available in very non-obvious places.<br/>
-You’ll just have to wait ;-)</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/01/25/on-the-sides.html">On the Sides, Really Really Alpha</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2013-01-25T15:31:00+13:00" datetime="2013-01-25T15:31:00+13:00" pubdate data-updated="true">2013·04·5 ⚔ Friday</time>
-        
-         | <a href="/2013/01/25/on-the-sides.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So, <a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">IFTTT sucks</a>. Turns out there&#8217;s a better IFTTT out there
-called <a href="https://zapier.com/">Zapier</a> that has a really easy to use developer interface.
-Hence, I created a Zapier service for <strong>On the sides</strong>. Due to my own
-UI not being great, though, you&#8217;ll have to fiddle around with cURL (or
-better, <a href="http://httpie.org/">httpie</a>, which is what I&#8217;ll be using below) to make it all
-work.</p>
-
-<h2>Pre-reqs</h2>
-
-<ul>
-<li><p>You&#8217;ll need a Zapier account. This takes about 20 seconds to create, email
-verification isn&#8217;t even necessary, and they&#8217;ve got a decent free plan.</p></li>
-<li><p>You&#8217;ll need to log in to <a href="https://login.persona.org/">Mozilla Persona</a>. You can actually do that
-later on when signing in to <strong>On the sides</strong>, but if emails take a bit of
-time to arrive you might want to do it now if you have never done it before.
-If you&#8217;re just playing around, use <code>some-word@mockmyid.com</code> instead when
-doing the Mozilla Persona thing (but only there!).</p></li>
-<li><p>You&#8217;ll need something to consume HTTP APIs with ease. I&#8217;ll use httpie, as
-mentioned above, or you can use cURL, or a JS console with jQuery.ajax or
-anything else that floats your boat. Whatever. It needs to be able to do
-GET and POST (with PUT and DELETE as bonuses), and set custom headers.</p></li>
-<li><p>You&#8217;ll need to know how to open the JS console. I won&#8217;t tell you how, just
-figure it out and if you can&#8217;t, well, you probably can&#8217;t do the rest anyway.</p></li>
-<li><p>You&#8217;ll need about 15 minutes. More if you&#8217;re slow. Less if you&#8217;re da baws.</p></li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2013/01/25/on-the-sides.html">⚔ Read on…</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/01/06/having-the-source-lets-one-remake-and-derive.html">Having the Source Lets One Remake and Derive</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2013-01-06T18:13:00+13:00" datetime="2013-01-06T18:13:00+13:00" pubdate data-updated="true">2013·01·7 ⚔ Sunday</time>
-        
-         | <a href="/2013/01/06/having-the-source-lets-one-remake-and-derive.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&#8217;ve been reading articles by <a href="http://yudkowsky.net/">Eliezer Yudkowsky</a> recently, and here&#8217;s
-one that struck me could also refer to open-source software:</p>
-
-<blockquote><p><a href="http://yudkowsky.net/rational/the-simple-truth">A shepherd builds a counting system</a> that works by throwing a pebble
-into a bucket whenever a sheep leaves the fold, and taking a pebble
-out whenever a sheep returns.  If you, the apprentice, do not understand
-this system—if it is magic that works for no apparent reason—then
-you will not know what to do if you accidentally drop an extra pebble
-into the bucket.  That which you cannot make yourself, you cannot
-remake when the situation calls for it.  You cannot go back to the
-source, tweak one of the parameter settings, and regenerate the output,
-without the source.  If &#8220;Two plus four equals six&#8221; is a brute fact unto
-you, and then one of the elements changes to &#8220;five&#8221;, how are you to
-know that &#8220;two plus five equals seven&#8221; when you were simply told that
-&#8220;two plus four equals six&#8221;?</p>
-
-<p>If you see a small plant that drops a seed whenever a bird passes it,
-it will not occur to you that you can use this plant to partially
-automate the sheep-counter.  Though you learned something that the
-original maker would use to improve on his invention, you can&#8217;t go back
-to the source and re-create it.</p>
-
-<p><em>(from <a href="http://lesswrong.com/lw/la/truly_part_of_you/">Less Wrong&#8217;s “Truly Part of You”</a>)</em></p></blockquote>
-
-<p>However, simply <em>using</em> open-source software does not give you an understanding
-of its workings. It does not demystify it, it does not alleviate the <em>magic</em>
-of the thing. In computer science especially, there is this concept of <a href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">leaky
-abstractions</a>: these are most flagrant and disturbing when one has no or
-little understanding of the abstracted layer.</p>
-
-<p>This is why I make a point of reading through at least part of the source of
-every program and library I work with on a regular basis. I have read a bit
-of the Linux kernel, a small chunk of the Firefox OS UI, most of Sinatra but
-much less of Rails, I have debugged and contributed to one of my systems&#8217;
-package manager, and just this afternoon I trudged through a Gem to insert
-a debug statement and peek within an HTTPS request.</p>
-
-<p>All these experiences provided me with knowledge I could never get just by
-reading documentation. This knowledge allows me the incredible power of
-remixing various bits into new solutions. What&#8217;s more, even though I have
-cursed a bunch of developers while attempting to parse their witty one-liners,
-I can hopefully learn from their mistakes and not just mine. Hmmm… <em>hopefully</em>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">On IFTTT Not Having an HTTP ‘this’ Nor ‘that’</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2013-01-04T18:20:00+13:00" datetime="2013-01-04T18:20:00+13:00" pubdate data-updated="true">2013·01·5 ⚔ Friday</time>
-        
-         | <a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So, <a href="https://ifttt.com">IFTTT</a> is cool. It&#8217;s a nitfy little service that glues various
-services together, pipe-style, and makes the realtime web just that
-much more useful. Only, I thought they&#8217;d have the decency of including
-HTTP triggers and channels so we could do whatever we damn well wanted
-instead of being stuck with the handful of services we&#8217;re actually using.</p>
-
-<p>So I need something to:</p>
-
-<ul>
-<li>Trigger an IFTTT recipe,</li>
-<li>get triggered by a recipe,</li>
-<li>and be able to send and receive arbitrary data through that.</li>
-</ul>
-
-
-<p>My first thought was: let&#8217;s create a service that translates HTTP calls
-to something IFTTT can handle and vice-versa. Woo! Boo! Not so easy.
-Here are a few options:</p>
-
-<h2>Email</h2>
-
-<p>Possibly the easiest one to work with, albeit with a few serious caveats.
-You can send emails to trigger@ifttt.com and it can also send you emails
-as actions. The data is free-form and not really length-limited, and you
-can even send a file through for binary data support.</p>
-
-<p>Unfortunately, IFTTT only supports a single email channel per account, so
-that means you&#8217;d have to give up on the email channel for other purposes.
-(This ain&#8217;t so bad: you could always plug the HTTP calls into a 3rd-party
-email service.)</p>
-
-<h2>Feed</h2>
-
-<p><em>Trigger only</em></p>
-
-<p>Probably the best solution for triggers, this has the same advantages as email
-minus the file attachment, but with better-structured data (more fields).</p>
-
-<h2>Gmail</h2>
-
-<p>Like email, but a bit better. Notably, you can send an email from your Gmail
-account as an action, and trigger a recipe when a new email arrives, optionally
-tagged. This could be a bit nicer as it allows you to still use both Email and
-Gmail as channels. However, if you&#8217;ve got a Gmail account linked to IFTTT, there&#8217;s
-no reason to use Email at all except for proxying things through as shown above.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/16/bullets-dump-for-imaku.html">Bullets Dump for Imaku</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2012-12-16T22:11:00+13:00" datetime="2012-12-16T22:11:00+13:00" pubdate data-updated="true">2012·50·7 ⚔ Sunday</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>White to be the dominant colour, not black as in every other thing out there.</li>
-<li>Simple design, flat feel. Most others try to bring depth, but maybe trying too hard…</li>
-<li>Icon grid is overrated. Text is nice too.</li>
-<li>For non-phone devices (desktops / laptop / tablets / hybrids), the keyboard is accessible:
-
-<ul>
-<li>Alfred / Gnome3 -style type to search and launch</li>
-<li>Maybe bring back Ubiquity principles?</li>
-</ul>
-</li>
-<li>Modifiers for touch screens:
-
-<ul>
-<li>Hold one corner == Control / Alt / Super keys</li>
-</ul>
-</li>
-<li>Use touchpads fully: gestures, etc – not just left/right click simulation</li>
-<li>Forget the past:
-
-<ul>
-<li>DON&#8217;T BE BACKWARD COMPATIBLE !!!</li>
-<li>Menu bar? Pfff.</li>
-<li>Docks? No need.</li>
-<li>Window decorations? Nope: can use modifier keys to manipulate windows (resize, move) and gestures / hotkeys to close them.</li>
-</ul>
-</li>
-<li>But learn from it:
-
-<ul>
-<li>DON&#8217;T FORGET POWER USERS !!!</li>
-<li>Ease of manipulating windows in bulk (tiling, layouts)</li>
-<li>Settings, options, customisability.</li>
-<li>In fact, educate users through &#8220;forced-learning&#8221; (like what is used in games, e.g. Meat Boy) so everyone&#8217;s a power user.</li>
-<li>Forget apps: applications are programs, we should make them simpler, not dumb.</li>
-<li>PIPES !!! Pipes in Unix are the best thing ever, why couldn&#8217;t we have something similar?</li>
-</ul>
-</li>
-<li>Rich command line, like Firefox&#8217;s Dev Tools and Ace&#8217;s control line
-
-<ul>
-<li>Make it an integral part of the system, not just something for geeks</li>
-</ul>
-</li>
-<li>Infinite desktop space:
-
-<ul>
-<li>No separate desktops / workspaces</li>
-<li>The screen is a viewport onto the virtual desktop area.</li>
-<li>Can save viewpoints to have quick-access</li>
-<li>Base operation is 2D-only, but can lapse into the Z if user can handle the additional cognitive load ;)</li>
-<li>Can do the usual, and pin windows to viewport</li>
-<li>Super-advanced features:
-
-<ul>
-<li>Multiple screens have multiple viewports</li>
-<li>Can connect different user spaces in one large canvas</li>
-<li>A bit like multi-player tmux but for the desktop / GUI</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/05/ssl-enabled-passcod.html">SSL-enabled Passcod</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2012-12-05T07:44:00+13:00" datetime="2012-12-05T07:44:00+13:00" pubdate data-updated="true">2012·49·3 ⚔ Wednesday</time>
-        
-         | <a href="/2012/12/05/ssl-enabled-passcod.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Yesterday was the dawn of a new, Octopress-powered website.
-Today we&#8217;ve got SSL on several websites, including:</p>
-
-<ul>
-<li><a href="https://passcod.net">https://passcod.net</a></li>
-<li><a href="https://words.passcod.net">https://words.passcod.net</a></li>
-<li><a href="https://dash.passcod.net">https://dash.passcod.net</a></li>
-<li><a href="https://roccoliphic.passcod.net">https://roccoliphic.passcod.net</a></li>
-<li><a href="https://stuff.passcod.net">https://stuff.passcod.net</a> (not 100% sure for this one)</li>
-<li><a href="https://fonts.passcod.net">https://fonts.passcod.net</a></li>
-</ul>
-
-
-<p>Even if these are all HTTPS for the first request,
-they&#8217;re probably not fully-SSL, except for this
-website (I made sure of that), which now proudly
-sports a lil padlock:</p>
-
-<p><img src="/images/blog/2012-12-05-ssl.png" alt="SSL padlock" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution.html">Introducing Plong: A Pseudo-peer-to-peer WebSocket Solution</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2012-12-04T21:08:00+13:00" datetime="2012-12-04T21:08:00+13:00" pubdate data-updated="true">2012·49·2 ⚔ Tuesday</time>
-        
-         | <a href="/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>My latest open source project is <a href="//plong.me">Plong.me</a>, a zero-setup
-file transfer app. I say file <em>transfer</em> and not file <em>sharing</em> because
-no data is ever stored in &#8220;the cloud&#8221; or on a computer other than the ones
-it is transfered between.</p>
-
-<p>I wanted this to be zero-setup and require no download, no installation, no
-sign up, no plugins, no nothing. Just a modern browser. I also wanted it to
-be secure (read: end-to-end encryption) yet easy enough for anyone to use.
-Daunting task.</p>
-
-<p>This called for a peer-to-peer protocol, but the other requirements meant it
-had to be a web p2p protocol available right now in browsers. This doesn&#8217;t
-exist yet. <a href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#peer-to-peer-data-api">WebRTC</a>
-is getting there, but this part of it isn&#8217;t implemented anywhere yet. I therefore
-had to make my own.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution.html">⚔ Read on…</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/11/07/unlicensing-everything-because-mit-aint-enough.html">Unlicensing Everything</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2012-11-07T21:00:00+13:00" datetime="2012-11-07T21:00:00+13:00" pubdate data-updated="true">2012·45·3 ⚔ Wednesday</time>
-        
-         | <a href="/2012/11/07/unlicensing-everything-because-mit-aint-enough.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This is the license under which my code and content, here and everywhere else, is published
-under by default:</p>
-
-<blockquote><p>All text and code and bytes and images that I have and will author, barring any contrary notice on
-or joined to the work in question, or a global notice published here on <strong>passcod.net</strong>
-(which would apply to all future works &mdash; one cannot, after all, un-release something), is hereby
-released in the Public Domain, or licensed under <a href="http://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
-or <a href="http://unlicense.org">the Unlicense</a>, whichever gives <strong>you</strong> the most rights.</p></blockquote>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/11/07/unlicensing-everything-because-mit-aint-enough.html">⚔ Read on…</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -818,6 +238,10 @@ or <a href="http://unlicense.org">the Unlicense</a>, whichever gives <strong>you
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/03/08/camp-nano.html">Camp Nano</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/02/16/building-hotot.html">Building Hotot</a>
       </li>
     
@@ -831,10 +255,6 @@ or <a href="http://unlicense.org">the Unlicense</a>, whichever gives <strong>you
     
       <li class="post">
         <a href="/2013/01/25/on-the-sides.html">On the sides, really really alpha</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/06/having-the-source-lets-one-remake-and-derive.html">Having the Source lets one remake and derive</a>
       </li>
     
   </ul>
@@ -916,7 +336,7 @@ or <a href="http://unlicense.org">the Unlicense</a>, whichever gives <strong>you
 <section class="googleplus">
   <h1>
     <a href="https://plus.google.com/117793015817962060333?rel=author">
-      <img src="//www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
       Google+
     </a>
   </h1>
@@ -946,7 +366,7 @@ or <a href="http://unlicense.org">the Unlicense</a>, whichever gives <strong>you
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -957,7 +377,7 @@ or <a href="http://unlicense.org">the Unlicense</a>, whichever gives <strong>you
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
+  js = d.createElement(s); js.id = id; js.async = true;
   js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
@@ -979,7 +399,7 @@ or <a href="http://unlicense.org">the Unlicense</a>, whichever gives <strong>you
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

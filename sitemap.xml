@@ -2,102 +2,110 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>https://passcod.name/2011/11/29/walking-in-the-north-island.html</loc>
-        <lastmod>2013-02-09T18:40:06+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2011/12/14/controlling-sound-in-ubuntu.html</loc>
-        <lastmod>2013-02-09T18:47:19+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2011/12/15/pubnub-vs-pusher.html</loc>
-        <lastmod>2013-02-09T19:37:23+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2012/01/27/mt-ruapehu.html</loc>
-        <lastmod>2013-02-09T19:05:32+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2012/02/29/collusion-and-my-web-day.html</loc>
-        <lastmod>2013-02-09T19:34:10+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2012/03/12/undo-version-control.html</loc>
-        <lastmod>2013-01-04T17:09:04+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2012/03/17/the-minimalist-date-format.html</loc>
-        <lastmod>2013-01-04T17:09:04+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2012/06/03/sprockets-on-sinatra-and-heroku.html</loc>
-        <lastmod>2013-01-04T17:09:04+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2012/07/25/the-80-slash-20-rule.html</loc>
-        <lastmod>2013-01-04T17:09:04+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>
             https://passcod.name/2012/11/07/unlicensing-everything-because-mit-aint-enough.html
         </loc>
-        <lastmod>2013-01-04T17:09:04+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>
             https://passcod.name/2012/12/04/introducing-plong-a-pseudo-peer-to-peer-websocket-solution.html
         </loc>
-        <lastmod>2013-01-04T17:09:04+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2012/12/05/ssl-enabled-passcod.html</loc>
-        <lastmod>2013-01-04T17:09:04+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2012/12/16/bullets-dump-for-imaku.html</loc>
-        <lastmod>2013-01-04T17:09:04+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>
             https://passcod.name/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html
         </loc>
-        <lastmod>2013-01-04T18:57:30+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>
             https://passcod.name/2013/01/06/having-the-source-lets-one-remake-and-derive.html
         </loc>
-        <lastmod>2013-01-06T18:44:47+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2013/01/25/on-the-sides.html</loc>
-        <lastmod>2013-01-25T16:44:52+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2013/02/07/late-introduction-to-libworker-dot-js.html</loc>
-        <lastmod>2013-02-07T23:27:38+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2013/02/11/thinking-about-a-new-tagline.html</loc>
-        <lastmod>2013-02-11T03:35:01+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/2013/02/16/building-hotot.html</loc>
-        <lastmod>2013-02-16T22:17:11+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
+    </url>
+    <url>
+        <loc>https://passcod.name/2013/03/08/camp-nano.html</loc>
+        <lastmod>2013-03-08T02:36:15+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/blog/archives/</loc>
-        <lastmod>2013-02-16T22:17:11+13:00</lastmod>
+        <lastmod>2013-03-08T02:36:15+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/contact/</loc>
-        <lastmod>2013-01-04T17:20:43+13:00</lastmod>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/</loc>
-        <lastmod>2013-02-16T22:17:11+13:00</lastmod>
+        <lastmod>2013-03-08T02:36:15+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/passcod03.asc</loc>
         <lastmod>2012-12-05T22:00:02+13:00</lastmod>
+    </url>
+    <url>
+        <loc>https://passcod.name/robots.txt</loc>
+        <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
 </urlset>

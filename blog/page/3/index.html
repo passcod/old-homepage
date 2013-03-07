@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>⚔ passcod ⚔</title>
+  <meta name="author" content="Félix Saparelli">
+
+  
+  <meta name="description" content="So, IFTTT is cool. It&#8217;s a nitfy little service that glues various
+services together, pipe-style, and makes the realtime web just that
+much more &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://passcod.name/blog/page/3/index.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="⚔ passcod ⚔" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">⚔ passcod ⚔</a></h1>
+  
+    <h2>Somewhat of a geek, but more of a techie.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.co.nz/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:passcod.name" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/contact">Contact</a></li>
+<!--  <li><a href="/cv">CV</a></li> -->
+<!--  I’m not looking right now, but am open to short,
+      fixed term, specialised (no “fix this” shit) and
+      interesting contracts / arrangements if you wish. -->
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">On IFTTT Not Having an HTTP ‘this’ Nor ‘that’</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-04T18:20:00+13:00" pubdate data-updated="true">2013·01·5 ⚔ Friday</time>
+        
+         | <a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So, <a href="https://ifttt.com">IFTTT</a> is cool. It&#8217;s a nitfy little service that glues various
+services together, pipe-style, and makes the realtime web just that
+much more useful. Only, I thought they&#8217;d have the decency of including
+HTTP triggers and channels so we could do whatever we damn well wanted
+instead of being stuck with the handful of services we&#8217;re actually using.</p>
+
+<p>So I need something to:</p>
+
+<ul>
+<li>Trigger an IFTTT recipe,</li>
+<li>get triggered by a recipe,</li>
+<li>and be able to send and receive arbitrary data through that.</li>
+</ul>
+
+
+<p>My first thought was: let&#8217;s create a service that translates HTTP calls
+to something IFTTT can handle and vice-versa. Woo! Boo! Not so easy.
+Here are a few options:</p>
+
+<h2>Email</h2>
+
+<p>Possibly the easiest one to work with, albeit with a few serious caveats.
+You can send emails to trigger@ifttt.com and it can also send you emails
+as actions. The data is free-form and not really length-limited, and you
+can even send a file through for binary data support.</p>
+
+<p>Unfortunately, IFTTT only supports a single email channel per account, so
+that means you&#8217;d have to give up on the email channel for other purposes.
+(This ain&#8217;t so bad: you could always plug the HTTP calls into a 3rd-party
+email service.)</p>
+
+<h2>Feed</h2>
+
+<p><em>Trigger only</em></p>
+
+<p>Probably the best solution for triggers, this has the same advantages as email
+minus the file attachment, but with better-structured data (more fields).</p>
+
+<h2>Gmail</h2>
+
+<p>Like email, but a bit better. Notably, you can send an email from your Gmail
+account as an action, and trigger a recipe when a new email arrives, optionally
+tagged. This could be a bit nicer as it allows you to still use both Email and
+Gmail as channels. However, if you&#8217;ve got a Gmail account linked to IFTTT, there&#8217;s
+no reason to use Email at all except for proxying things through as shown above.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/12/16/bullets-dump-for-imaku.html">Bullets Dump for Imaku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-16T22:11:00+13:00" pubdate data-updated="true">2012·50·7 ⚔ Sunday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>White to be the dominant colour, not black as in every other thing out there.</li>
+<li>Simple design, flat feel. Most others try to bring depth, but maybe trying too hard…</li>
+<li>Icon grid is overrated. Text is nice too.</li>
+<li>For non-phone devices (desktops / laptop / tablets / hybrids), the keyboard is accessible:
+
+<ul>
+<li>Alfred / Gnome3 -style type to search and launch</li>
+<li>Maybe bring back Ubiquity principles?</li>
+</ul>
+</li>
+<li>Modifiers for touch screens:
+
+<ul>
+<li>Hold one corner == Control / Alt / Super keys</li>
+</ul>
+</li>
+<li>Use touchpads fully: gestures, etc – not just left/right click simulation</li>
+<li>Forget the past:
+
+<ul>
+<li>DON&#8217;T BE BACKWARD COMPATIBLE !!!</li>
+<li>Menu bar? Pfff.</li>
+<li>Docks? No need.</li>
+<li>Window decorations? Nope: can use modifier keys to manipulate windows (resize, move) and gestures / hotkeys to close them.</li>
+</ul>
+</li>
+<li>But learn from it:
+
+<ul>
+<li>DON&#8217;T FORGET POWER USERS !!!</li>
+<li>Ease of manipulating windows in bulk (tiling, layouts)</li>
+<li>Settings, options, customisability.</li>
+<li>In fact, educate users through &#8220;forced-learning&#8221; (like what is used in games, e.g. Meat Boy) so everyone&#8217;s a power user.</li>
+<li>Forget apps: applications are programs, we should make them simpler, not dumb.</li>
+<li>PIPES !!! Pipes in Unix are the best thing ever, why couldn&#8217;t we have something similar?</li>
+</ul>
+</li>
+<li>Rich command line, like Firefox&#8217;s Dev Tools and Ace&#8217;s control line
+
+<ul>
+<li>Make it an integral part of the system, not just something for geeks</li>
+</ul>
+</li>
+<li>Infinite desktop space:
+
+<ul>
+<li>No separate desktops / workspaces</li>
+<li>The screen is a viewport onto the virtual desktop area.</li>
+<li>Can save viewpoints to have quick-access</li>
+<li>Base operation is 2D-only, but can lapse into the Z if user can handle the additional cognitive load ;)</li>
+<li>Can do the usual, and pin windows to viewport</li>
+<li>Super-advanced features:
+
+<ul>
+<li>Multiple screens have multiple viewports</li>
+<li>Can connect different user spaces in one large canvas</li>
+<li>A bit like multi-player tmux but for the desktop / GUI</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/12/05/ssl-enabled-passcod.html">SSL-enabled Passcod</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-05T07:44:00+13:00" pubdate data-updated="true">2012·49·3 ⚔ Wednesday</time>
+        
+         | <a href="/2012/12/05/ssl-enabled-passcod.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yesterday was the dawn of a new, Octopress-powered website.
+Today we&#8217;ve got SSL on several websites, including:</p>
+
+<ul>
+<li><a href="https://passcod.net">https://passcod.net</a></li>
+<li><a href="https://words.passcod.net">https://words.passcod.net</a></li>
+<li><a href="https://dash.passcod.net">https://dash.passcod.net</a></li>
+<li><a href="https://roccoliphic.passcod.net">https://roccoliphic.passcod.net</a></li>
+<li><a href="https://stuff.passcod.net">https://stuff.passcod.net</a> (not 100% sure for this one)</li>
+<li><a href="https://fonts.passcod.net">https://fonts.passcod.net</a></li>
+</ul>
+
+
+<p>Even if these are all HTTPS for the first request,
+they&#8217;re probably not fully-SSL, except for this
+website (I made sure of that), which now proudly
+sports a lil padlock:</p>
+
+<p><img src="/images/blog/2012-12-05-ssl.png" alt="SSL padlock" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/4/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/2/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/03/08/camp-nano.html">Camp Nano</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/16/building-hotot.html">Building Hotot</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/11/thinking-about-a-new-tagline.html">Thinking about a new tagline</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/07/late-introduction-to-libworker-dot-js.html">Late introduction to libworker.js</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/25/on-the-sides.html">On the sides, really really alpha</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Things</h1>
+  <ul>
+    <li><a href="/passcod03.asc">Current GPG Key ⚔ FE31 5C83…</a></li>
+    <li><a href="//stuff.passcod.name/aucklug/">AuckLUG Videos ⚔ Recorded talks</a></li>
+    <li><a href="http://checkthis.com/adiskadime">Adiskadime ⚔ Cheap Linux CDs</a></li>
+    <li><a href="http://checkthis.com/i7up">People ⚔ Prose</a></li>
+    <li><a href="http://checkthis.com/kxag">H E A R T ⚔ Art</a></li>
+    <li><a href="http://bit.ly/zP698W">Dreams and Magic ⚔ Prose</a></li>
+    <li><a href="http://bit.ly/AfF3BU">Margae ⚔ Prose</a></li>
+    <li><a href="http://bit.ly/14IT3EV">Plugged In Dreams ⚔ Prose</a></li>
+    <li><a href="https://gist.github.com/3208086">Old #unblog posts</a></li>
+    <li><a href="http://stackoverflow.com/users/231788/passcod">StackOverflow</a></li>
+    <li><a href="http://careers.stackoverflow.com/passcod">SO Careers</a></li>
+    <li><a href="https://coderwall.com/passcod">Coderwall</a></li>
+    <li><a href="mailto:me@passcod.name">me@passcod.name</a></li>
+  </ul>
+</section>
+<section>
+  <h1>Reputation</h1>
+  <a href="http://stackexchange.com/users/82437"><img
+    src="http://stackexchange.com/users/flair/82437.png"
+    width="208"
+    height="58"
+    alt="profile for F&#233;lix Saparelli on Stack Exchange, a network of free, community-driven Q&amp;A sites"
+    title="profile for F&#233;lix Saparelli on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a>
+</section>
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/passcod">@passcod</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'passcod',
+            count: 15,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("passcod", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/passcod" class="twitter-follow-button" data-show-count="false">Follow @passcod</a>
+  
+</section>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/117793015817962060333?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  <a href="/license.html" rel="license">Public Domain</a>
+  - Félix Saparelli -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'passcod';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+<script src="/javascripts/analytics.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: writing | ⚔ passcod ⚔]]></title>
+  <link href="https://passcod.name/blog/categories/writing/atom.xml" rel="self"/>
+  <link href="https://passcod.name/"/>
+  <updated>2013-03-08T02:38:29+13:00</updated>
+  <id>https://passcod.name/</id>
+  <author>
+    <name><![CDATA[Félix Saparelli]]></name>
+    <email><![CDATA[me@passcod.name]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Camp Nano]]></title>
+    <link href="https://passcod.name/2013/03/08/camp-nano.html"/>
+    <updated>2013-03-08T02:34:00+13:00</updated>
+    <id>https://passcod.name/2013/03/08/camp-nano</id>
+    <content type="html"><![CDATA[<p>I'll probably be writing 10~15k words during April.</p>
+]]></content>
+  </entry>
+  
+</feed>

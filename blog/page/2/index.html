@@ -2,15 +2,16 @@
 <!DOCTYPE html>
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en" manifest="/.appcache"><!--<![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <title>⚔ passcod ⚔</title>
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="Original on Gist.IO I&#8217;ve been saying that to friends, family, and colleagues for a while now,
-and I think maybe I should just write it down and &hellip;">
+  <meta name="description" content="About 3 weeks ago I tried to reboot DynWorker, my library
+to “make web threading fun.” I wanted not only to take advantage
+of newer technology, but &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,14 +23,14 @@ and I think maybe I should just write it down and &hellip;">
   <link rel="canonical" href="https://passcod.name/blog/page/2/index.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="⚔ passcod ⚔" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   
 
 </head>
@@ -59,7 +60,10 @@ and I think maybe I should just write it down and &hellip;">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/contact">Contact</a></li>
-  <li><a href="/cv">CV</a></li>
+<!--  <li><a href="/cv">CV</a></li> -->
+<!--  I’m not looking right now, but am open to short,
+      fixed term, specialised (no “fix this” shit) and
+      interesting contracts / arrangements if you wish. -->
 </ul>
 
 </nav>
@@ -73,7 +77,7 @@ and I think maybe I should just write it down and &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/07/25/the-80-slash-20-rule.html">The 80/20 Rule</a></h1>
+      <h1 class="entry-title"><a href="/2013/02/07/late-introduction-to-libworker-dot-js.html">Late Introduction to libworker.js</a></h1>
     
     
       <p class="meta">
@@ -89,498 +93,65 @@ and I think maybe I should just write it down and &hellip;">
   
 
 
-<time title="2012-07-25T07:14:00+12:00" datetime="2012-07-25T07:14:00+12:00" pubdate data-updated="true">2012·30·3 ⚔ Wednesday</time>
+<time datetime="2013-02-07T22:19:00+13:00" pubdate data-updated="true">2013·06·4 ⚔ Thursday</time>
         
-         | <a href="/2012/07/25/the-80-slash-20-rule.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>Original on <a href="http://gist.io/3170138">Gist.IO</a></em></p>
-
-<blockquote><p>I&#8217;ve been saying that to friends, family, and colleagues for a while now,
-and I think maybe I should just write it down and refer to it instead of
-rehashing it every time. In the last few dozen explanations, it hasn&#8217;t
-actually changed, so I think it&#8217;s pretty stable. Of course, the community
-will have something to say, and that&#8217;s expected!</p></blockquote>
-
-<p>There are more or less seven states to a new (software) project:</p>
-
-<ol>
-<li><strong>Figment</strong>. That&#8217;s when it&#8217;s just an idea, and maybe you&#8217;ve written
-something down on a paper napkin, or discussed it over coffee with a friend.</li>
-<li><strong>Planning</strong>. You&#8217;re actually putting more thought into it, doing the initial
-research, hopefully consolidating the idea into something manageable.</li>
-<li><strong>Prototype</strong>. Not necessarily code. Sometimes a prototype can just be rectangles
-of paper under magnets on a whiteboard, and a few arrows here and there to represent
-dynamics. Also known (in the case of code) as <strong>pre-alpha</strong>.</li>
-<li><strong>Alpha</strong>. Finally! Code. You&#8217;ve probably pulled a directory structure out of thin air
-and the code doesn&#8217;t actually do anything remotely productive yet.</li>
-<li><strong>Beta</strong>. The project has most of its original main features completed, even though
-there&#8217;s still a lot of bugs. You&#8217;ve taken features out of the codebase and told yourself
-you&#8217;ll implement them later.</li>
-<li><strong>Stable</strong>. The project has gotten enough XP and evolves into a product. There&#8217;s still
-bugs and quirks, but the main features are there and you can finally release it to the
-wider public (although if you&#8217;re open-source, this is more likely to happen on 4 or 5).</li>
-<li><strong>Future</strong>. This is rumored to be the hardest part of the journey. This has two parts:
-provide support for the now-released product, and continue development on new &amp; more
-advanced features.</li>
-</ol>
-
-
-<p>These are general states. You might find that 1-3 can be collapsed, or that there&#8217;s a bunch
-of extras in-between 6 and 7. You might also not agree on some of the descriptions I&#8217;ve given.
-That&#8217;s fine. What&#8217;s important is the actual rule:</p>
-
-<h3>When going from one state to the other, there is an 80% loss rate.</h3>
-
-<p>In other words, for every 1000 things I&#8217;ve thought of, 200 got to be planned, 40 were prototyped,
-8 made it to alpha, and 1.6 got to beta. I&#8217;ve had exactly one project reach state 7, and it&#8217;s discontinued.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/06/03/sprockets-on-sinatra-and-heroku.html">Sprockets on Sinatra (&amp; Heroku)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2012-06-03T00:00:00+12:00" datetime="2012-06-03T00:00:00+12:00" pubdate data-updated="true">2012·22·7 ⚔ Sunday</time>
-        
-         | <a href="/2012/06/03/sprockets-on-sinatra-and-heroku.html#disqus_thread">Comments</a>
+         | <a href="/2013/02/07/late-introduction-to-libworker-dot-js.html#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><em>Original on <a href="http://checkthis.com/biye">Checkthis.com</a>.</em></p>
-
-<p>In the world of ruby, there exists this framework called Rails, which I&#8217;m
-sure you&#8217;ve heard about. I happen not to like it very much. One of the
-reasons is that I&#8217;ve read maybe 2% of Rails&#8217; code, whereas for most of the
-other gems I use this is more like 40%. With Rails, I rely on magic (and,
-yea, it&#8217;s nice) and with the other stuff, I rely on my own knowledge. I
-prefer the latter.</p>
-
-<p>There&#8217;s also that Rails is an MVC framework, which is best buds with
-ActiveRecord and is a pain to manage as soon as you separate them. If you
-don&#8217;t want or need the MVC pattern, or ActiveRecord, you&#8217;re in for trouble.
-If you are unfortunate enough to need a gem which is incompatible with a Rails
-component, even if said component is supposed to be optional, you have my sympathies.</p>
-
-<p>In the world of Ruby, there also exists a little wonder called Sinatra. Sinatra
-is just the dispatcher part of Rails, plus the templating, plus a few other nifty
-features, but done right. It&#8217;s small, sharp, lean, and mean. And it does exactly as
-advertised, no more, no less. When building an application with Sinatra, you get to
-pick and choose. DataMapper vs. ActiveRecord vs. Sequel? A single line in the Gemfile.
-Not MVC? No problem. Custom directory structure? We wouldn&#8217;t have it any other way.</p>
-
-<p>There&#8217;s <strong>no magic</strong> in Sinatra (or just plain Rack, if that&#8217;s your fancy). It&#8217;s all
-<strong>just code</strong>. And chances are you&#8217;ll have written or read a lot of it.
-<a href="http://wordpress.org/">Wordpress says code is poetry</a>, and I agree, but given that
-Wordpress is written in PHP, I feel that with ruby&#8230; <em>code is art</em>.</p>
-
-<p><img src="https://s3-eu-west-1.amazonaws.com/checkthis.com/asset/4fca9c0855a70a00030025d7/4fca9c0855a70a00030025d7-medium.png" alt="Code is art" /></p>
-
-<p>In the world of ruby, there happens to be another wonder called Sprockets. Sprockets
-is what powers Rails&#8217; 3.1+ asset pipeline. And therein lies the problem.</p>
-
-<p>Sprockets is an awesome tool, and adding it to a Rack application makes things even
-sparklier than pink unicorns. But it&#8217;s relatively under-documented and Googling for
-solutions returns Rails-related stuff 99% of the time. Annoying. That&#8217;s due to a little
-something called sprockets-rails, which takes sprockets, adds magic, and transforms it
-into the asset pipeline. Trying to use asset pipeline know-how with standalone Sprockets
-is frustrating.</p>
-
-<p>So how do you do it?</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/06/03/sprockets-on-sinatra-and-heroku.html">⚔ Read on…</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/03/17/the-minimalist-date-format.html">The Minimalist Date Format</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2012-03-17T17:17:00+13:00" datetime="2012-03-17T17:17:00+13:00" pubdate data-updated="true">2012·11·6 ⚔ Saturday</time>
-        
-         | <a href="/2012/03/17/the-minimalist-date-format.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>Original on <a href="http://checkthis.com/7qf4">Checkthis.com</a></em></p>
-
-<p>The Minimalist date format is a 5- or 7- digits number which represents a date (no time).
-It increases mathematically (i.e. you can compare whether a date precedes another by
-comparing if one number is smaller than the other), and it looks cryptic to the ignorant.</p>
-
-<p>It is made of (in that order):</p>
-
-<ol>
-<li>the 2- or 4- digit year,</li>
-<li>the 2-digit ISO week number, and</li>
-<li>the 1-digit ISO week day number.</li>
-</ol>
-
-
-<p>All these are zero padded, thus the resulting number is always 5 or 7 digits long.</p>
-
-<p>I use it in various places, including:</p>
-
-<ul>
-<li>Some version numbers</li>
-<li>Artwork</li>
-<li>Weechat</li>
-<li>Here</li>
-</ul>
-
-
-<p><img src="/images/blog/h3Ml1.png" alt="Weechat date/time" /></p>
-
-<p>Note: <em>Using strftime (from unix&#8217;s <code>date</code> or the C utility, and its incarnation in many other languages), that format
-can be expressed as <code>%Y%W%u</code>. Do not use <code>%w</code> with <code>%W</code>, it breaks the mathematical continuity.</em></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/03/12/undo-version-control.html">Undo-Version-Control</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2012-03-12T00:00:00+13:00" datetime="2012-03-12T00:00:00+13:00" pubdate data-updated="true">2012·11·1 ⚔ Monday</time>
-        
-         | <a href="/2012/03/12/undo-version-control.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>Original on <a href="http://checkthis.com/l7p8">Checkthis.com</a></em></p>
-
-<p><em>Edit (12507): As <a href="http://checkthis.com/user/makoyass">mako yass</a> pointed out, this already exists…
-in vim. Oh, and there&#8217;s also <a href="http://e-texteditor.com/blog/2006/making-undo-usable">an Emacs mode</a>
-that copies that ability. The E editor for Windows <a href="http://e-texteditor.com/blog/2006/making-undo-usable">also has it</a>.
-There&#8217;s an open <a href="http://sublimetext.userecho.com/topic/92833-undo-trees/">feature request</a> for
-Sublime Text, and I&#8217;m thinking of implementing it for <a href="http://codemirror.net/">CodeMirror</a>. At
-the time I wrote this page, I didn&#8217;t have the right terminology… this is called an <strong>undo tree</strong>.</em></p>
-
-<hr />
-
-<p>The littlest things tend to get very interesting if you look closely
-enough. Take the world, for example: an altogether boring place to be,
-for sure, but the little things that make it work are altogether fascinating. Ask Higgs.</p>
-
-<p>I was happily cogitating when my mind came to wonder about the inner
-workings of two very different but very similar things: Git and Undo.
-If you don&#8217;t know what I&#8217;m talking about, <a href="https://www.google.com/search?q=git">google “git”</a>
-or <a href="https://en.wikipedia.org/wiki/Git_%28software%29">look on Wikipedia</a> or
-<a href="http://www-cs-students.stanford.edu/%7Eblynn/gitmagic/">read this book</a>.
-I assume everybody is familiar with the Undo button in <del>all</del> many applications.</p>
-
-<p>Now, the way I see it, Undo works by pushing past actions onto a stack. Imagine you&#8217;re
-typing an #unblog entry in a very primitive text editor. You start a paragraph (0), type
-&#8216;It&#8217; (1), decide against it, press Ctrl-Z twice (2), type &#8216;The&#8217; (3), pause for a second,
-press Ctrl-Z thrice (4), and type &#8216;I was&#8217; (5) then go on writing. In a &#8220;classical&#8221; undo
-mechanism, here&#8217;s what happens:</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/03/12/undo-version-control.html">⚔ Read on…</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/02/29/collusion-and-my-web-day.html">Collusion &amp; My Web Day</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2012-02-29T14:07:00+13:00" datetime="2012-02-29T14:07:00+13:00" pubdate data-updated="true">2012·09·3 ⚔ Wednesday</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After a bit less than a day after installing <a href="http://t.co/yBVSwJrW">Collusion</a>, I spent a bit
-untangling the nodes and took a screenshot. Here is my one day of web
-connections:</p>
-
-<p><a href="http://imgur.com/DLXYs"><img src="/images/blog/DLXYs.png" alt="Connection graph for website visits in one day" /></a></p>
-
-<p>You can clearly see the central websites: <a href="//facebook.com">Facebook</a> (even though I do not
-use it anymore, its presence is everywhere), <a href="//twitter.com">Twitter</a>, and <a href="//google.com">Google</a>.
-Worth noting is that these three sites are not connected. <a href="http://tumblr.com">Tumblr</a>,
-<a href="//wordpress.com">Wordpress</a>, and <a href="//mozilla.com">Mozilla</a> are also close by. I use Tumblr (for work) and
-Mozilla (for joy) a lot, but I was quite surprised to see Wordpress there.
-Turns out reading a single article connected it (and me!) to 8 other websites.</p>
-
-<p><a href="http://changery.com">Changery</a> is the blank one to the right of Mozilla. You can see it’s pretty
-well connected, even though there’s not much on there. I would have expected
-<a href="//github.com">GitHub</a> and <a href="//secure.gravatar.com">Gravatar</a> to be more connected, but maybe it’s better that
-way. The one hidden above <a href="http://stackoverflow.com">StackOverflow</a> is <a href="http://askubuntu.com">askubuntu.com</a>. It’s
-kinda weird that it’s not connected to <a href="http://ubuntu.com">ubuntu.com</a>, which is the blank one
-to the right of <a href="//foursquare.com">Foursquare</a> with three links.</p>
-
-<p><a href="//wikipedia.org">Wikipedia</a> is completely disconnected, which is OK given I haven’t visited
-it today. The one linked to it is <a href="http://yarp.com">Yarp</a>, which I briefly visited to get
-the doc for their <a href="http://timeago.yarp.com/">Timeago jQuery plugin</a>. <a href="http://arstechnica.com">Ars Technica</a> is quite
-strongly surrounded, hmph.</p>
-
-<p>The original purpose of Collusion being to see who tracks you, let’s give a
-special mention to QuantServe, who is the most linked reddie here.</p>
-
-<p>This picture is very interesting. There’s definitely much more that can be said
-about it, more analysis, etc. Also, the way things grouped themselves (even if
-I have influenced it to make the overall picture clearer) is revealing of what
-websites are the core of my web experience, and which are not, esp. regarding
-which I have pinned as App Tabs, and which I have not. Thank <a href="//twitter.com/toolness">@toolness</a>!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/01/27/mt-ruapehu.html">Mt Ruapehu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2012-01-27T13:00:00+13:00" datetime="2012-01-27T13:00:00+13:00" pubdate data-updated="true">2012·04·5 ⚔ Friday</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>At a bloody expensive internet cafe. STOP. Camera broke on first day of trip.
-STOP. Managed to borrow one to snap two pictures. STOP. A postcard shot of Mt
-Ruapehu from Whakapapaiti Hut, and the Hut itself. STOP. Here they are:</p>
-
-<p><a href="http://imgur.com/a/txvCh"><img src="/images/blog/vmwmj.jpg" alt="Mt Ruapehu" /></a></p>
-
-<p><a href="http://imgur.com/a/txvCh"><img src="/images/blog/WKwtn.jpg" alt="Whakapapaiti Hut" /></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/12/15/pubnub-vs-pusher.html">PubNub vs. Pusher</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2011-12-15T18:46:00+13:00" datetime="2011-12-15T18:46:00+13:00" pubdate data-updated="true">2011·50·4 ⚔ Thursday</time>
-        
-         | <a href="/2011/12/15/pubnub-vs-pusher.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I signed up for a <a href="http://www.pubnub.com">PubNub</a> and a <a href="http://pusher.com">Pusher</a> account at nearly the same
-time, before even looking at their pricing:</p>
-
-<p><img src="/images/blog/2011-12-15-pubnub-pusher-gmail.png" alt="Gmail importance filter places PubNub above Pusher" /></p>
-
-<p>GMail’s “importance” filter picked it up right away. I took a closer look:</p>
-
-<p>I have to say, I’m a sucker for pay-as-you-go, so PubNub immediately appealed
-more than Pusher. But what made me really choose is Socket.IO integration. That
-I can write a Javascript app using Socket.IO with a prototyping backend in
-Node.JS, then switch to a more robust Ruby on Heroku platform for beta &amp;
-publication seamlessly is awesome.</p>
-
-<p>So, PubNub, here I come! (But I’ll keep Pusher there, just in case :)</p>
-
-<hr />
-
-<p>(<em>notes from the future</em>)</p>
-
-<p>Further down the track, I used Pusher more often than I did PubNub, but less
-than I did just plain WebSocket and WebRTC. What can I say? I&#8217;m a sucker for
-custom solutions, too.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/12/14/controlling-sound-in-ubuntu.html">Controlling Sound in Ubuntu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time title="2011-12-14T18:41:00+13:00" datetime="2011-12-14T18:41:00+13:00" pubdate data-updated="true">2011·50·3 ⚔ Wednesday</time>
-        
-         | <a href="/2011/12/14/controlling-sound-in-ubuntu.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve had problems with sound before in Ubuntu (and variants: Mint, Elementary).
-Basically, when you plug in headphones, the sound comes of both the speakers
-and the headphones! Not really what I want… although I have found this to be
-useful sometimes.</p>
-
-<p>There might be a solution meddling with the config files of alsa and sound
-drivers, but I wasn’t particularly interested in this: my problem was that I
-couldn’t control the volume of the headphones and speakers separately.
-Alsamixer does just that.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ alsamixer</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Even better, on Oneiric, you can add it to the Unity dash by putting this into
-<strong>/usr/share/applications/alsamixer.desktop</strong>:</p>
-
-<figure class='code'><figcaption><span>alsamixer.desktop</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+  <div class="entry-content"><p>About 3 weeks ago I tried to reboot <a href="https://passcod.name/DynWorker">DynWorker</a>, my library
+to “make web threading fun.” I wanted not only to take advantage
+of newer technology, but also to give it a good layer of fresh
+paint. I started by manually translating it all in CoffeeScript.</p>
+
+<p>And it was looking good! The straight conversion worked, so I made
+a tiny change and tried to use a data:URI to load the worker code.
+Which turned out to be impossible. I essentially wanted to take the
+entire library, stringify it, base64-encode it, and put it in a
+variable… preferably at run-time. Y’know, so I didn&#8217;t have to dupe
+my entire code in the source!</p>
+
+<p>One of the best (!) solutions I found went like this:</p>
+
+<figure class='code'><figcaption><span>JS in Coffee, ah-yup</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">var</span> <span class="nv">src = </span><span class="s">&quot;</span>
+</span><span class='line'><span class="s">(function () {</span>
+</span><span class='line'><span class="s">  ...</span>
+</span><span class='line'><span class="s">  do something</span>
+</span><span class='line'><span class="s">  ...</span>
+</span><span class='line'><span class="s">}())&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="vi">@DynWorker.src = </span><span class="s">&quot;data:text/javascript;base64,&quot;</span> <span class="o">+</span> <span class="nx">btoa</span> <span class="nx">src</span>
+</span><span class='line'><span class="nb">eval</span> <span class="nx">src</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Don’t do that, kids.</em></p>
+
+<p>Besides, I had looked at the list of features I had to test, the list
+of features I had thought of, the list of features I probably needed
+to implement, and daaamn, boy, ah wasn’ gonna be done with it sooner.
+So I tanked it.</p>
+
+<p>Instead, I created <a href="https://github.com/passcod/libworker.js">libworker.js</a>. DynWorker has a line in the readme
+saying it pretty low-level. That ain’t true no more. Libworker.js is to
+DynWorker what Assembly is to C++ : a completely different level.</p>
+
+<p>Here is the entirety of the source. You can take that and paste
+it in your console and it’ll work. Promise.</p>
+
+<figure class='code'><figcaption><span>libworker.min.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -591,21 +162,38 @@ Alsamixer does just that.</p>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='text'><span class='line'>[Desktop Entry]
-</span><span class='line'>Exec=alsamixer
-</span><span class='line'>Name=AlsaMixer
-</span><span class='line'>GenericName=Sound Controller
-</span><span class='line'>X-GNOME-FullName=Alsamixer
-</span><span class='line'>Comment=Control the sound. All of it.
-</span><span class='line'>Icon=audio-headset
-</span><span class='line'>StartupNotify=true
-</span><span class='line'>Terminal=true
-</span><span class='line'>Type=Application
-</span><span class='line'>Categories=GNOME;Audio;Music;
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">b</span><span class="p">){</span>
+</span><span class='line'><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">b</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="nx">a</span><span class="o">=</span><span class="nb">String</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="mi">5</span><span class="o">&gt;</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="o">&amp;&amp;</span><span class="s2">&quot;eval:&quot;</span><span class="o">===</span><span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span><span class="k">return</span> <span class="nx">b</span><span class="p">.</span><span class="nb">eval</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">b</span><span class="p">,</span>
+</span><span class='line'><span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">5</span><span class="p">))});</span><span class="kd">function</span> <span class="nx">c</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="nx">metal</span><span class="o">=</span><span class="kc">null</span><span class="o">!=</span><span class="nx">a</span><span class="o">?</span><span class="nx">a</span><span class="o">:</span><span class="k">new</span> <span class="nx">Worker</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">src</span><span class="p">)}</span>
+</span><span class='line'><span class="nx">c</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">send</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="nx">metal</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="nx">a</span><span class="p">)};</span>
+</span><span class='line'><span class="nx">c</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nb">eval</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;eval:&quot;</span><span class="o">+</span><span class="nx">a</span><span class="p">)};</span>
+</span><span class='line'><span class="nx">c</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s1">&#39;data:text/javascript;base64,dmFyIGI7Yj10aGlzO&#39;</span><span class="o">+</span>
+</span><span class='line'><span class="s1">&#39;3RoaXMuYWRkRXZlbnRMaXN0ZW5lcigibWVzc2FnZSIsZnVuY3Rp&#39;</span><span class="o">+</span>
+</span><span class='line'><span class="s1">&#39;b24oYSl7YT1TdHJpbmcoYS5kYXRhKTtpZighKDU+YS5sZW5ndGg&#39;</span><span class="o">+</span>
+</span><span class='line'><span class="s1">&#39;pJiYiZXZhbDoiPT09YS5zbGljZSgwLDUpKXJldHVybiBiLmV2YW&#39;</span><span class="o">+</span>
+</span><span class='line'><span class="s1">&#39;wuY2FsbChiLGEuc2xpY2UoNSkpfSk7&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">b</span><span class="p">.</span><span class="nx">libworker</span><span class="o">=</span><span class="nx">c</span><span class="p">;</span>
+</span><span class='line'><span class="p">}(</span><span class="k">this</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>You can change the name, icon, and comment to your liking, of course.</p>
+<p>(It’s actually <a href="https://github.com/passcod/libworker.js/blob/master/libworker.coffee">written in CoffeeScript</a>, don’t you worry, this
+is not the source source, it’s not completely unmantainable. Although
+I actually “hand-compile” this thing.)</p>
+
+<p>If you can’t read minified JavaScript, there’s <a href="https://passcod.name/libworker.js">a page with examples</a>
+available, albeit quite short. I just can’t justify too many words on this
+little code!</p>
+
+<p>This library can be included directly in any project that needs to use
+WebWorkers, like <strong>Dyno.js</strong>, my upcoming Actor framework for browsers,
+for which there is little source available in very non-obvious places.<br/>
+You’ll just have to wait ;-)</p>
 </div>
   
   
@@ -618,7 +206,7 @@ Alsamixer does just that.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2011/11/29/walking-in-the-north-island.html">Walking in the North Island</a></h1>
+      <h1 class="entry-title"><a href="/2013/01/25/on-the-sides.html">On the Sides, Really Really Alpha</a></h1>
     
     
       <p class="meta">
@@ -634,16 +222,125 @@ Alsamixer does just that.</p>
   
 
 
-<time title="2011-11-29T18:38:00+13:00" datetime="2011-11-29T18:38:00+13:00" pubdate data-updated="true">2011·48·2 ⚔ Tuesday</time>
+<time datetime="2013-01-25T15:31:00+13:00" pubdate data-updated="true">2013·04·5 ⚔ Friday</time>
+        
+         | <a href="/2013/01/25/on-the-sides.html#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>relatively alone, for some days, after the New Year.</p>
+  <div class="entry-content"><p>So, <a href="/2013/01/04/on-ifttt-not-having-an-api-and-on-dot-thesides-v1.html">IFTTT sucks</a>. Turns out there&#8217;s a better IFTTT out there
+called <a href="https://zapier.com/">Zapier</a> that has a really easy to use developer interface.
+Hence, I created a Zapier service for <strong>On the sides</strong>. Due to my own
+UI not being great, though, you&#8217;ll have to fiddle around with cURL (or
+better, <a href="http://httpie.org/">httpie</a>, which is what I&#8217;ll be using below) to make it all
+work.</p>
 
-<p>It’s gonna be fun!</p>
+<h2>Pre-reqs</h2>
+
+<ul>
+<li><p>You&#8217;ll need a Zapier account. This takes about 20 seconds to create, email
+verification isn&#8217;t even necessary, and they&#8217;ve got a decent free plan.</p></li>
+<li><p>You&#8217;ll need to log in to <a href="https://login.persona.org/">Mozilla Persona</a>. You can actually do that
+later on when signing in to <strong>On the sides</strong>, but if emails take a bit of
+time to arrive you might want to do it now if you have never done it before.
+If you&#8217;re just playing around, use <code>some-word@mockmyid.com</code> instead when
+doing the Mozilla Persona thing (but only there!).</p></li>
+<li><p>You&#8217;ll need something to consume HTTP APIs with ease. I&#8217;ll use httpie, as
+mentioned above, or you can use cURL, or a JS console with jQuery.ajax or
+anything else that floats your boat. Whatever. It needs to be able to do
+GET and POST (with PUT and DELETE as bonuses), and set custom headers.</p></li>
+<li><p>You&#8217;ll need to know how to open the JS console. I won&#8217;t tell you how, just
+figure it out and if you can&#8217;t, well, you probably can&#8217;t do the rest anyway.</p></li>
+<li><p>You&#8217;ll need about 15 minutes. More if you&#8217;re slow. Less if you&#8217;re da baws.</p></li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2013/01/25/on-the-sides.html">⚔ Read on…</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/01/06/having-the-source-lets-one-remake-and-derive.html">Having the Source Lets One Remake and Derive</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-06T18:13:00+13:00" pubdate data-updated="true">2013·01·7 ⚔ Sunday</time>
+        
+         | <a href="/2013/01/06/having-the-source-lets-one-remake-and-derive.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been reading articles by <a href="http://yudkowsky.net/">Eliezer Yudkowsky</a> recently, and here&#8217;s
+one that struck me could also refer to open-source software:</p>
+
+<blockquote><p><a href="http://yudkowsky.net/rational/the-simple-truth">A shepherd builds a counting system</a> that works by throwing a pebble
+into a bucket whenever a sheep leaves the fold, and taking a pebble
+out whenever a sheep returns.  If you, the apprentice, do not understand
+this system—if it is magic that works for no apparent reason—then
+you will not know what to do if you accidentally drop an extra pebble
+into the bucket.  That which you cannot make yourself, you cannot
+remake when the situation calls for it.  You cannot go back to the
+source, tweak one of the parameter settings, and regenerate the output,
+without the source.  If &#8220;Two plus four equals six&#8221; is a brute fact unto
+you, and then one of the elements changes to &#8220;five&#8221;, how are you to
+know that &#8220;two plus five equals seven&#8221; when you were simply told that
+&#8220;two plus four equals six&#8221;?</p>
+
+<p>If you see a small plant that drops a seed whenever a bird passes it,
+it will not occur to you that you can use this plant to partially
+automate the sheep-counter.  Though you learned something that the
+original maker would use to improve on his invention, you can&#8217;t go back
+to the source and re-create it.</p>
+
+<p><em>(from <a href="http://lesswrong.com/lw/la/truly_part_of_you/">Less Wrong&#8217;s “Truly Part of You”</a>)</em></p></blockquote>
+
+<p>However, simply <em>using</em> open-source software does not give you an understanding
+of its workings. It does not demystify it, it does not alleviate the <em>magic</em>
+of the thing. In computer science especially, there is this concept of <a href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">leaky
+abstractions</a>: these are most flagrant and disturbing when one has no or
+little understanding of the abstracted layer.</p>
+
+<p>This is why I make a point of reading through at least part of the source of
+every program and library I work with on a regular basis. I have read a bit
+of the Linux kernel, a small chunk of the Firefox OS UI, most of Sinatra but
+much less of Rails, I have debugged and contributed to one of my systems&#8217;
+package manager, and just this afternoon I trudged through a Gem to insert
+a debug statement and peek within an HTTPS request.</p>
+
+<p>All these experiences provided me with knowledge I could never get just by
+reading documentation. This knowledge allows me the incredible power of
+remixing various bits into new solutions. What&#8217;s more, even though I have
+cursed a bunch of developers while attempting to parse their witty one-liners,
+I can hopefully learn from their mistakes and not just mine. Hmmm… <em>hopefully</em>.</p>
 </div>
   
   
@@ -652,6 +349,8 @@ Alsamixer does just that.</p>
     </article>
   
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/3/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -664,6 +363,10 @@ Alsamixer does just that.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/03/08/camp-nano.html">Camp Nano</a>
+      </li>
     
       <li class="post">
         <a href="/2013/02/16/building-hotot.html">Building Hotot</a>
@@ -679,10 +382,6 @@ Alsamixer does just that.</p>
     
       <li class="post">
         <a href="/2013/01/25/on-the-sides.html">On the sides, really really alpha</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/06/having-the-source-lets-one-remake-and-derive.html">Having the Source lets one remake and derive</a>
       </li>
     
   </ul>
@@ -764,7 +463,7 @@ Alsamixer does just that.</p>
 <section class="googleplus">
   <h1>
     <a href="https://plus.google.com/117793015817962060333?rel=author">
-      <img src="//www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
       Google+
     </a>
   </h1>
@@ -794,7 +493,7 @@ Alsamixer does just that.</p>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -805,7 +504,7 @@ Alsamixer does just that.</p>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
+  js = d.createElement(s); js.id = id; js.async = true;
   js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
@@ -827,7 +526,7 @@ Alsamixer does just that.</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

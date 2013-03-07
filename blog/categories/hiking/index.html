@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en" manifest="/.appcache"><!--<![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <title>Category: hiking - ⚔ passcod ⚔</title>
@@ -21,14 +21,14 @@
   <link rel="canonical" href="https://passcod.nameblog/categories/hiking/index.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="⚔ passcod ⚔" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   
 
 </head>
@@ -58,7 +58,10 @@
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/contact">Contact</a></li>
-  <li><a href="/cv">CV</a></li>
+<!--  <li><a href="/cv">CV</a></li> -->
+<!--  I’m not looking right now, but am open to short,
+      fixed term, specialised (no “fix this” shit) and
+      interesting contracts / arrangements if you wish. -->
 </ul>
 
 </nav>
@@ -122,6 +125,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/03/08/camp-nano.html">Camp Nano</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/02/16/building-hotot.html">Building Hotot</a>
       </li>
     
@@ -135,10 +142,6 @@
     
       <li class="post">
         <a href="/2013/01/25/on-the-sides.html">On the sides, really really alpha</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/06/having-the-source-lets-one-remake-and-derive.html">Having the Source lets one remake and derive</a>
       </li>
     
   </ul>
@@ -220,7 +223,7 @@
 <section class="googleplus">
   <h1>
     <a href="https://plus.google.com/117793015817962060333?rel=author">
-      <img src="//www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
       Google+
     </a>
   </h1>
@@ -251,7 +254,7 @@
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -262,7 +265,7 @@
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
+  js = d.createElement(s); js.id = id; js.async = true;
   js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
@@ -284,7 +287,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
