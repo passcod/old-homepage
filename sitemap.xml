@@ -97,12 +97,20 @@
         <lastmod>2013-03-08T02:18:57+13:00</lastmod>
     </url>
     <url>
-        <loc>https://passcod.name/</loc>
-        <lastmod>2013-03-08T02:36:15+13:00</lastmod>
+        <loc>https://passcod.name/gpg/</loc>
+        <lastmod>2013-03-28T08:38:33+13:00</lastmod>
     </url>
     <url>
-        <loc>https://passcod.name/passcod03.asc</loc>
+        <loc>https://passcod.name/gpg/passcod03.asc</loc>
         <lastmod>2012-12-05T22:00:02+13:00</lastmod>
+    </url>
+    <url>
+        <loc>https://passcod.name/gpg/passcod03.revok</loc>
+        <lastmod>2013-03-28T07:06:22+13:00</lastmod>
+    </url>
+    <url>
+        <loc>https://passcod.name/</loc>
+        <lastmod>2013-03-08T02:36:15+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/robots.txt</loc>
