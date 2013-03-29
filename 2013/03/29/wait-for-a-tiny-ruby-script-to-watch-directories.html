@@ -5,11 +5,22 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: pubsub - ⚔ passcod ⚔</title>
+  <title>wait-for: a tiny Ruby script to watch directories - ⚔ passcod ⚔</title>
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="Category: pubsub">
+  <meta name="description" content="I was pretty tired of when-changed’s inability to watch
+directories, so I made this using the listen Ruby gem: ~/bin/wait-for1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +29,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="https://passcod.nameblog/categories/pubsub/index.html">
+  <link rel="canonical" href="https://passcod.name/2013/03/29/wait-for-a-tiny-ruby-script-to-watch-directories.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="⚔ passcod ⚔" type="application/atom+xml">
@@ -69,36 +80,142 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Pubsub</h1>
+    
+      <h1 class="entry-title">Wait-for: A Tiny Ruby Script to Watch Directories</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-29T14:35:00+13:00" pubdate data-updated="true">2013·13·5 ⚔ Friday</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>I was pretty tired of <a href="https://github.com/joh/when-changed"><code>when-changed</code></a>’s inability to watch
+directories, so I made this using the <a href="https://github.com/guard/listen"><code>listen</code></a> Ruby gem:</p>
 
-  
-  <h2>2011</h2>
+<figure class='code'><figcaption><span>~/bin/wait-for</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;listen&#39;</span>
+</span><span class='line'><span class="n">cmd</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">.</span><span class="n">pop</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Signal</span><span class="o">.</span><span class="n">trap</span> <span class="s2">&quot;INT&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\b\b</span><span class="s2">Stopping...&quot;</span>
+</span><span class='line'>  <span class="nb">exit</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Listen</span><span class="o">.</span><span class="n">to</span> <span class="o">*</span><span class="no">ARGV</span> <span class="k">do</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">$ </span><span class="si">#{</span><span class="n">cmd</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">out</span> <span class="o">=</span> <span class="sb">`</span><span class="si">#{</span><span class="n">cmd</span><span class="si">}</span><span class="sb">`</span>
+</span><span class='line'>  <span class="n">pro</span> <span class="o">=</span> <span class="vg">$?</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">out</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;=&gt; Exited: </span><span class="si">#{</span><span class="n">pro</span><span class="o">.</span><span class="n">exitstatus</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\a</span><span class="s2">&quot;</span> <span class="k">unless</span> <span class="n">pro</span><span class="o">.</span><span class="n">success?</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<article>
-  
-<h1><a href="/2011/12/15/pubnub-vs-pusher.html">PubNub vs. Pusher</a></h1>
-<time datetime="2011-12-15T18:46:00+13:00" pubdate><span class='month'>Dec</span> <span class='day'>15</span> <span class='year'>2011</span></time>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/pubsub/'>pubsub</a>, <a class='category' href='/blog/categories/software/'>software</a></span>
-</footer>
-
-
-</article>
-
+<p>It can only watch directories, though, so I might keep using <code>when-changed</code> for
+some things. However, it does so using kernel features (kqueue on OS X, inotify
+on Linux), so it’s a much leaner alternative. <em>(You’ll need, of course, to have
+<code>$HOME/bin</code> in your path, or to put this somewhere else. ;)</em></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Félix Saparelli</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-29T14:35:00+13:00" pubdate data-updated="true">2013·13·5 ⚔ Friday</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/software/'>software</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="https://passcod.name/2013/03/29/wait-for-a-tiny-ruby-script-to-watch-directories.html" data-via="passcod" data-counturl="https://passcod.name/2013/03/29/wait-for-a-tiny-ruby-script-to-watch-directories.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/03/08/camp-nano.html" title="Previous Post: Camp Nano">&laquo; Camp Nano</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -234,7 +351,10 @@
       var disqus_shortname = 'passcod';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'https://passcod.name/2013/03/29/wait-for-a-tiny-ruby-script-to-watch-directories.html';
+        var disqus_url = 'https://passcod.name/2013/03/29/wait-for-a-tiny-ruby-script-to-watch-directories.html';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

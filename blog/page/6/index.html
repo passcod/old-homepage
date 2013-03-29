@@ -9,8 +9,9 @@
   <meta name="author" content="Félix Saparelli">
 
   
-  <meta name="description" content="After a bit less than a day after installing Collusion, I spent a bit
-untangling the nodes and took a screenshot. Here is my one day of web &hellip;">
+  <meta name="description" content="Original on Checkthis.com Edit (12507): As mako yass pointed out, this already exists…
+in vim. Oh, and there&#8217;s also an Emacs mode
+that copies &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +72,75 @@ untangling the nodes and took a screenshot. Here is my one day of web &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/03/12/undo-version-control.html">Undo-Version-Control</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-12T00:00:00+13:00" pubdate data-updated="true">2012·11·1 ⚔ Monday</time>
+        
+         | <a href="/2012/03/12/undo-version-control.html#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Original on <a href="http://checkthis.com/l7p8">Checkthis.com</a></em></p>
+
+<p><em>Edit (12507): As <a href="http://checkthis.com/user/makoyass">mako yass</a> pointed out, this already exists…
+in vim. Oh, and there&#8217;s also <a href="http://e-texteditor.com/blog/2006/making-undo-usable">an Emacs mode</a>
+that copies that ability. The E editor for Windows <a href="http://e-texteditor.com/blog/2006/making-undo-usable">also has it</a>.
+There&#8217;s an open <a href="http://sublimetext.userecho.com/topic/92833-undo-trees/">feature request</a> for
+Sublime Text, and I&#8217;m thinking of implementing it for <a href="http://codemirror.net/">CodeMirror</a>. At
+the time I wrote this page, I didn&#8217;t have the right terminology… this is called an <strong>undo tree</strong>.</em></p>
+
+<hr />
+
+<p>The littlest things tend to get very interesting if you look closely
+enough. Take the world, for example: an altogether boring place to be,
+for sure, but the little things that make it work are altogether fascinating. Ask Higgs.</p>
+
+<p>I was happily cogitating when my mind came to wonder about the inner
+workings of two very different but very similar things: Git and Undo.
+If you don&#8217;t know what I&#8217;m talking about, <a href="https://www.google.com/search?q=git">google “git”</a>
+or <a href="https://en.wikipedia.org/wiki/Git_%28software%29">look on Wikipedia</a> or
+<a href="http://www-cs-students.stanford.edu/%7Eblynn/gitmagic/">read this book</a>.
+I assume everybody is familiar with the Undo button in <del>all</del> many applications.</p>
+
+<p>Now, the way I see it, Undo works by pushing past actions onto a stack. Imagine you&#8217;re
+typing an #unblog entry in a very primitive text editor. You start a paragraph (0), type
+&#8216;It&#8217; (1), decide against it, press Ctrl-Z twice (2), type &#8216;The&#8217; (3), pause for a second,
+press Ctrl-Z thrice (4), and type &#8216;I was&#8217; (5) then go on writing. In a &#8220;classical&#8221; undo
+mechanism, here&#8217;s what happens:</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/03/12/undo-version-control.html">⚔ Read on…</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -182,65 +252,6 @@ Ruapehu from Whakapapaiti Hut, and the Hut itself. STOP. Here they are:</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/12/15/pubnub-vs-pusher.html">PubNub vs. Pusher</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-15T18:46:00+13:00" pubdate data-updated="true">2011·50·4 ⚔ Thursday</time>
-        
-         | <a href="/2011/12/15/pubnub-vs-pusher.html#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I signed up for a <a href="http://www.pubnub.com">PubNub</a> and a <a href="http://pusher.com">Pusher</a> account at nearly the same
-time, before even looking at their pricing:</p>
-
-<p><img src="/images/blog/2011-12-15-pubnub-pusher-gmail.png" alt="Gmail importance filter places PubNub above Pusher" /></p>
-
-<p>GMail’s “importance” filter picked it up right away. I took a closer look:</p>
-
-<p>I have to say, I’m a sucker for pay-as-you-go, so PubNub immediately appealed
-more than Pusher. But what made me really choose is Socket.IO integration. That
-I can write a Javascript app using Socket.IO with a prototyping backend in
-Node.JS, then switch to a more robust Ruby on Heroku platform for beta &amp;
-publication seamlessly is awesome.</p>
-
-<p>So, PubNub, here I come! (But I’ll keep Pusher there, just in case :)</p>
-
-<hr />
-
-<p>(<em>notes from the future</em>)</p>
-
-<p>Further down the track, I used Pusher more often than I did PubNub, but less
-than I did just plain WebSocket and WebRTC. What can I say? I&#8217;m a sucker for
-custom solutions, too.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -258,6 +269,10 @@ custom solutions, too.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/03/29/wait-for-a-tiny-ruby-script-to-watch-directories.html">wait-for: a tiny Ruby script to watch directories</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/08/camp-nano.html">Camp Nano</a>
       </li>
     
@@ -271,10 +286,6 @@ custom solutions, too.</p>
     
       <li class="post">
         <a href="/2013/02/07/late-introduction-to-libworker-dot-js.html">Late introduction to libworker.js</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/25/on-the-sides.html">On the sides, really really alpha</a>
       </li>
     
   </ul>

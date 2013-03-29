@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | ⚔ passcod ⚔]]></title>
   <link href="https://passcod.name/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="https://passcod.name/"/>
-  <updated>2013-03-28T08:43:07+13:00</updated>
+  <updated>2013-03-29T14:42:12+13:00</updated>
   <id>https://passcod.name/</id>
   <author>
     <name><![CDATA[Félix Saparelli]]></name>
@@ -12,6 +12,43 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[wait-for: a tiny Ruby script to watch directories]]></title>
+    <link href="https://passcod.name/2013/03/29/wait-for-a-tiny-ruby-script-to-watch-directories.html"/>
+    <updated>2013-03-29T14:35:00+13:00</updated>
+    <id>https://passcod.name/2013/03/29/wait-for-a-tiny-ruby-script-to-watch-directories</id>
+    <content type="html"><![CDATA[<p>I was pretty tired of <a href="https://github.com/joh/when-changed"><code>when-changed</code></a>’s inability to watch
+directories, so I made this using the <a href="https://github.com/guard/listen"><code>listen</code></a> Ruby gem:</p>
+
+<p>``` ruby ~/bin/wait-for</p>
+
+<h1>!/usr/bin/env ruby</h1>
+
+<p>require 'listen'
+cmd = ARGV.pop</p>
+
+<p>Signal.trap "INT" do
+  puts "\b\bStopping..."
+  exit
+end</p>
+
+<p>Listen.to *ARGV do
+  puts "\n$ #{cmd}\n"
+  out = <code>#{cmd}</code>
+  pro = $?
+  puts out
+  puts "=> Exited: #{pro.exitstatus}"
+  puts "\a" unless pro.success?
+end
+```</p>
+
+<p>It can only watch directories, though, so I might keep using <code>when-changed</code> for
+some things. However, it does so using kernel features (kqueue on OS X, inotify
+on Linux), so it’s a much leaner alternative. <em>(You’ll need, of course, to have
+<code>$HOME/bin</code> in your path, or to put this somewhere else. ;)</em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sprockets on Sinatra (&amp; Heroku)]]></title>

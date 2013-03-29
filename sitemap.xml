@@ -89,8 +89,14 @@
         <lastmod>2013-03-08T02:36:15+13:00</lastmod>
     </url>
     <url>
+        <loc>
+            https://passcod.name/2013/03/29/wait-for-a-tiny-ruby-script-to-watch-directories.html
+        </loc>
+        <lastmod>2013-03-29T14:40:57+13:00</lastmod>
+    </url>
+    <url>
         <loc>https://passcod.name/blog/archives/</loc>
-        <lastmod>2013-03-08T02:36:15+13:00</lastmod>
+        <lastmod>2013-03-29T14:40:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/contact/</loc>
@@ -110,7 +116,7 @@
     </url>
     <url>
         <loc>https://passcod.name/</loc>
-        <lastmod>2013-03-08T02:36:15+13:00</lastmod>
+        <lastmod>2013-03-29T14:40:57+13:00</lastmod>
     </url>
     <url>
         <loc>https://passcod.name/robots.txt</loc>
