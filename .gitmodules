@@ -1,0 +1,3 @@
+[submodule "source/chat"]
+	path = source/chat
+	url = git://github.com/passcod/serveropt-webrtc.git
