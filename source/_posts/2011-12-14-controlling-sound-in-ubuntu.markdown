@@ -25,7 +25,7 @@ $ alsamixer
 Even better, on Oneiric, you can add it to the Unity dash by putting this into
 __/usr/share/applications/alsamixer.desktop__:
 
-``` text alsamixer.desktop
+``` ini alsamixer.desktop
 [Desktop Entry]
 Exec=alsamixer
 Name=AlsaMixer

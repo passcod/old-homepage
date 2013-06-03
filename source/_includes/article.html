@@ -24,5 +24,21 @@
     </footer>
   {% endif %}
 {% else %}
+  {% if post.categories contains "idea" %}
+    <aside class="post-foreword">This post is part of the
+      <a href="{{ root_url }}/categories/idea/">idea category</a>,
+      an effort to document my thought, idea, and design processea
+      in a hierarchical, graphed, manner. Ideas can have parents
+      (listed at the top of the post) and children (listed at the
+      bottom). Thus the entire process can be navigated easily.
+    </aside>
+    <ol class="post-idea-parents">
+      <lh>Parents:</lh>
+    {% for p in post.parents %}
+      <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+    {% endfor %}
+    </ol>
+  {% endif %}
 <div class="entry-content">{{ content }}</div>
 {% endif %}
+
